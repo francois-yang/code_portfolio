@@ -1,0 +1,24 @@
+---
+import Logo from './Logo.astro';
+---
+
+<header class="bg-bleu-fonce/80 backdrop-blur-sm px-5 py-2">
+  <div class="max-w-7xl mx-auto grid grid-cols-[1fr_auto_1fr] items-center gap-4">
+    <!-- Logo (left) -->
+    <a class="justify-self-start block transition-transform hover:scale-105" href="/" aria-label="Accueil">
+      <Logo class="w-16 h-16 md:w-12 md:h-12" />
+    </a>
+
+    <!-- Navigation (center) -->
+    <nav class="justify-self-center flex items-center gap-44 lg:gap-32 md:gap-8" role="navigation" aria-label="Navigation principale">
+      <a href="/projet/projets" class="text-blanc text-xl font-semibold whitespace-nowrap transition-all hover:opacity-85 hover:-translate-y-px focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-line-blue focus-visible:ring-offset-2 md:text-base">Projets</a>
+      <a href="/contact" class="text-blanc text-xl font-semibold whitespace-nowrap transition-all hover:opacity-85 hover:-translate-y-px focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-line-blue focus-visible:ring-offset-2 md:text-base">Contact</a>
+      <a href="/a_propos" class="text-blanc text-xl font-semibold whitespace-nowrap transition-all hover:opacity-85 hover:-translate-y-px focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-line-blue focus-visible:ring-offset-2 md:text-base">A propos</a>
+    </nav>
+
+    <!-- Right spacer to keep center alignment -->
+    <div class="justify-self-end" aria-hidden="true"></div>
+  </div>
+</header>
+
+

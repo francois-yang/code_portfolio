@@ -1,0 +1,87 @@
+---
+import Layout from '../../layouts/Layout.astro';
+---
+
+<Layout>
+	<!-- Section Projets -->
+	<section class="relative py-20 px-6 min-h-screen bg-bleu-fonce">
+		<div class="relative z-10 max-w-7xl mx-auto">
+			<!-- Titre de la page -->
+			<div class="mb-16">
+				<h1 class="text-turquoise text-5xl font-bold mb-4">Mes projets</h1>
+				<p class="text-blanc text-xl">Découvrez les projets que j'ai réalisés</p>
+			</div>
+
+			<!-- Grille des projets -->
+			<div class="grid md:grid-cols-2 gap-12">
+				
+				<!-- Projet ShareAmi -->
+				<article class="bg-bleu-fonce border-2 border-turquoise/30 rounded-2xl overflow-hidden hover:border-turquoise transition-all duration-300 hover:shadow-[0_0_30px_rgba(0,255,238,0.3)] group">
+					<!-- Image du projet -->
+					<div class="relative overflow-hidden aspect-video bg-gray-800">
+						<img 
+							src="/projet-shareami.png" 
+							alt="Projet ShareAmi" 
+							class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+						/>
+					</div>
+					
+					<!-- Contenu -->
+					<div class="p-8 space-y-4">
+						<h2 class="text-turquoise text-3xl font-bold">ShareAmi</h2>
+						<p class="text-blanc text-lg leading-relaxed">
+							Projet de plateforme collaborative permettant le partage et l'échange entre utilisateurs. Interface moderne et intuitive avec une expérience utilisateur optimisée.
+						</p>
+						
+						<!-- Bouton -->
+						<div class="pt-4">
+							<a 
+								href="/projets/shareami" 
+								class="inline-flex items-center gap-2 bg-turquoise hover:bg-turquoise/90 text-bleu-fonce font-semibold px-8 py-3 rounded-lg transition-all duration-300 shadow-lg hover:shadow-[0_0_20px_rgba(0,255,238,0.5)]"
+							>
+								En savoir plus
+								<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+									<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
+								</svg>
+							</a>
+						</div>
+					</div>
+				</article>
+
+				<!-- Projet ASAFRAM -->
+				<article class="bg-bleu-fonce border-2 border-turquoise/30 rounded-2xl overflow-hidden hover:border-turquoise transition-all duration-300 hover:shadow-[0_0_30px_rgba(0,255,238,0.3)] group">
+					<!-- Image du projet -->
+					<div class="relative overflow-hidden aspect-video bg-gray-800">
+						<img 
+							src="/projet-asafram.png" 
+							alt="Projet ASAFRAM" 
+							class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+						/>
+					</div>
+					
+					<!-- Contenu -->
+					<div class="p-8 space-y-4">
+						<h2 class="text-turquoise text-3xl font-bold">ASAFRAM</h2>
+						<p class="text-blanc text-lg leading-relaxed">
+							Site web professionnel pour une association. Design épuré et fonctionnel mettant en avant les valeurs et missions de l'organisation.
+						</p>
+						
+						<!-- Bouton -->
+						<div class="pt-4">
+							<a 
+								href="/projets/asafram" 
+								class="inline-flex items-center gap-2 bg-turquoise hover:bg-turquoise/90 text-bleu-fonce font-semibold px-8 py-3 rounded-lg transition-all duration-300 shadow-lg hover:shadow-[0_0_20px_rgba(0,255,238,0.5)]"
+							>
+								En savoir plus
+								<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+									<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
+								</svg>
+							</a>
+						</div>
+					</div>
+				</article>
+
+			</div>
+		</div>
+	</section>
+</Layout>

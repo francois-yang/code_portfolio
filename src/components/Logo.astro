@@ -1,0 +1,103 @@
+---
+interface Props {
+    class?: string;
+}
+
+const { class: className } = Astro.props;
+---
+
+<div class:list={["inline-block cursor-pointer group", className]}>
+    <svg
+        width="48"
+        height="48"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 64 64"
+        class="block overflow-visible group-hover:animate-rotate-slight"
+    >
+        <!-- Filtre SVG pour créer un halo flou -->
+        <defs>
+            <filter id="glow-filter" x="-50%" y="-50%" width="200%" height="200%">
+                <feGaussianBlur in="SourceGraphic" stdDeviation="2" result="blur" />
+                <feColorMatrix in="blur" type="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 3 0" result="glow" />
+                <feMerge>
+                    <feMergeNode in="glow" />
+                    <feMergeNode in="glow" />
+                    <feMergeNode in="SourceGraphic" />
+                </feMerge>
+            </filter>
+        </defs>
+        <!-- Lettres F et Y -->
+        <path
+            d="M23.597 23.23v7.973H32v2.657h-5.143m-3.26 0v9.569H20.57V20.57h17.143v2.658H26.857"
+            stroke="#00EAFF"
+            class="group-hover:animate-glow"
+        />
+        <path
+            d="M46.857 26.286h-4.245l-3.183 4.383-3.184-4.383H32m2.56 3.474l3.058 4.21v9.459h3.933V33.97l3.249-4.21"
+            stroke="#fff"
+            class="group-hover:animate-glow"
+        />
+
+        <!-- Points décoratifs -->
+        <circle cx="44.48" cy="30.08" r=".96" fill="#A7A7A7" class="group-hover:brightness-150" />
+        <circle cx="47.04" cy="26.24" r=".96" fill="#A7A7A7" class="group-hover:brightness-150" />
+        <circle cx="31.68" cy="26.24" r=".96" fill="#A7A7A7" class="group-hover:brightness-150" />
+        <circle cx="34.24" cy="30.08" r=".96" fill="#A7A7A7" class="group-hover:brightness-150" />
+
+        <!-- Masque pour le cercle principal -->
+        <mask id="logo-mask" fill="#fff">
+            <path d="M32.91.013A32 32 0 1064 32.095l-7.18-.021A24.82 24.82 0 1132.707 7.189L32.91.013z" />
+        </mask>
+
+        <!-- Cercle principal animé (cyan) -->
+        <path
+            d="M32.91.013A32 32 0 1064 32.095l-7.18-.021A24.82 24.82 0 1132.707 7.189L32.91.013z"
+            stroke="#00EAFF"
+            stroke-width="2"
+            mask="url(#logo-mask)"
+            class="main-circle"
+            style="stroke-dasharray: 200; stroke-dashoffset: 0;"
+        />
+
+        <!-- Cercle ombre (supprimé pour plus de clarté) -->
+
+        <!-- Points bleu foncé -->
+        <circle cx="26.56" cy="23.04" r=".96" fill="#006C85" class="group-hover:brightness-150" />
+        <circle cx="26.56" cy="33.92" r=".96" fill="#006C85" class="group-hover:brightness-150" />
+    </svg>
+</div>
+
+<style>
+    /* Propriétés SVG spécifiques que Tailwind ne gère pas */
+    .main-circle {
+        stroke-dasharray: 200;
+        stroke-dashoffset: 0;
+        transition: all 0.3s ease;
+    }
+    
+    /* Animation des lignes du cercle au survol uniquement */
+    .group:hover .main-circle {
+        animation: circle-flow 4s ease-in-out infinite;
+    }
+    
+    /* Animation fluide des lignes qui disparaissent et réapparaissent */
+    @keyframes circle-flow {
+        0% {
+            stroke-dasharray: 200 0;
+            stroke-dashoffset: 0;
+            opacity: 1;
+        }
+        50% {
+            stroke-dasharray: 0 200;
+            stroke-dashoffset: -200;
+            opacity: 0.3;
+        }
+        100% {
+            stroke-dasharray: 200 0;
+            stroke-dashoffset: -400;
+            opacity: 1;
+        }
+    }
+</style>
+

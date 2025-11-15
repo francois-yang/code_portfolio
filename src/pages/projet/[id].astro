@@ -1,0 +1,530 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { pb, type Projet, type SectionProjet, getImageUrl } from '../../lib/pocketbase';
+
+// Récupération de l'ID depuis les params
+const { id } = Astro.params;
+
+// Fetch du projet depuis PocketBase
+let projet: Projet | null = null;
+let sections: SectionProjet[] = [];
+let error: string | null = null;
+
+try {
+	// Récupérer le projet
+	projet = await pb.collection('projet').getOne<Projet>(id!);
+	console.log('✅ Projet récupéré:', projet);
+	
+	// Essayer d'abord avec le filtre PocketBase
+	try {
+		sections = await pb.collection('sections_projets').getFullList<SectionProjet>({
+			filter: `projet_id = "${id}"`,
+			sort: '+ordre', // + pour ascendant, si le champ n'existe pas, il sera ignoré
+		});
+		console.log('✅ Sections avec filtre PocketBase:', sections.length, 'sections trouvées');
+	} catch (filterError) {
+		console.warn('⚠️ Filtre PocketBase échoué, tentative avec fetch manuel:', filterError);
+		
+		// Si le filtre échoue, récupérer toutes les sections et filtrer manuellement
+		const allSections = await pb.collection('sections_projets').getFullList<SectionProjet>({
+			sort: 'created', // Tri par date de création si pas d'ordre
+		});
+		
+		console.log('📋 Toutes les sections récupérées:', allSections.length);
+		console.log('🔍 Détails des sections:');
+		allSections.forEach((section, index) => {
+			console.log(`  Section ${index + 1}:`, {
+				id: section.id,
+				titre: section.titre_section,
+				projet_id: section.projet_id,
+				projet_id_type: typeof section.projet_id,
+				id_recherche: id,
+				id_type: typeof id,
+				match: section.projet_id === id
+			});
+		});
+		
+		// Filtrer manuellement
+		sections = allSections.filter(section => section.projet_id === id);
+		console.log('✅ Sections filtrées manuellement:', sections.length, 'sections trouvées');
+	}
+	
+	if (sections.length === 0) {
+		console.warn('⚠️ ATTENTION: Aucune section trouvée pour ce projet !');
+		console.log('ID du projet recherché:', id);
+		console.log('Vérifiez que le champ projet_id dans PocketBase contient bien cet ID');
+	} else {
+		console.log('✅ Sections trouvées:', sections.map(s => ({ titre: s.titre_section, projet_id: s.projet_id })));
+	}
+	
+} catch (e) {
+	error = 'Projet non trouvé';
+	console.error('❌ Erreur complète:', e);
+}
+
+// Si le projet n'existe pas, redirection
+if (!projet) {
+	return Astro.redirect('/projet/projets');
+}
+
+// Construction de l'URL de l'image hero
+const imgHeroUrl = getImageUrl(projet, projet.img_hero);
+
+// Définir les couleurs du hero en fonction du projet
+const couleurConfig: Record<string, { from: string; via: string; to: string; decoration: string }> = {
+	violet: {
+		from: '#2a1a4a',
+		via: '#3a2a5a',
+		to: '#4a1a5a',
+		decoration: '#a855f7'
+	},
+	bleu: {
+		from: '#1a1a4a',
+		via: '#1a2a5a',
+		to: '#0a3a5a',
+		decoration: '#00ffee'
+	},
+	vert: {
+		from: '#1a4a2a',
+		via: '#1a5a3a',
+		to: '#0a5a2a',
+		decoration: '#10b981'
+	},
+	rose: {
+		from: '#4a1a3a',
+		via: '#5a1a4a',
+		to: '#5a0a3a',
+		decoration: '#ec4899'
+	}
+};
+
+const couleur = projet.couleur_hero || 'bleu';
+const colors = couleurConfig[couleur] || couleurConfig.bleu;
+
+// Génération statique : retourne tous les projets
+export async function getStaticPaths() {
+	const projets = await pb.collection('projet').getFullList<Projet>();
+	
+	return projets.map((projet) => ({
+		params: { id: projet.id },
+	}));
+}
+---
+
+<Layout>
+	<!-- Section Hero -->
+	<section 
+		class="relative py-16 px-6 overflow-hidden"
+		style={`background: linear-gradient(to bottom right, ${colors.from}, ${colors.via}, ${colors.to});`}
+	>
+		<!-- Decorations circulaires -->
+		<div 
+			class="absolute top-0 left-0 w-96 h-96 rounded-full blur-3xl"
+			style={`background-color: ${colors.decoration}; opacity: 0.05;`}
+		></div>
+		<div 
+			class="absolute bottom-0 right-0 w-96 h-96 rounded-full blur-3xl"
+			style={`background-color: ${colors.decoration}; opacity: 0.05;`}
+		></div>
+
+		<!-- SVG décoratifs uploadés depuis PocketBase -->
+		{projet.svg_hero && Array.isArray(projet.svg_hero) && projet.svg_hero.length > 0 && (
+			<>
+				{projet.svg_hero.map((svg, index) => {
+					// Vérifier le type de fichier
+					const isDecor3 = svg.includes('decor3');
+					const isGroup98 = svg.includes('group9_8') || svg.includes('groupe9_8');
+					
+					// Positions variées pour les SVG uploadés
+					let position;
+					let zIndex = index + 1;
+					let opacityClass = 'opacity-15';
+					let filterStyle = `filter: brightness(0) saturate(100%) invert(1) sepia(1) saturate(5) hue-rotate(${couleur === 'violet' ? '270deg' : couleur === 'vert' ? '90deg' : couleur === 'rose' ? '310deg' : '180deg'});`;
+					
+					if (isDecor3) {
+						// decor3.svg : en bas à droite, couleur #A374FF
+						position = { bottom: '0', right: '0', width: '200px' };
+						opacityClass = 'opacity-100';
+						filterStyle = 'filter: brightness(0) saturate(100%) invert(56%) sepia(73%) saturate(2619%) hue-rotate(238deg) brightness(102%) contrast(101%);';
+					} else if (isGroup98) {
+						// group9_8.svg : derrière les textes à droite
+						position = { top: '30%', right: '5%', width: '450px', transform: 'translateY(-50%)' };
+						zIndex = 0;
+						opacityClass = 'opacity-20';
+					} else {
+						// Autres SVG : positions variées
+						const positions = [
+							{ top: '10%', left: '5%', width: '200px' },      // Haut gauche
+							{ top: '10%', right: '5%', width: '180px' },     // Haut droite
+							{ bottom: '10%', left: '5%', width: '220px' },   // Bas gauche
+							{ bottom: '10%', right: '5%', width: '190px' },  // Bas droite
+							{ top: '50%', left: '2%', width: '150px', transform: 'translateY(-50%)' }, // Milieu gauche
+							{ top: '50%', right: '2%', width: '150px', transform: 'translateY(-50%)' }, // Milieu droite
+						];
+						position = positions[index % positions.length];
+					}
+					
+					try {
+						const svgUrl = getImageUrl(projet, svg);
+						return (
+							<div 
+								class="absolute pointer-events-none"
+								class:list={[opacityClass]}
+								style={`top: ${position.top || 'auto'}; bottom: ${position.bottom || 'auto'}; left: ${position.left || 'auto'}; right: ${position.right || 'auto'}; width: ${position.width}; transform: ${position.transform || 'none'}; z-index: ${zIndex};`}
+							>
+								<img 
+									src={svgUrl}
+									alt={`Decoration ${index + 1}`}
+									class="w-full h-auto svg-hero-decoration"
+									style={filterStyle}
+								/>
+							</div>
+						);
+					} catch (error) {
+						console.error(`Erreur lors du chargement du SVG: ${svg}`, error);
+						return null;
+					}
+				})}
+			</>
+		)}
+
+		
+		<div class="relative z-10 max-w-7xl mx-auto">
+			<div class="grid lg:grid-cols-2 gap-12 items-center">
+				
+				<!-- Colonne gauche : Titre et image -->
+				<div class="space-y-8">
+					<h1 class="text-5xl font-bold text-blanc">
+						Projet <span style={`color: ${colors.decoration};`}>{projet.nom_projet_hero}</span>
+					</h1>
+					
+					<!-- Image hero -->
+					<div class="relative rounded-2xl overflow-hidden border-2 border-turquoise/30 shadow-[0_0_40px_rgba(0,255,238,0.2)] bg-linear-to-br from-turquoise/10 to-bleu-fonce">
+						<img 
+							src={imgHeroUrl}
+							alt={projet.nom_projet_hero}
+							class="w-full h-auto"
+						/>
+					</div>
+				</div>
+
+				<!-- Colonne droite : Infos complémentaires -->
+				<div class="space-y-6">
+					<!-- Info 1 -->
+					<div class="rounded-xl p-6 transition-all duration-300" style={`background-color: ${colors.decoration}15; border: 1px solid ${colors.decoration}4D; &:hover { border-color: ${colors.decoration}; }`}>
+						<p class="text-blanc text-lg leading-relaxed">{projet.info1_hero}</p>
+					</div>
+					
+					<!-- Info 2 -->
+					<div class="inline-block rounded-full px-6 py-3" style={`background-color: ${colors.decoration}33; border: 2px solid ${colors.decoration};`}>
+						<p class="text-blanc font-semibold">{projet.info2_hero}</p>
+					</div>
+					
+					<!-- Info 3 -->
+					<div class="inline-block rounded-full px-6 py-3 ml-4" style={`background-color: ${colors.decoration}33; border: 2px solid ${colors.decoration};`}>
+						<p class="text-blanc font-semibold">{projet.info3_hero}</p>
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</section>
+
+	<!-- Section Body avec Accordéon -->
+	<section class="relative py-20 px-6 bg-bleu-fonce">
+		<div class="relative z-10 max-w-7xl mx-auto">
+			
+			<!-- Accordéon horizontal en haut (4 items statiques) -->
+			<nav class="bg-bleu-fonce border-2 border-turquoise/30 rounded-2xl p-4 mb-12">
+				<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+					<!-- Item 1 : Description du projet -->
+					<button 
+						class="accordion-btn active px-6 py-4 rounded-xl bg-turquoise/10 border border-turquoise transition-all duration-300 flex items-center justify-between group hover:bg-turquoise/20"
+						data-section="description"
+					>
+						<span class="text-blanc font-semibold group-hover:text-turquoise transition-colors">Description du projet</span>
+						<svg class="w-5 h-5 text-turquoise transition-transform group-hover:rotate-90" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+						</svg>
+					</button>
+
+					<!-- Item 2 : Mon rôle -->
+					<button 
+						class="accordion-btn px-6 py-4 rounded-xl bg-transparent border border-turquoise/30 hover:bg-turquoise/20 hover:border-turquoise transition-all duration-300 flex items-center justify-between group"
+						data-section="role"
+					>
+						<span class="text-blanc font-semibold group-hover:text-turquoise transition-colors">Mon rôle</span>
+						<svg class="w-5 h-5 text-turquoise transition-transform group-hover:rotate-90" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+						</svg>
+					</button>
+
+					<!-- Item 3 : Logiciels utilisés -->
+					<button 
+						class="accordion-btn px-6 py-4 rounded-xl bg-transparent border border-turquoise/30 hover:bg-turquoise/20 hover:border-turquoise transition-all duration-300 flex items-center justify-between group"
+						data-section="logiciels"
+					>
+						<span class="text-blanc font-semibold group-hover:text-turquoise transition-colors">Logiciels utilisés</span>
+						<svg class="w-5 h-5 text-turquoise transition-transform group-hover:rotate-90" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+						</svg>
+					</button>
+
+					<!-- Item 4 : Lien du site -->
+					<button 
+						class="accordion-btn px-6 py-4 rounded-xl bg-transparent border border-turquoise/30 hover:bg-turquoise/20 hover:border-turquoise transition-all duration-300 flex items-center justify-between group"
+						data-section="lien"
+					>
+						<span class="text-blanc font-semibold group-hover:text-turquoise transition-colors">Lien du site</span>
+						<svg class="w-5 h-5 text-turquoise transition-transform group-hover:rotate-90" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+						</svg>
+					</button>
+				</div>
+			</nav>
+
+			<!-- Contenu dynamique -->
+			<div class="space-y-8">
+				
+				<!-- Section 1 : Description du projet (affichée par défaut) -->
+				<div class="content-section active" data-section="description">
+					<h2 class="text-3xl font-bold text-turquoise mb-8">Description du projet</h2>
+					
+					<!-- Texte intro -->
+					<div class="bg-turquoise/10 border border-turquoise/30 rounded-xl p-8 mb-12">
+						<p class="text-blanc text-lg leading-relaxed whitespace-pre-line">{projet.description_projet_texte_intro}</p>
+					</div>
+
+						<!-- Toutes les sections du projet -->
+						{sections.length > 0 ? (
+							<div class="space-y-16">
+								{/* Vérifier si on a les sections Logo et Mockup */}
+								{(() => {
+									const logoSection = sections.find(s => s.titre_section?.toLowerCase() === 'logo');
+									const mockupSection = sections.find(s => s.titre_section?.toLowerCase() === 'mockup');
+									const otherSections = sections.filter(s => 
+										s.titre_section?.toLowerCase() !== 'logo' && 
+										s.titre_section?.toLowerCase() !== 'mockup'
+									);
+
+									return (
+										<>
+											{/* Sections normales avec alternance */}
+											{otherSections.map((section, index) => (
+												<div class={`grid lg:grid-cols-2 gap-8 items-start ${index % 2 === 1 ? 'lg:flex-row-reverse' : ''}`}>
+													
+													{index % 2 === 0 ? (
+														<>
+															{/* Image à gauche */}
+															{section.img_section && (
+																<div class="relative rounded-2xl overflow-hidden border-2 border-turquoise/30 shadow-[0_0_30px_rgba(0,255,238,0.2)] bg-turquoise/5">
+																	<img 
+																		src={getImageUrl(section, section.img_section)}
+																		alt={section.titre_section}
+																		class="w-full h-auto object-cover"
+																	/>
+																</div>
+															)}
+															
+															{/* Texte à droite */}
+															<div class="flex flex-col justify-center">
+																<h3 class="text-3xl font-bold text-turquoise mb-6 border-l-4 border-turquoise pl-6">{section.titre_section}</h3>
+																<div class="bg-turquoise/10 border border-turquoise/30 rounded-xl p-8">
+																	<p class="text-blanc text-lg leading-relaxed whitespace-pre-line">{section.description_section}</p>
+																</div>
+															</div>
+														</>
+													) : (
+														<>
+															{/* Texte à gauche */}
+															<div class="flex flex-col justify-center lg:order-1">
+																<h3 class="text-3xl font-bold text-turquoise mb-6 border-l-4 border-turquoise pl-6">{section.titre_section}</h3>
+																<div class="bg-turquoise/10 border border-turquoise/30 rounded-xl p-8">
+																	<p class="text-blanc text-lg leading-relaxed whitespace-pre-line">{section.description_section}</p>
+																</div>
+															</div>
+															
+															{/* Image à droite */}
+															{section.img_section && (
+																<div class="relative rounded-2xl overflow-hidden border-2 border-turquoise/30 shadow-[0_0_30px_rgba(0,255,238,0.2)] bg-turquoise/5 lg:order-2">
+																	<img 
+																		src={getImageUrl(section, section.img_section)}
+																		alt={section.titre_section}
+																		class="w-full h-auto object-cover"
+																	/>
+																</div>
+															)}
+														</>
+													)}
+												</div>
+											))}
+
+											{/* Section Logo + Mockup côte à côte */}
+											{logoSection && mockupSection && (
+												<div class="grid lg:grid-cols-2 gap-8">
+													{/* Colonne gauche : Logo */}
+													<div class="space-y-6">
+														<div class="flex items-center justify-between">
+															<h3 class="text-3xl font-bold text-blanc border-l-4 border-turquoise pl-6">{logoSection.titre_section}</h3>
+															<span class="text-4xl font-bold text-turquoise/20">{String(logoSection.ordre || 1).padStart(2, '0')}</span>
+														</div>
+														
+														{logoSection.img_section && (
+															<div class="bg-blanc rounded-2xl overflow-hidden p-8">
+																<img 
+																	src={getImageUrl(logoSection, logoSection.img_section)}
+																	alt={logoSection.titre_section}
+																	class="w-full h-auto object-contain"
+																/>
+															</div>
+														)}
+														
+														<div class="bg-turquoise/10 border border-turquoise/30 rounded-xl p-6">
+															<p class="text-blanc text-base leading-relaxed whitespace-pre-line">{logoSection.description_section}</p>
+														</div>
+													</div>
+
+													{/* Colonne droite : Mockup */}
+													<div class="space-y-6">
+														<div class="flex items-center justify-between">
+															<h3 class="text-3xl font-bold text-blanc border-l-4 border-turquoise pl-6">{mockupSection.titre_section}</h3>
+															<span class="text-4xl font-bold text-turquoise/20">{String(mockupSection.ordre || 2).padStart(2, '0')}</span>
+														</div>
+														
+														{mockupSection.img_section && (
+															<div class="bg-blanc rounded-2xl overflow-hidden p-8">
+																<img 
+																	src={getImageUrl(mockupSection, mockupSection.img_section)}
+																	alt={mockupSection.titre_section}
+																	class="w-full h-auto object-contain"
+																/>
+															</div>
+														)}
+													</div>
+												</div>
+											)}
+										</>
+									);
+								})()}
+							</div>
+						) : (
+							<div class="bg-orange-500/10 border border-orange-500/30 rounded-xl p-8">
+								<p class="text-orange-300 text-center">
+									⚠️ Aucune section trouvée pour ce projet.<br/>
+									Vérifiez que des sections existent dans PocketBase avec le bon <code class="bg-orange-500/20 px-2 py-1 rounded">projet_id</code>
+								</p>
+							</div>
+						)}
+					</div>
+
+				<!-- Section 2 : Mon rôle -->
+				<div class="content-section hidden" data-section="role">
+					<h2 class="text-3xl font-bold text-turquoise mb-8">Mon rôle</h2>
+					<div class="bg-turquoise/10 border border-turquoise/30 rounded-xl p-8">
+						<p class="text-blanc text-lg leading-relaxed whitespace-pre-line">{projet.mon_role}</p>
+					</div>
+				</div>
+
+			<!-- Section 3 : Logiciels utilisés -->
+			<div class="content-section hidden" data-section="logiciels">
+				<h2 class="text-3xl font-bold text-turquoise mb-8">Logiciels utilisés</h2>
+					<div class="bg-turquoise/10 border border-turquoise/30 rounded-xl p-8">
+						<p class="text-blanc text-lg leading-relaxed whitespace-pre-line">{projet.logiciels_utilises}</p>
+					</div>
+				</div>
+
+			<!-- Section 4 : Lien du site -->
+			<div class="content-section hidden" data-section="lien">
+					<h2 class="text-3xl font-bold text-turquoise mb-8">Lien du site</h2>
+						<div class="bg-turquoise/10 border border-turquoise/30 rounded-xl p-8">
+							{projet.lien_site ? (
+								<>
+									<a 
+										href={projet.lien_site}
+										target="_blank"
+										rel="noopener noreferrer"
+										class="inline-flex items-center gap-3 text-turquoise text-xl font-semibold hover:underline"
+									>
+										Visiter le site
+										<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+											<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
+										</svg>
+									</a>
+									<p class="text-blanc/70 mt-4 break-all">{projet.lien_site}</p>
+								</>
+							) : (
+								<p class="text-blanc/70">Aucun lien disponible</p>
+							)}
+						</div>
+					</div>
+
+			</div>
+
+			<!-- Bouton retour -->
+			<div class="mt-16 text-center">
+				<a 
+					href="/projet/projets"
+					class="inline-flex items-center gap-2 border-2 border-turquoise text-turquoise hover:bg-turquoise hover:text-bleu-fonce font-semibold px-8 py-4 rounded-lg transition-all duration-300"
+				>
+					<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+						<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/>
+					</svg>
+					Retour aux projets
+				</a>
+			</div>
+
+		</div>
+	</section>
+</Layout>
+
+<script>
+	// Gestion de l'accordéon
+	const buttons = document.querySelectorAll('.accordion-btn');
+	const sections = document.querySelectorAll('.content-section');
+
+	buttons.forEach(button => {
+		button.addEventListener('click', () => {
+			const sectionName = button.getAttribute('data-section');
+			
+			// Retirer l'état actif de tous les boutons
+			buttons.forEach(btn => {
+				btn.classList.remove('bg-turquoise/10', 'border-turquoise');
+				btn.classList.add('bg-transparent', 'border-turquoise/30');
+			});
+			
+			// Ajouter l'état actif au bouton cliqué
+			button.classList.remove('bg-transparent', 'border-turquoise/30');
+			button.classList.add('bg-turquoise/10', 'border-turquoise');
+			
+			// Cacher toutes les sections
+			sections.forEach(section => {
+				section.classList.add('hidden');
+				section.classList.remove('active');
+			});
+			
+			// Afficher la section correspondante
+			const targetSection = document.querySelector(`.content-section[data-section="${sectionName}"]`);
+			if (targetSection) {
+				targetSection.classList.remove('hidden');
+				targetSection.classList.add('active');
+			}
+		});
+	});
+</script>
+
+<style>
+	.content-section {
+		animation: fadeIn 0.3s ease-in-out;
+	}
+
+	@keyframes fadeIn {
+		from {
+			opacity: 0;
+			transform: translateY(10px);
+		}
+		to {
+			opacity: 1;
+			transform: translateY(0);
+		}
+	}
+</style>

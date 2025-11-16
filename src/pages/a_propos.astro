@@ -4,425 +4,377 @@ import InlineSVG from "../components/InlineSVG.astro";
 ---
 
 <Layout>
-	<!-- Section À propos -->
-	<section class="relative py-20 min-h-screen bg-bleu-fonce">
-		<div class="relative z-10 w-full mx-auto">
-			<!-- En-tête -->
-			<div class="mb-16 text-center">
-				<h1 class="text-5xl font-bold mb-4">
-					<span class="text-blanc">À propos de </span>
-					<span class="text-turquoise">moi</span>
-				</h1>
-				<div class="w-24 h-1 bg-turquoise mx-auto rounded-full"></div>
-			</div>
+    <!-- Section À propos -->
+    <section class="relative py-20 min-h-screen bg-bleu-fonce">
+        <div class="relative z-10 w-full mx-auto">
+            <!-- En-tête -->
+            <div class="mb-16 text-center">
+                <h1 class="text-5xl font-bold mb-4">
+                    <span class="text-blanc">À propos de </span>
+                    <span class="text-turquoise">moi</span>
+                </h1>
+                <div class="w-24 h-1 bg-turquoise mx-auto rounded-full"></div>
+            </div>
 
-			<!-- Contenu principal -->
-			<div class="px-10 grid md:grid-cols-2 gap-12 items-center mb-20">
-				<!-- Photo / Image -->
-				<div class="relative">
-					<div
-						class="relative aspect-square bg-gradient-to-br from-turquoise/20 to-bleu-fonce rounded-2xl overflow-hidden border-2 border-turquoise/30 shadow-[0_0_30px_rgba(0,255,238,0.2)]"
-					>
-						<img
-							src="/photo-placeholder.jpg"
-							alt="Photo de profil"
-							class="w-full h-full object-cover"
-						/>
-					</div>
-					<!-- Décoration -->
-					<div
-						class="absolute -top-4 -right-4 w-32 h-32 border-4 border-turquoise/30 rounded-full -z-10"
-					>
-					</div>
-					<div
-						class="absolute -bottom-4 -left-4 w-24 h-24 border-4 border-turquoise/30 rounded-full -z-10"
-					>
-					</div>
-				</div>
+            <!-- Contenu principal -->
+            <div class="px-10 grid md:grid-cols-2 gap-12 items-center mb-20">
+                <!-- Photo / Image -->
+                <div class="relative">
+                    <div
+                        class="relative aspect-square bg-gradient-to-br from-turquoise/20 to-bleu-fonce rounded-2xl overflow-hidden border-2 border-turquoise/30 shadow-[0_0_30px_rgba(0,255,238,0.2)]"
+                    >
+                        <img
+                            src="/photo-placeholder.jpg"
+                            alt="Photo de profil"
+                            class="w-full h-full object-cover"
+                        />
+                    </div>
+                    <!-- Décoration -->
+                    <div
+                        class="absolute -top-4 -right-4 w-32 h-32 border-4 border-turquoise/30 rounded-full -z-10"
+                    >
+                    </div>
+                    <div
+                        class="absolute -bottom-4 -left-4 w-24 h-24 border-4 border-turquoise/30 rounded-full -z-10"
+                    >
+                    </div>
+                </div>
 
-				<!-- Texte de présentation -->
-				<div class="space-y-6">
-					<h2 class="text-3xl font-bold text-turquoise">
-						Webdesigner & Développeur créatif
-					</h2>
-					<p class="text-blanc text-lg leading-relaxed">
-						Passionné par le design et le développement web, je crée
-						des expériences digitales uniques et modernes. Mon
-						approche allie créativité et expertise technique pour
-						donner vie à des projets innovants.
-					</p>
-					<p class="text-blanc text-lg leading-relaxed">
-						Actuellement étudiant en MMI (Métiers du Multimédia et
-						de l'Internet), je me spécialise dans la création
-						d'interfaces utilisateur intuitives et d'animations
-						engageantes.
-					</p>
-					<div class="flex gap-4 pt-4">
-						<a
-							href="/projet/projets"
-							class="inline-flex items-center gap-2 bg-turquoise hover:bg-turquoise/90 text-bleu-fonce font-semibold px-6 py-3 rounded-lg transition-all duration-300 shadow-lg hover:shadow-[0_0_20px_rgba(0,255,238,0.5)]"
-						>
-							Voir mes projets
-							<svg
-								class="w-5 h-5"
-								fill="none"
-								stroke="currentColor"
-								viewBox="0 0 24 24"
-							>
-								<path
-									stroke-linecap="round"
-									stroke-linejoin="round"
-									stroke-width="2"
-									d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
-							</svg>
-						</a>
-						<a
-							href="/contact"
-							class="inline-flex items-center gap-2 border-2 border-turquoise text-turquoise hover:bg-turquoise hover:text-bleu-fonce font-semibold px-6 py-3 rounded-lg transition-all duration-300"
-						>
-							Me contacter
-						</a>
-					</div>
-				</div>
-			</div>
+                <!-- Texte de présentation -->
+                <div class="space-y-6">
+                    <h2 class="text-3xl font-bold text-turquoise">
+                        Webdesigner & Développeur créatif
+                    </h2>
+                    <p class="text-blanc text-lg leading-relaxed">
+                        Passionné par le design et le développement web, je crée
+                        des expériences digitales uniques et modernes. Mon
+                        approche allie créativité et expertise technique pour
+                        donner vie à des projets innovants.
+                    </p>
+                    <p class="text-blanc text-lg leading-relaxed">
+                        Actuellement étudiant en MMI (Métiers du Multimédia et
+                        de l'Internet), je me spécialise dans la création
+                        d'interfaces utilisateur intuitives et d'animations
+                        engageantes.
+                    </p>
+                    <div class="flex gap-4 pt-4">
+                        <a
+                            href="/projet/projets"
+                            class="inline-flex items-center gap-2 bg-turquoise hover:bg-turquoise/90 text-bleu-fonce font-semibold px-6 py-3 rounded-lg transition-all duration-300 shadow-lg hover:shadow-[0_0_20px_rgba(0,255,238,0.5)]"
+                        >
+                            Voir mes projets
+                            <svg
+                                class="w-5 h-5"
+                                fill="none"
+                                stroke="currentColor"
+                                viewBox="0 0 24 24"
+                            >
+                                <path
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    stroke-width="2"
+                                    d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                            </svg>
+                        </a>
+                        <a
+                            href="/contact"
+                            class="inline-flex items-center gap-2 border-2 border-turquoise text-turquoise hover:bg-turquoise hover:text-bleu-fonce font-semibold px-6 py-3 rounded-lg transition-all duration-300"
+                        >
+                            Me contacter
+                        </a>
+                    </div>
+                </div>
+            </div>
 
-			<!-- Parcours / Timeline -->
-			<div class="mb-20">
-				<h2 class="text-3xl font-bold text-turquoise mb-12 text-center">
-					Mon parcours
-				</h2>
+            <!-- Parcours / Timeline -->
+            <div class="mb-20">
+                <h2 class="text-3xl font-bold text-turquoise mb-12 text-center">
+                    Mon parcours
+                </h2>
 
-				<!-- Container avec scroll horizontal -->
-				<div class="relative overflow-x-auto pb-8">
-					<div
-						class="relative py-20"
-						style="width: 100%; min-width: 1800px;"
-					>
-						<!-- Image SVG de la frise (arrière-plan) -->
-						<InlineSVG class="w-full h-110" delay="0.3">
-							<svg
-								width="2088"
-								height="524"
-								fill="none"
-								xmlns="http://www.w3.org/2000/svg"
-								><path
-									d="M104.968 494.747H0V36.145h104.968L163.45 1h1745.01l53.51 35.145H2087v458.602h-125.03L1908.46 523H163.45l-58.482-28.253z"
-									fill="#113D60"
-									stroke="#00EAFF"
-									stroke-width="2"></path></svg
-							>
-							<svg
-								viewBox="0 0 1407 308"
-								xmlns="http://www.w3.org/2000/svg"
-							>
-								<!-- Items du parcours avec points lumineux -->
-								<div
-									class="absolute top-0 left-0 w-full h-full"
-								>
-									<!-- Ligne temporelle centrale (SVG) -->
-									<div
-										class="absolute left-0 right-0 top-1/2 -translate-y-1/2 pointer-events-none"
-									>
-										<img
-											src="/ligne-temporelle.svg"
-											alt="Ligne temporelle"
-											class="w-full h-auto"
-										/>
-									</div>
+                <!-- Container avec scroll horizontal -->
+                <div class="relative overflow-x-auto pb-8">
+                    <!-- Container principal centré -->
+                    <div class="flex justify-center">
+                        <div class="relative py-20" style="width: 100%; max-width: 2088px;">
+                            
+                            <!-- SVG de la frise animée -->
+                            <InlineSVG class="w-full" delay={0.3}>
+                                <svg
+                                    width="2088"
+                                    height="524"
+                                    viewBox="0 0 2088 524"
+                                    fill="none"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                >
+                                    <!-- Forme de fond -->
+                                    <path
+                                        d="M104.968 494.747H0V36.145h104.968L163.45 1h1745.01l53.51 35.145H2087v458.602h-125.03L1908.46 523H163.45l-58.482-28.253z"
+                                        fill="#113D60"
+                                        stroke="none"
+                                    />
 
-									<!-- Contenus texte positionnés au-dessus des points -->
-									<div
-										class="absolute top-0 left-0 w-full h-full"
-									>
-										<!-- Texte 1 -->
-										<div
-											class="absolute left-[8.7%] top-[19%] -translate-x-1/2 w-72"
-										>
-											<div class="text-center space-y-2">
-												<h3
-													class="text-xl font-semibold text-blanc"
-												>
-													2024 - aujourd'hui
-												</h3>
-												<h4
-													class="text-lg font-semibold text-turquoise"
-												>
-													xxxx
-												</h4>
-												<p
-													class="text-blanc/70 text-sm"
-												>
-													xxxx
-												</p>
-											</div>
-										</div>
+                                    <!-- Contours animés -->
+                                    <!-- Ligne gauche verticale -->
+                                    <line x1="1" y1="36.145" x2="1" y2="494.747" stroke="#00EAFF" stroke-width="2"/>
+                                    
+                                    <!-- Coin supérieur gauche -->
+                                    <line x1="1" y1="36.145" x2="104.968" y2="36.145" stroke="#00EAFF" stroke-width="2"/>
+                                    <line x1="104.968" y1="36.145" x2="163.45" y2="1" stroke="#00EAFF" stroke-width="2"/>
+                                    
+                                    <!-- Ligne supérieure horizontale -->
+                                    <line x1="163.45" y1="1" x2="1908.46" y2="1" stroke="#00EAFF" stroke-width="2"/>
+                                    
+                                    <!-- Coin supérieur droit -->
+                                    <line x1="1908.46" y1="1" x2="1962" y2="36.145" stroke="#00EAFF" stroke-width="2"/>
+                                    <line x1="1962" y1="36.145" x2="2087" y2="36.145" stroke="#00EAFF" stroke-width="2"/>
+                                    
+                                    <!-- Ligne droite verticale -->
+                                    <line x1="2087" y1="36.145" x2="2087" y2="494.747" stroke="#00EAFF" stroke-width="2"/>
+                                    
+                                    <!-- Coin inférieur droit -->
+                                    <line x1="2087" y1="494.747" x2="1962" y2="494.747" stroke="#00EAFF" stroke-width="2"/>
+                                    <line x1="1962" y1="494.747" x2="1908.46" y2="523" stroke="#00EAFF" stroke-width="2"/>
+                                    
+                                    <!-- Ligne inférieure horizontale -->
+                                    <line x1="1908.46" y1="523" x2="163.45" y2="523" stroke="#00EAFF" stroke-width="2"/>
+                                    
+                                    <!-- Coin inférieur gauche -->
+                                    <line x1="163.45" y1="523" x2="104.968" y2="494.747" stroke="#00EAFF" stroke-width="2"/>
+                                    <line x1="104.968" y1="494.747" x2="1" y2="494.747" stroke="#00EAFF" stroke-width="2"/>
+                                </svg>
+                            </InlineSVG>
 
-										<!-- Texte 2 -->
-										<div
-											class="absolute left-[28.7%] top-[65%] -translate-x-1/2 w-72"
-										>
-											<div class="text-center space-y-2">
-												<h3
-													class="text-xl font-semibold text-blanc"
-												>
-													2023 - 2024
-												</h3>
-												<h4
-													class="text-lg font-semibold text-turquoise"
-												>
-													xxxxx
-												</h4>
-												<p
-													class="text-blanc/70 text-sm"
-												>
-													xxxx
-												</p>
-											</div>
-										</div>
+                            <!-- Items du parcours avec points lumineux -->
+                            <div class="absolute top-0 left-0 w-full h-full">
+                                
+                                <!-- Ligne temporelle centrale -->
+                                <div class="absolute left-0 right-0 top-1/2 -translate-y-1/2 pointer-events-none">
+                                    <img
+                                        src="/ligne-temporelle.svg"
+                                        alt="Ligne temporelle"
+                                        class="w-full h-auto"
+                                    />
+                                </div>
 
-										<!-- Texte 3 -->
-										<div
-											class="absolute left-[50.3%] top-[19%] -translate-x-1/2 w-72"
-										>
-											<div class="text-center space-y-2">
-												<h3
-													class="text-xl font-semibold text-blanc"
-												>
-													Année - Année
-												</h3>
-												<h4
-													class="text-lg font-semibold text-turquoise"
-												>
-													xxxx
-												</h4>
-												<p
-													class="text-blanc/70 text-sm"
-												>
-													xxxx
-												</p>
-											</div>
-										</div>
+                                <!-- Contenus texte positionnés -->
+                                <!-- Texte 1 -->
+                                <div class="absolute left-[8.7%] top-[19%] -translate-x-1/2 w-72">
+                                    <div class="text-center space-y-2">
+                                        <h3 class="text-xl font-semibold text-blanc">
+                                            2024 - aujourd'hui
+                                        </h3>
+                                        <h4 class="text-lg font-semibold text-turquoise">
+                                            xxxx
+                                        </h4>
+                                        <p class="text-blanc/70 text-sm">
+                                            xxxx
+                                        </p>
+                                    </div>
+                                </div>
 
-										<!-- Texte 4 -->
-										<div
-											class="absolute left-[69.1%] top-[65%] -translate-x-1/2 w-72"
-										>
-											<div class="text-center space-y-2">
-												<h3
-													class="text-xl font-semibold text-blanc"
-												>
-													Année - Année
-												</h3>
-												<h4
-													class="text-lg font-semibold text-turquoise"
-												>
-													xxxx
-												</h4>
-												<p
-													class="text-blanc/70 text-sm"
-												>
-													xxxx
-												</p>
-											</div>
-										</div>
+                                <!-- Texte 2 -->
+                                <div class="absolute left-[28.7%] top-[65%] -translate-x-1/2 w-72">
+                                    <div class="text-center space-y-2">
+                                        <h3 class="text-xl font-semibold text-blanc">
+                                            2023 - 2024
+                                        </h3>
+                                        <h4 class="text-lg font-semibold text-turquoise">
+                                            xxxxx
+                                        </h4>
+                                        <p class="text-blanc/70 text-sm">
+                                            xxxx
+                                        </p>
+                                    </div>
+                                </div>
 
-										<!-- Texte 5 -->
-										<div
-											class="absolute left-[89.2%] top-[19%] -translate-x-1/2 w-72"
-										>
-											<div class="text-center space-y-2">
-												<h3
-													class="text-xl font-semibold text-blanc"
-												>
-													Année - Année
-												</h3>
-												<h4
-													class="text-lg font-semibold text-turquoise"
-												>
-													xxxx
-												</h4>
-												<p
-													class="text-blanc/70 text-sm"
-												>
-													xxxx
-												</p>
-											</div>
-										</div>
-									</div>
-								</div>
-							</svg>
-						</InlineSVG>
+                                <!-- Texte 3 -->
+                                <div class="absolute left-[50.3%] top-[19%] -translate-x-1/2 w-72">
+                                    <div class="text-center space-y-2">
+                                        <h3 class="text-xl font-semibold text-blanc">
+                                            Année - Année
+                                        </h3>
+                                        <h4 class="text-lg font-semibold text-turquoise">
+                                            xxxx
+                                        </h4>
+                                        <p class="text-blanc/70 text-sm">
+                                            xxxx
+                                        </p>
+                                    </div>
+                                </div>
 
-						<!-- Indicateur de scroll -->
-						<div class="text-center mt-4">
-							<p
-								class="text-turquoise/70 text-sm flex items-center justify-center gap-2"
-							>
-								<svg
-									class="w-4 h-4"
-									fill="none"
-									stroke="currentColor"
-									viewBox="0 0 24 24"
-								>
-									<path
-										stroke-linecap="round"
-										stroke-linejoin="round"
-										stroke-width="2"
-										d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
-								</svg>
-								Faites défiler pour voir la suite
-							</p>
-						</div>
-					</div>
+                                <!-- Texte 4 -->
+                                <div class="absolute left-[69.1%] top-[65%] -translate-x-1/2 w-72">
+                                    <div class="text-center space-y-2">
+                                        <h3 class="text-xl font-semibold text-blanc">
+                                            Année - Année
+                                        </h3>
+                                        <h4 class="text-lg font-semibold text-turquoise">
+                                            xxxx
+                                        </h4>
+                                        <p class="text-blanc/70 text-sm">
+                                            xxxx
+                                        </p>
+                                    </div>
+                                </div>
 
-					<!-- Valeurs / Approche -->
-					<div class="mb-20 px-10">
-						<h2
-							class="text-3xl font-bold text-turquoise mb-12 text-center"
-						>
-							Mon approche
-						</h2>
-						<div class="grid md:grid-cols-3 gap-8">
-							<!-- Valeur 1 -->
-							<div
-								class="bg-bleu-fonce border-2 border-turquoise/30 rounded-xl p-8 hover:border-turquoise transition-all duration-300 hover:shadow-[0_0_30px_rgba(0,255,238,0.2)]"
-							>
-								<div
-									class="w-16 h-16 bg-turquoise/10 rounded-full flex items-center justify-center mb-6 mx-auto"
-								>
-									<svg
-										class="w-8 h-8 text-turquoise"
-										fill="none"
-										stroke="currentColor"
-										viewBox="0 0 24 24"
-									>
-										<path
-											stroke-linecap="round"
-											stroke-linejoin="round"
-											stroke-width="2"
-											d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"
-										></path>
-									</svg>
-								</div>
-								<h3
-									class="text-xl font-bold text-turquoise text-center mb-4"
-								>
-									Créativité
-								</h3>
-								<p
-									class="text-blanc text-center leading-relaxed"
-								>
-									Des designs uniques et innovants qui captent
-									l'attention et marquent les esprits.
-								</p>
-							</div>
+                                <!-- Texte 5 -->
+                                <div class="absolute left-[89.2%] top-[19%] -translate-x-1/2 w-72">
+                                    <div class="text-center space-y-2">
+                                        <h3 class="text-xl font-semibold text-blanc">
+                                            Année - Année
+                                        </h3>
+                                        <h4 class="text-lg font-semibold text-turquoise">
+                                            xxxx
+                                        </h4>
+                                        <p class="text-blanc/70 text-sm">
+                                            xxxx
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
-							<!-- Valeur 2 -->
-							<div
-								class="bg-bleu-fonce border-2 border-turquoise/30 rounded-xl p-8 hover:border-turquoise transition-all duration-300 hover:shadow-[0_0_30px_rgba(0,255,238,0.2)]"
-							>
-								<div
-									class="w-16 h-16 bg-turquoise/10 rounded-full flex items-center justify-center mb-6 mx-auto"
-								>
-									<svg
-										class="w-8 h-8 text-turquoise"
-										fill="none"
-										stroke="currentColor"
-										viewBox="0 0 24 24"
-									>
-										<path
-											stroke-linecap="round"
-											stroke-linejoin="round"
-											stroke-width="2"
-											d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"
-										></path>
-									</svg>
-								</div>
-								<h3
-									class="text-xl font-bold text-turquoise text-center mb-4"
-								>
-									Technique
-								</h3>
-								<p
-									class="text-blanc text-center leading-relaxed"
-								>
-									Une maîtrise des technologies modernes pour
-									des sites performants et responsive.
-								</p>
-							</div>
+                <!-- Indicateur de scroll -->
+                <div class="text-center mt-4">
+                    
+                </div>
+            </div>
 
-							<!-- Valeur 3 -->
-							<div
-								class="bg-bleu-fonce border-2 border-turquoise/30 rounded-xl p-8 hover:border-turquoise transition-all duration-300 hover:shadow-[0_0_30px_rgba(0,255,238,0.2)]"
-							>
-								<div
-									class="w-16 h-16 bg-turquoise/10 rounded-full flex items-center justify-center mb-6 mx-auto"
-								>
-									<svg
-										class="w-8 h-8 text-turquoise"
-										fill="none"
-										stroke="currentColor"
-										viewBox="0 0 24 24"
-									>
-										<path
-											stroke-linecap="round"
-											stroke-linejoin="round"
-											stroke-width="2"
-											d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
-										></path>
-									</svg>
-								</div>
-								<h3
-									class="text-xl font-bold text-turquoise text-center mb-4"
-								>
-									Engagement
-								</h3>
-								<p
-									class="text-blanc text-center leading-relaxed"
-								>
-									Un suivi régulier et une communication
-									transparente tout au long du projet.
-								</p>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
+            <!-- Valeurs / Approche -->
+            <div class="mb-20 px-10">
+                <h2 class="text-3xl font-bold text-turquoise mb-12 text-center">
+                    Mon approche
+                </h2>
+                <div class="grid md:grid-cols-3 gap-8">
+                    <!-- Valeur 1 -->
+                    <div
+                        class="bg-bleu-fonce border-2 border-turquoise/30 rounded-xl p-8 hover:border-turquoise transition-all duration-300 hover:shadow-[0_0_30px_rgba(0,255,238,0.2)]"
+                    >
+                        <div
+                            class="w-16 h-16 bg-turquoise/10 rounded-full flex items-center justify-center mb-6 mx-auto"
+                        >
+                            <svg
+                                class="w-8 h-8 text-turquoise"
+                                fill="none"
+                                stroke="currentColor"
+                                viewBox="0 0 24 24"
+                            >
+                                <path
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    stroke-width="2"
+                                    d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"
+                                ></path>
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-bold text-turquoise text-center mb-4">
+                            Créativité
+                        </h3>
+                        <p class="text-blanc text-center leading-relaxed">
+                            Des designs uniques et innovants qui captent
+                            l'attention et marquent les esprits.
+                        </p>
+                    </div>
 
-		<style>
-			/* Animation de tracé SVG */
-			[data-svg-animate] svg path,
-			[data-svg-animate] svg line,
-			[data-svg-animate] svg polyline {
-				stroke-dasharray: 1000;
-				stroke-dashoffset: 1000;
-				transition: stroke-dashoffset 2s cubic-bezier(0.4, 0, 0.2, 1);
-			}
+                    <!-- Valeur 2 -->
+                    <div
+                        class="bg-bleu-fonce border-2 border-turquoise/30 rounded-xl p-8 hover:border-turquoise transition-all duration-300 hover:shadow-[0_0_30px_rgba(0,255,238,0.2)]"
+                    >
+                        <div
+                            class="w-16 h-16 bg-turquoise/10 rounded-full flex items-center justify-center mb-6 mx-auto"
+                        >
+                            <svg
+                                class="w-8 h-8 text-turquoise"
+                                fill="none"
+                                stroke="currentColor"
+                                viewBox="0 0 24 24"
+                            >
+                                <path
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    stroke-width="2"
+                                    d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"
+                                ></path>
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-bold text-turquoise text-center mb-4">
+                            Technique
+                        </h3>
+                        <p class="text-blanc text-center leading-relaxed">
+                            Une maîtrise des technologies modernes pour des
+                            sites performants et responsive.
+                        </p>
+                    </div>
 
-			[data-svg-animate].visible svg path,
-			[data-svg-animate].visible svg line,
-			[data-svg-animate].visible svg polyline {
-				stroke-dashoffset: 0;
-			}
+                    <!-- Valeur 3 -->
+                    <div
+                        class="bg-bleu-fonce border-2 border-turquoise/30 rounded-xl p-8 hover:border-turquoise transition-all duration-300 hover:shadow-[0_0_30px_rgba(0,255,238,0.2)]"
+                    >
+                        <div
+                            class="w-16 h-16 bg-turquoise/10 rounded-full flex items-center justify-center mb-6 mx-auto"
+                        >
+                            <svg
+                                class="w-8 h-8 text-turquoise"
+                                fill="none"
+                                stroke="currentColor"
+                                viewBox="0 0 24 24"
+                            >
+                                <path
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    stroke-width="2"
+                                    d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
+                                ></path>
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-bold text-turquoise text-center mb-4">
+                            Engagement
+                        </h3>
+                        <p class="text-blanc text-center leading-relaxed">
+                            Un suivi régulier et une communication
+                            transparente tout au long du projet.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</Layout>
 
-			/* Animation pour les cercles */
-			[data-svg-animate] svg circle {
-				stroke-dasharray: 1000;
-				stroke-dashoffset: 1000;
-				transition: stroke-dashoffset 1.5s cubic-bezier(0.4, 0, 0.2, 1);
-			}
+<style>
+    /* Animation de tracé SVG */
+    [data-svg-animate] svg path,
+    [data-svg-animate] svg line,
+    [data-svg-animate] svg polyline {
+        stroke-dasharray: 1000;
+        stroke-dashoffset: 1000;
+        transition: stroke-dashoffset 2s cubic-bezier(0.4, 0, 0.2, 1);
+    }
 
-			[data-svg-animate].visible svg circle {
-				stroke-dashoffset: 0;
-			}
+    [data-svg-animate].visible svg path,
+    [data-svg-animate].visible svg line,
+    [data-svg-animate].visible svg polyline {
+        stroke-dashoffset: 0;
+    }
 
-			/* Effet de glow progressif */
-			[data-svg-animate].visible svg path,
-			[data-svg-animate].visible svg line {
-				filter: drop-shadow(0 0 8px rgba(0, 255, 238, 0.6));
-				transition: filter 0.5s ease-in-out 1s;
-			}
-		</style>
-	</section></Layout
->
+    /* Animation pour les cercles */
+    [data-svg-animate] svg circle {
+        stroke-dasharray: 1000;
+        stroke-dashoffset: 1000;
+        transition: stroke-dashoffset 1.5s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    [data-svg-animate].visible svg circle {
+        stroke-dashoffset: 0;
+    }
+
+    /* Effet de glow progressif */
+    [data-svg-animate].visible svg path,
+    [data-svg-animate].visible svg line {
+        filter: drop-shadow(0 0 8px rgba(0, 255, 238, 0.6));
+        transition: filter 0.5s ease-in-out 1s;
+    }
+</style>

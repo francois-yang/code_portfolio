@@ -1,12 +1,21 @@
-// scrollReveal.ts
+// scrollReveal.js
 export function initScrollReveal() {
+    console.log('🔄 ScrollReveal init');
     const elements = document.querySelectorAll('[data-scroll-reveal]');
+    console.log(`✅ ${elements.length} éléments trouvés`);
+    
+    if (elements.length === 0) {
+        console.warn('⚠️ Aucun élément [data-scroll-reveal] trouvé');
+        return;
+    }
     
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
-                const element = entry.target as HTMLElement;
+                const element = entry.target;
                 const delay = parseFloat(element.dataset.delay || '0');
+                
+                console.log(`👁️ Élément visible: ${element.tagName}, delay: ${delay}s`);
                 
                 setTimeout(() => {
                     element.classList.add('revealed');
@@ -23,14 +32,5 @@ export function initScrollReveal() {
     elements.forEach(el => observer.observe(el));
 }
 
-// Auto-init au chargement
-if (typeof window !== 'undefined') {
-    if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', initScrollReveal);
-    } else {
-        initScrollReveal();
-    }
-
-    // Reinit après navigation Astro
-    document.addEventListener('astro:page-load', initScrollReveal);
-}
+// ❌ RETIRE TOUT CE CODE (c'était le problème)
+// Ne pas exécuter à l'import, laisser le Layout le faire

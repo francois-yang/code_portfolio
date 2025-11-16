@@ -103,3 +103,6 @@
 [data-scroll-reveal][data-direction="none"] {
     transform: translateY(0);
 }
+[data-scroll-reveal][data-direction="none"].revealed {
+    transform: translateY(0);
+}

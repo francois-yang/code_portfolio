@@ -2,31 +2,96 @@
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
 import "../styles/global.css";
-import "../styles/global.css";
 ---
 
 <!doctype html>
-<html lang="fr" transition:animate="fade">
+<html lang="fr">
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width" />
         <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
         <meta name="generator" content={Astro.generator} />
-        <meta name="view-transition" content="same-origin" />
         <title>Mon Portfolio</title>
     </head>
     <body>
         <Header />
         <slot />
         <Footer />
-
-        <!-- Scripts en bas de page -->
-        <script>
-            import { initScrollReveal } from '../scripts/scrollReveal';
-            // Le script s'auto-initialise
-        </script>
     </body>
 </html>
+
+<script>
+    function initScrollReveal() {
+        console.log('🔄 ScrollReveal init - ' + window.location.pathname);
+        
+        const elements = document.querySelectorAll('[data-scroll-reveal]');
+        console.log(`✅ ${elements.length} éléments trouvés`);
+        
+        if (elements.length === 0) {
+            console.warn('⚠️ Aucun élément [data-scroll-reveal] trouvé');
+            return;
+        }
+        
+        // Réinitialiser tous les éléments
+        elements.forEach(el => {
+            el.classList.remove('revealed');
+        });
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const element = entry.target as HTMLElement;
+                    const delay = parseFloat(element.dataset.delay || '0');
+                    
+                    console.log(`👁️ Élément visible: ${element.tagName}`);
+                    
+                    setTimeout(() => {
+                        element.classList.add('revealed');
+                        console.log(`✨ Classe revealed ajoutée à ${element.tagName}`);
+                    }, delay * 1000);
+                    
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, {
+            threshold: 0.1,  // ← Réduit pour détecter plus tôt
+            rootMargin: '0px'  // ← Simplifié
+        });
+
+        elements.forEach(el => {
+            console.log(`👀 Observer ajouté à ${el.tagName}`);
+            observer.observe(el);
+        });
+    }
+
+    // ✅ SOLUTION : Attendre que tout soit vraiment chargé
+    function safeInit() {
+        // Attendre un peu pour être sûr que le DOM est stable
+        requestAnimationFrame(() => {
+            setTimeout(() => {
+                initScrollReveal();
+            }, 100);
+        });
+    }
+
+    // Init selon l'état du document
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', safeInit);
+    } else {
+        safeInit();
+    }
+    
+    // Reinit après navigation Astro avec délai
+    document.addEventListener('astro:page-load', () => {
+        console.log('🚀 astro:page-load');
+        safeInit();
+    });
+    
+    document.addEventListener('astro:after-swap', () => {
+        console.log('🔄 astro:after-swap');
+        safeInit();
+    });
+</script>
 
 <style is:global>
     html,

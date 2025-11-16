@@ -48,3 +48,25 @@
     background-color: #0a0e27; /* Fond bleu très foncé pour mettre en valeur le néon cyan */
   }
 }
+
+/* SVG stroke-draw default helpers */
+.animate-stroke path,
+.animate-stroke line,
+.animate-stroke polyline,
+.animate-stroke polygon,
+.animate-stroke circle,
+.animate-stroke rect {
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  fill: none; /* most decorative lines should not be filled */
+}
+
+/* when the animation plays we transition stroke-dashoffset (set by JS) */
+.animate-stroke[data-animate="true"] path,
+.animate-stroke[data-animate="true"] line,
+.animate-stroke[data-animate="true"] polyline,
+.animate-stroke[data-animate="true"] polygon,
+.animate-stroke[data-animate="true"] circle,
+.animate-stroke[data-animate="true"] rect {
+  /* optional final state tweaks can be added here */
+}

@@ -1,8 +1,9 @@
 ---
-import Header from '../components/Header.astro';
-import Footer from '../components/Footer.astro';
-import '../styles/global.css';
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import "../styles/global.css";
 ---
+
 <!doctype html>
 <html lang="en">
 	<head>
@@ -15,6 +16,7 @@ import '../styles/global.css';
 	<body>
 		<Header />
 		<slot />
+			<script type="module" src="/scripts/svg-animate.js" defer></script>
 		<Footer />
 	</body>
 </html>

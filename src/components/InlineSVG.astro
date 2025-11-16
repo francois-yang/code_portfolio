@@ -1,0 +1,72 @@
+---
+const { class: className = "", delay = 0 } = Astro.props;
+---
+
+<div class={`animated-svg ${className}`} data-svg-animate data-delay={delay}>
+    <slot />
+</div>
+
+<script>
+    function initSVGAnimations() {
+        const containers = document.querySelectorAll('[data-svg-animate]');
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const container = entry.target as HTMLElement;
+                    const delay = parseFloat(container.dataset.delay || '0');
+                    const svg = container.querySelector('svg');
+                    
+                    if (svg) {
+                        setTimeout(() => {
+                            animateSVG(svg);
+                        }, delay * 1000);
+                    }
+                    
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, {
+            threshold: 0.2,
+            rootMargin: '0px 0px -100px 0px'
+        });
+
+        containers.forEach(container => observer.observe(container));
+    }
+
+    function animateSVG(svg: SVGElement) {
+        const elements = svg.querySelectorAll('path, line, polyline, circle');
+        
+        elements.forEach((element, index) => {
+            const svgElement = element as SVGGeometryElement;
+            const length = svgElement.getTotalLength?.() || 1000;
+            
+            // Configuration initiale
+            (element as HTMLElement).style.strokeDasharray = `${length}`;
+            (element as HTMLElement).style.strokeDashoffset = `${length}`;
+            
+            // Animation avec délai séquentiel
+            setTimeout(() => {
+                (element as HTMLElement).style.transition = 'stroke-dashoffset 2s cubic-bezier(0.4, 0, 0.2, 1)';
+                (element as HTMLElement).style.strokeDashoffset = '0';
+                (element as HTMLElement).style.filter = 'drop-shadow(0 0 8px rgba(0, 255, 238, 0.6))';
+            }, index * 150);
+        });
+    }
+
+    // Init
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initSVGAnimations);
+    } else {
+        initSVGAnimations();
+    }
+
+    document.addEventListener('astro:page-load', initSVGAnimations);
+</script>
+
+<style is:global>
+    .animated-svg svg {
+        width: 100%;
+        height: auto;
+    }
+</style>

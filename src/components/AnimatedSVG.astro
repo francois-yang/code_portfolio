@@ -1,0 +1,54 @@
+---
+// AnimatedSVG.astro
+const { src, class: className = "", delay = "0s" } = Astro.props;
+---
+
+<div class="animated-svg-wrapper" data-svg-animate data-delay={delay}>
+    <img src={src} alt="" class={className} />
+</div>
+
+<style is:global>
+    /* Animation de tracé pour les paths SVG */
+    .animated-svg-wrapper svg path,
+    .animated-svg-wrapper svg line,
+    .animated-svg-wrapper svg polyline,
+    .animated-svg-wrapper svg circle {
+        stroke-dasharray: 1000;
+        stroke-dashoffset: 1000;
+        transition: stroke-dashoffset 2s ease-in-out;
+    }
+
+    .animated-svg-wrapper.visible svg path,
+    .animated-svg-wrapper.visible svg line,
+    .animated-svg-wrapper.visible svg polyline,
+    .animated-svg-wrapper.visible svg circle {
+        stroke-dashoffset: 0;
+    }
+</style>
+
+<script>
+    // Observer pour déclencher l'animation au scroll
+    function initSVGAnimations() {
+        const svgWrappers = document.querySelectorAll('[data-svg-animate]');
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const delay = entry.target.getAttribute('data-delay') || '0s';
+                    setTimeout(() => {
+                        entry.target.classList.add('visible');
+                    }, parseFloat(delay) * 1000);
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, {
+            threshold: 0.2
+        });
+
+        svgWrappers.forEach(wrapper => observer.observe(wrapper));
+    }
+
+    // Init au chargement et lors des navigations Astro
+    document.addEventListener('astro:page-load', initSVGAnimations);
+    initSVGAnimations();
+</script>

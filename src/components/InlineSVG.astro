@@ -27,7 +27,7 @@ const { class: className = "", delay = 0 } = Astro.props;
                 }
             });
         }, {
-            threshold: 0.2,
+            threshold: 0.3, // Animation se déclenche quand 30% de la section est visible
             rootMargin: '0px 0px -100px 0px'
         });
 
@@ -35,26 +35,37 @@ const { class: className = "", delay = 0 } = Astro.props;
     }
 
     function animateSVG(svg: SVGElement) {
-        const elements = svg.querySelectorAll('path, line, polyline, circle');
+        const paths = svg.querySelectorAll('path[stroke]');
+        const lines = svg.querySelectorAll('line');
+        const circles = svg.querySelectorAll('circle');
         
-        elements.forEach((element, index) => {
+        // Animer d'abord les paths et lines (tracé)
+        [...paths, ...lines].forEach((element, index) => {
             const svgElement = element as SVGGeometryElement;
             const length = svgElement.getTotalLength?.() || 1000;
             
-            // Configuration initiale
             (element as HTMLElement).style.strokeDasharray = `${length}`;
             (element as HTMLElement).style.strokeDashoffset = `${length}`;
             
-            // Animation avec délai séquentiel
             setTimeout(() => {
                 (element as HTMLElement).style.transition = 'stroke-dashoffset 2s cubic-bezier(0.4, 0, 0.2, 1)';
                 (element as HTMLElement).style.strokeDashoffset = '0';
-                (element as HTMLElement).style.filter = 'drop-shadow(0 0 8px rgba(0, 255, 238, 0.6))';
-            }, index * 150);
+            }, index * 100);
+        });
+        
+        // Animer ensuite les cercles (apparition progressive)
+        circles.forEach((circle, index) => {
+            (circle as HTMLElement).style.opacity = '0';
+            (circle as HTMLElement).style.transform = 'scale(0)';
+            
+            setTimeout(() => {
+                (circle as HTMLElement).style.transition = 'opacity 0.6s ease, transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1)';
+                (circle as HTMLElement).style.opacity = '1';
+                (circle as HTMLElement).style.transform = 'scale(1)';
+            }, 1000 + index * 300); // Commence après les tracés
         });
     }
 
-    // Init
     if (document.readyState === 'loading') {
         document.addEventListener('DOMContentLoaded', initSVGAnimations);
     } else {

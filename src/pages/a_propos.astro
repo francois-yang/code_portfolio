@@ -1,380 +1,830 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import InlineSVG from "../components/InlineSVG.astro";
+import ScrollReveal from "../components/ScrollReveal.astro";
 ---
 
 <Layout>
-    <!-- Section À propos -->
-    <section class="relative py-20 min-h-screen bg-bleu-fonce">
-        <div class="relative z-10 w-full mx-auto">
-            <!-- En-tête -->
-            <div class="mb-16 text-center">
-                <h1 class="text-5xl font-bold mb-4">
-                    <span class="text-blanc">À propos de </span>
-                    <span class="text-turquoise">moi</span>
-                </h1>
-                <div class="w-24 h-1 bg-turquoise mx-auto rounded-full"></div>
-            </div>
+	<!-- Section À propos -->
+	<section class="relative py-20 min-h-screen bg-bleu-fonce">
+		<div class="relative z-10 w-full mx-auto">
+			<!-- En-tête -->
+			<div class="mb-16 text-center">
+				<h1 class="text-5xl font-bold mb-4">
+					<span class="text-blanc">À propos de </span>
+					<span class="text-turquoise">moi</span>
+				</h1>
+				<div class="w-24 h-1 bg-turquoise mx-auto rounded-full"></div>
+			</div>
 
-            <!-- Contenu principal -->
-            <div class="px-10 grid md:grid-cols-2 gap-12 items-center mb-20">
-                <!-- Photo / Image -->
-                <div class="relative">
-                    <div
-                        class="relative aspect-square bg-gradient-to-br from-turquoise/20 to-bleu-fonce rounded-2xl overflow-hidden border-2 border-turquoise/30 shadow-[0_0_30px_rgba(0,255,238,0.2)]"
-                    >
-                        <img
-                            src="/photo-placeholder.jpg"
-                            alt="Photo de profil"
-                            class="w-full h-full object-cover"
-                        />
-                    </div>
-                    <!-- Décoration -->
-                    <div
-                        class="absolute -top-4 -right-4 w-32 h-32 border-4 border-turquoise/30 rounded-full -z-10"
-                    >
-                    </div>
-                    <div
-                        class="absolute -bottom-4 -left-4 w-24 h-24 border-4 border-turquoise/30 rounded-full -z-10"
-                    >
-                    </div>
-                </div>
+			<!-- Contenu principal -->
+			<div class="px-10 grid md:grid-cols-2 gap-12 items-center mb-20">
+				<!-- Photo / Image -->
+				<div class="relative">
+					<div
+						class="relative aspect-square bg-gradient-to-br from-turquoise/20 to-bleu-fonce rounded-2xl overflow-hidden border-2 border-turquoise/30 shadow-[0_0_30px_rgba(0,255,238,0.2)]"
+					>
+						<img
+							src="/photo-placeholder.jpg"
+							alt="Photo de profil"
+							class="w-full h-full object-cover"
+						/>
+					</div>
+					<!-- Décoration -->
+					<div
+						class="absolute -top-4 -right-4 w-32 h-32 border-4 border-turquoise/30 rounded-full -z-10"
+					>
+					</div>
+					<div
+						class="absolute -bottom-4 -left-4 w-24 h-24 border-4 border-turquoise/30 rounded-full -z-10"
+					>
+					</div>
+				</div>
 
-                <!-- Texte de présentation -->
-                <div class="space-y-6">
-                    <h2 class="text-3xl font-bold text-turquoise">
-                        Webdesigner & Développeur créatif
-                    </h2>
-                    <p class="text-blanc text-lg leading-relaxed">
-                        Passionné par le design et le développement web, je crée
-                        des expériences digitales uniques et modernes. Mon
-                        approche allie créativité et expertise technique pour
-                        donner vie à des projets innovants.
-                    </p>
-                    <p class="text-blanc text-lg leading-relaxed">
-                        Actuellement étudiant en MMI (Métiers du Multimédia et
-                        de l'Internet), je me spécialise dans la création
-                        d'interfaces utilisateur intuitives et d'animations
-                        engageantes.
-                    </p>
-                    <div class="flex gap-4 pt-4">
-                        <a
-                            href="/projet/projets"
-                            class="inline-flex items-center gap-2 bg-turquoise hover:bg-turquoise/90 text-bleu-fonce font-semibold px-6 py-3 rounded-lg transition-all duration-300 shadow-lg hover:shadow-[0_0_20px_rgba(0,255,238,0.5)]"
-                        >
-                            Voir mes projets
-                            <svg
-                                class="w-5 h-5"
-                                fill="none"
-                                stroke="currentColor"
-                                viewBox="0 0 24 24"
-                            >
-                                <path
-                                    stroke-linecap="round"
-                                    stroke-linejoin="round"
-                                    stroke-width="2"
-                                    d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
-                            </svg>
-                        </a>
-                        <a
-                            href="/contact"
-                            class="inline-flex items-center gap-2 border-2 border-turquoise text-turquoise hover:bg-turquoise hover:text-bleu-fonce font-semibold px-6 py-3 rounded-lg transition-all duration-300"
-                        >
-                            Me contacter
-                        </a>
-                    </div>
-                </div>
-            </div>
+				<!-- Texte de présentation -->
+				<div class="space-y-6">
+					<h2 class="text-3xl font-bold text-turquoise">
+						Webdesigner & Développeur créatif
+					</h2>
+					<p class="text-blanc text-lg leading-relaxed">
+						Passionné par le design et le développement web, je crée
+						des expériences digitales uniques et modernes. Mon
+						approche allie créativité et expertise technique pour
+						donner vie à des projets innovants.
+					</p>
+					<p class="text-blanc text-lg leading-relaxed">
+						Actuellement étudiant en MMI (Métiers du Multimédia et
+						de l'Internet), je me spécialise dans la création
+						d'interfaces utilisateur intuitives et d'animations
+						engageantes.
+					</p>
+					<div class="flex gap-4 pt-4">
+						<a
+							href="/projet/projets"
+							class="inline-flex items-center gap-2 bg-turquoise hover:bg-turquoise/90 text-bleu-fonce font-semibold px-6 py-3 rounded-lg transition-all duration-300 shadow-lg hover:shadow-[0_0_20px_rgba(0,255,238,0.5)]"
+						>
+							Voir mes projets
+							<svg
+								class="w-5 h-5"
+								fill="none"
+								stroke="currentColor"
+								viewBox="0 0 24 24"
+							>
+								<path
+									stroke-linecap="round"
+									stroke-linejoin="round"
+									stroke-width="2"
+									d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+							</svg>
+						</a>
+						<a
+							href="/contact"
+							class="inline-flex items-center gap-2 border-2 border-turquoise text-turquoise hover:bg-turquoise hover:text-bleu-fonce font-semibold px-6 py-3 rounded-lg transition-all duration-300"
+						>
+							Me contacter
+						</a>
+					</div>
+				</div>
+			</div>
 
-            <!-- Parcours / Timeline -->
-            <div class="mb-20">
-                <h2 class="text-3xl font-bold text-turquoise mb-12 text-center">
-                    Mon parcours
-                </h2>
+			<!-- Parcours / Timeline -->
+			 <ScrollReveal>
+			<div class="mb-20">
+				<h2 class="text-3xl font-bold text-turquoise mb-12 text-center">
+					Mon parcours
+				</h2>
 
-                <!-- Container avec scroll horizontal -->
-                <div class="relative overflow-x-auto pb-8">
-                    <!-- Container principal centré -->
-                    <div class="flex justify-center">
-                        <div class="relative py-20" style="width: 100%; max-width: 2088px;">
-                            
-                            <!-- SVG de la frise animée -->
-                            <InlineSVG class="w-full" delay={0.3}>
-                                <svg
-                                    width="2088"
-                                    height="524"
-                                    viewBox="0 0 2088 524"
-                                    fill="none"
-                                    xmlns="http://www.w3.org/2000/svg"
-                                >
-                                    <!-- Forme de fond -->
-                                    <path
-                                        d="M104.968 494.747H0V36.145h104.968L163.45 1h1745.01l53.51 35.145H2087v458.602h-125.03L1908.46 523H163.45l-58.482-28.253z"
-                                        fill="#113D60"
-                                        stroke="none"
-                                    />
+				<!-- Container avec scroll horizontal -->
+				<div class="relative overflow-x-auto pb-8">
+					<!-- Container principal centré -->
+					<div class="flex justify-center">
+						<div
+							class="relative py-20"
+							style="width: 100%; max-width: 2088px;"
+						>
+							<!-- SVG de la frise animée -->
+							<InlineSVG class="w-full" delay={0.3}>
+								<svg
+									width="2088"
+									height="524"
+									viewBox="0 0 2088 524"
+									fill="none"
+									xmlns="http://www.w3.org/2000/svg"
+								>
+									<!-- Forme de fond -->
+									<path
+										d="M104.968 494.747H0V36.145h104.968L163.45 1h1745.01l53.51 35.145H2087v458.602h-125.03L1908.46 523H163.45l-58.482-28.253z"
+										fill="#113D60"
+										stroke="none"></path>
 
-                                    <!-- Contours animés -->
-                                    <!-- Ligne gauche verticale -->
-                                    <line x1="1" y1="36.145" x2="1" y2="494.747" stroke="#00EAFF" stroke-width="2"/>
-                                    
-                                    <!-- Coin supérieur gauche -->
-                                    <line x1="1" y1="36.145" x2="104.968" y2="36.145" stroke="#00EAFF" stroke-width="2"/>
-                                    <line x1="104.968" y1="36.145" x2="163.45" y2="1" stroke="#00EAFF" stroke-width="2"/>
-                                    
-                                    <!-- Ligne supérieure horizontale -->
-                                    <line x1="163.45" y1="1" x2="1908.46" y2="1" stroke="#00EAFF" stroke-width="2"/>
-                                    
-                                    <!-- Coin supérieur droit -->
-                                    <line x1="1908.46" y1="1" x2="1962" y2="36.145" stroke="#00EAFF" stroke-width="2"/>
-                                    <line x1="1962" y1="36.145" x2="2087" y2="36.145" stroke="#00EAFF" stroke-width="2"/>
-                                    
-                                    <!-- Ligne droite verticale -->
-                                    <line x1="2087" y1="36.145" x2="2087" y2="494.747" stroke="#00EAFF" stroke-width="2"/>
-                                    
-                                    <!-- Coin inférieur droit -->
-                                    <line x1="2087" y1="494.747" x2="1962" y2="494.747" stroke="#00EAFF" stroke-width="2"/>
-                                    <line x1="1962" y1="494.747" x2="1908.46" y2="523" stroke="#00EAFF" stroke-width="2"/>
-                                    
-                                    <!-- Ligne inférieure horizontale -->
-                                    <line x1="1908.46" y1="523" x2="163.45" y2="523" stroke="#00EAFF" stroke-width="2"/>
-                                    
-                                    <!-- Coin inférieur gauche -->
-                                    <line x1="163.45" y1="523" x2="104.968" y2="494.747" stroke="#00EAFF" stroke-width="2"/>
-                                    <line x1="104.968" y1="494.747" x2="1" y2="494.747" stroke="#00EAFF" stroke-width="2"/>
-                                </svg>
-                            </InlineSVG>
+									<!-- Contours animés -->
+									<!-- Ligne gauche verticale -->
+									<line
+										x1="1"
+										y1="36.145"
+										x2="1"
+										y2="494.747"
+										stroke="#00EAFF"
+										stroke-width="2"></line>
 
-                            <!-- Items du parcours avec points lumineux -->
-                            <div class="absolute top-0 left-0 w-full h-full">
-                                
-                                <!-- Ligne temporelle centrale -->
-                                <div class="absolute left-0 right-0 top-1/2 -translate-y-1/2 pointer-events-none">
-                                    <img
-                                        src="/ligne-temporelle.svg"
-                                        alt="Ligne temporelle"
-                                        class="w-full h-auto"
-                                    />
-                                </div>
+									<!-- Coin supérieur gauche -->
+									<line
+										x1="1"
+										y1="36.145"
+										x2="104.968"
+										y2="36.145"
+										stroke="#00EAFF"
+										stroke-width="2"></line>
+									<line
+										x1="104.968"
+										y1="36.145"
+										x2="163.45"
+										y2="1"
+										stroke="#00EAFF"
+										stroke-width="2"></line>
 
-                                <!-- Contenus texte positionnés -->
-                                <!-- Texte 1 -->
-                                <div class="absolute left-[8.7%] top-[19%] -translate-x-1/2 w-72">
-                                    <div class="text-center space-y-2">
-                                        <h3 class="text-xl font-semibold text-blanc">
-                                            2024 - aujourd'hui
-                                        </h3>
-                                        <h4 class="text-lg font-semibold text-turquoise">
-                                            xxxx
-                                        </h4>
-                                        <p class="text-blanc/70 text-sm">
-                                            xxxx
-                                        </p>
-                                    </div>
-                                </div>
+									<!-- Ligne supérieure horizontale -->
+									<line
+										x1="163.45"
+										y1="1"
+										x2="1908.46"
+										y2="1"
+										stroke="#00EAFF"
+										stroke-width="2"></line>
 
-                                <!-- Texte 2 -->
-                                <div class="absolute left-[28.7%] top-[65%] -translate-x-1/2 w-72">
-                                    <div class="text-center space-y-2">
-                                        <h3 class="text-xl font-semibold text-blanc">
-                                            2023 - 2024
-                                        </h3>
-                                        <h4 class="text-lg font-semibold text-turquoise">
-                                            xxxxx
-                                        </h4>
-                                        <p class="text-blanc/70 text-sm">
-                                            xxxx
-                                        </p>
-                                    </div>
-                                </div>
+									<!-- Coin supérieur droit -->
+									<line
+										x1="1908.46"
+										y1="1"
+										x2="1962"
+										y2="36.145"
+										stroke="#00EAFF"
+										stroke-width="2"></line>
+									<line
+										x1="1962"
+										y1="36.145"
+										x2="2087"
+										y2="36.145"
+										stroke="#00EAFF"
+										stroke-width="2"></line>
 
-                                <!-- Texte 3 -->
-                                <div class="absolute left-[50.3%] top-[19%] -translate-x-1/2 w-72">
-                                    <div class="text-center space-y-2">
-                                        <h3 class="text-xl font-semibold text-blanc">
-                                            Année - Année
-                                        </h3>
-                                        <h4 class="text-lg font-semibold text-turquoise">
-                                            xxxx
-                                        </h4>
-                                        <p class="text-blanc/70 text-sm">
-                                            xxxx
-                                        </p>
-                                    </div>
-                                </div>
+									<!-- Ligne droite verticale -->
+									<line
+										x1="2087"
+										y1="36.145"
+										x2="2087"
+										y2="494.747"
+										stroke="#00EAFF"
+										stroke-width="2"></line>
 
-                                <!-- Texte 4 -->
-                                <div class="absolute left-[69.1%] top-[65%] -translate-x-1/2 w-72">
-                                    <div class="text-center space-y-2">
-                                        <h3 class="text-xl font-semibold text-blanc">
-                                            Année - Année
-                                        </h3>
-                                        <h4 class="text-lg font-semibold text-turquoise">
-                                            xxxx
-                                        </h4>
-                                        <p class="text-blanc/70 text-sm">
-                                            xxxx
-                                        </p>
-                                    </div>
-                                </div>
+									<!-- Coin inférieur droit -->
+									<line
+										x1="2087"
+										y1="494.747"
+										x2="1962"
+										y2="494.747"
+										stroke="#00EAFF"
+										stroke-width="2"></line>
+									<line
+										x1="1962"
+										y1="494.747"
+										x2="1908.46"
+										y2="523"
+										stroke="#00EAFF"
+										stroke-width="2"></line>
 
-                                <!-- Texte 5 -->
-                                <div class="absolute left-[89.2%] top-[19%] -translate-x-1/2 w-72">
-                                    <div class="text-center space-y-2">
-                                        <h3 class="text-xl font-semibold text-blanc">
-                                            Année - Année
-                                        </h3>
-                                        <h4 class="text-lg font-semibold text-turquoise">
-                                            xxxx
-                                        </h4>
-                                        <p class="text-blanc/70 text-sm">
-                                            xxxx
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+									<!-- Ligne inférieure horizontale -->
+									<line
+										x1="1908.46"
+										y1="523"
+										x2="163.45"
+										y2="523"
+										stroke="#00EAFF"
+										stroke-width="2"></line>
 
-                <!-- Indicateur de scroll -->
-                <div class="text-center mt-4">
-                    
-                </div>
-            </div>
+									<!-- Coin inférieur gauche -->
+									<line
+										x1="163.45"
+										y1="523"
+										x2="104.968"
+										y2="494.747"
+										stroke="#00EAFF"
+										stroke-width="2"></line>
+									<line
+										x1="104.968"
+										y1="494.747"
+										x2="1"
+										y2="494.747"
+										stroke="#00EAFF"
+										stroke-width="2"></line>
+								</svg>
+							</InlineSVG>
 
-            <!-- Valeurs / Approche -->
-            <div class="mb-20 px-10">
-                <h2 class="text-3xl font-bold text-turquoise mb-12 text-center">
-                    Mon approche
-                </h2>
-                <div class="grid md:grid-cols-3 gap-8">
-                    <!-- Valeur 1 -->
-                    <div
-                        class="bg-bleu-fonce border-2 border-turquoise/30 rounded-xl p-8 hover:border-turquoise transition-all duration-300 hover:shadow-[0_0_30px_rgba(0,255,238,0.2)]"
-                    >
-                        <div
-                            class="w-16 h-16 bg-turquoise/10 rounded-full flex items-center justify-center mb-6 mx-auto"
-                        >
-                            <svg
-                                class="w-8 h-8 text-turquoise"
-                                fill="none"
-                                stroke="currentColor"
-                                viewBox="0 0 24 24"
-                            >
-                                <path
-                                    stroke-linecap="round"
-                                    stroke-linejoin="round"
-                                    stroke-width="2"
-                                    d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"
-                                ></path>
-                            </svg>
-                        </div>
-                        <h3 class="text-xl font-bold text-turquoise text-center mb-4">
-                            Créativité
-                        </h3>
-                        <p class="text-blanc text-center leading-relaxed">
-                            Des designs uniques et innovants qui captent
-                            l'attention et marquent les esprits.
-                        </p>
-                    </div>
+							<!-- Items du parcours avec points lumineux -->
+							<div class="absolute top-0 left-0 w-full h-full">
+								<!-- Ligne temporelle centrale -->
+								<!-- Ligne temporelle centrale avec animation de tracé -->
+								<div
+									class="absolute left-0 right-0 top-1/2 -translate-y-1/2 pointer-events-none"
+								>
+									<InlineSVG class="w-full" delay={0.5}>
+										<svg
+											width="2005"
+											height="180"
+											viewBox="0 0 2005 180"
+											fill="none"
+											xmlns="http://www.w3.org/2000/svg"
+											class="w-full h-auto"
+										>
+											<g filter="url(#timeline-a)"
+												><circle
+													cx="174.5"
+													cy="13"
+													r="9"
+													fill="#00EAFF"></circle></g
+											>
+											<g filter="url(#timeline-b)">
+												<path
+													d="M4 91.5h170.5m1826 0h-212m-1614 0V22m0 69.5h400m0 0V159m0-67.5h435m0 0v-76m0 76h375m0 0V159m0-67.5h404m0 0V15"
+													stroke="#00EAFF"
+													stroke-width="3"></path>
+											</g>
+											<g filter="url(#timeline-c)"
+												><circle
+													cx="1009.5"
+													cy="9"
+													r="9"
+													fill="#00EAFF"></circle></g
+											>
+											<g filter="url(#timeline-d)"
+												><circle
+													cx="1384.5"
+													cy="163"
+													r="9"
+													fill="#00EAFF"></circle></g
+											>
+											<g filter="url(#timeline-e)"
+												><circle
+													cx="574.5"
+													cy="159"
+													r="13"
+													fill="#00B4BD"
+													fill-opacity=".71"
+												></circle></g
+											>
+											<g filter="url(#timeline-f)"
+												><circle
+													cx="1788.5"
+													cy="9"
+													r="9"
+													fill="#00EAFF"></circle></g
+											>
+											<defs>
+												<filter
+													id="timeline-a"
+													x="161.5"
+													y="4"
+													width="26"
+													height="26"
+													filterUnits="userSpaceOnUse"
+													color-interpolation-filters="sRGB"
+												>
+													<feFlood
+														flood-opacity="0"
+														result="BackgroundImageFix"
+													></feFlood>
+													<feColorMatrix
+														in="SourceAlpha"
+														values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+														result="hardAlpha"
+													></feColorMatrix>
+													<feOffset dy="4"></feOffset>
+													<feGaussianBlur
+														stdDeviation="2"
+													></feGaussianBlur>
+													<feComposite
+														in2="hardAlpha"
+														operator="out"
+													></feComposite>
+													<feColorMatrix
+														values="0 0 0 0 0 0 0 0 0 1 0 0 0 0 0.933333 0 0 0 0.25 0"
+													></feColorMatrix>
+													<feBlend
+														in2="BackgroundImageFix"
+														result="effect1_dropShadow_1080_4257"
+													></feBlend>
+													<feBlend
+														in="SourceGraphic"
+														in2="effect1_dropShadow_1080_4257"
+														result="shape"
+													></feBlend>
+												</filter>
+												<filter
+													id="timeline-b"
+													x="0"
+													y="15"
+													width="2004.5"
+													height="153"
+													filterUnits="userSpaceOnUse"
+													color-interpolation-filters="sRGB"
+												>
+													<feFlood
+														flood-opacity="0"
+														result="BackgroundImageFix"
+													></feFlood>
+													<feColorMatrix
+														in="SourceAlpha"
+														values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+														result="hardAlpha"
+													></feColorMatrix>
+													<feOffset dy="5"></feOffset>
+													<feGaussianBlur
+														stdDeviation="2"
+													></feGaussianBlur>
+													<feComposite
+														in2="hardAlpha"
+														operator="out"
+													></feComposite>
+													<feColorMatrix
+														values="0 0 0 0 0 0 0 0 0 1 0 0 0 0 0.933333 0 0 0 0.4 0"
+													></feColorMatrix>
+													<feBlend
+														in2="BackgroundImageFix"
+														result="effect1_dropShadow_1080_4257"
+													></feBlend>
+													<feBlend
+														in="SourceGraphic"
+														in2="effect1_dropShadow_1080_4257"
+														result="shape"
+													></feBlend>
+												</filter>
+												<filter
+													id="timeline-c"
+													x="996.5"
+													y="0"
+													width="26"
+													height="26"
+													filterUnits="userSpaceOnUse"
+													color-interpolation-filters="sRGB"
+												>
+													<feFlood
+														flood-opacity="0"
+														result="BackgroundImageFix"
+													></feFlood>
+													<feColorMatrix
+														in="SourceAlpha"
+														values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+														result="hardAlpha"
+													></feColorMatrix>
+													<feOffset dy="4"></feOffset>
+													<feGaussianBlur
+														stdDeviation="2"
+													></feGaussianBlur>
+													<feComposite
+														in2="hardAlpha"
+														operator="out"
+													></feComposite>
+													<feColorMatrix
+														values="0 0 0 0 0 0 0 0 0 1 0 0 0 0 0.933333 0 0 0 0.25 0"
+													></feColorMatrix>
+													<feBlend
+														in2="BackgroundImageFix"
+														result="effect1_dropShadow_1080_4257"
+													></feBlend>
+													<feBlend
+														in="SourceGraphic"
+														in2="effect1_dropShadow_1080_4257"
+														result="shape"
+													></feBlend>
+												</filter>
+												<filter
+													id="timeline-d"
+													x="1371.5"
+													y="154"
+													width="26"
+													height="26"
+													filterUnits="userSpaceOnUse"
+													color-interpolation-filters="sRGB"
+												>
+													<feFlood
+														flood-opacity="0"
+														result="BackgroundImageFix"
+													></feFlood>
+													<feColorMatrix
+														in="SourceAlpha"
+														values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+														result="hardAlpha"
+													></feColorMatrix>
+													<feOffset dy="4"></feOffset>
+													<feGaussianBlur
+														stdDeviation="2"
+													></feGaussianBlur>
+													<feComposite
+														in2="hardAlpha"
+														operator="out"
+													></feComposite>
+													<feColorMatrix
+														values="0 0 0 0 0 0 0 0 0 1 0 0 0 0 0.933333 0 0 0 0.25 0"
+													></feColorMatrix>
+													<feBlend
+														in2="BackgroundImageFix"
+														result="effect1_dropShadow_1080_4257"
+													></feBlend>
+													<feBlend
+														in="SourceGraphic"
+														in2="effect1_dropShadow_1080_4257"
+														result="shape"
+													></feBlend>
+												</filter>
+												<filter
+													id="timeline-e"
+													x="557.5"
+													y="142"
+													width="34"
+													height="34"
+													filterUnits="userSpaceOnUse"
+													color-interpolation-filters="sRGB"
+												>
+													<feFlood
+														flood-opacity="0"
+														result="BackgroundImageFix"
+													></feFlood>
+													<feBlend
+														in="SourceGraphic"
+														in2="BackgroundImageFix"
+														result="shape"
+													></feBlend>
+													<feGaussianBlur
+														stdDeviation="2"
+														result="effect1_foregroundBlur_1080_4257"
+													></feGaussianBlur>
+												</filter>
+												<filter
+													id="timeline-f"
+													x="1775.5"
+													y="0"
+													width="26"
+													height="26"
+													filterUnits="userSpaceOnUse"
+													color-interpolation-filters="sRGB"
+												>
+													<feFlood
+														flood-opacity="0"
+														result="BackgroundImageFix"
+													></feFlood>
+													<feColorMatrix
+														in="SourceAlpha"
+														values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+														result="hardAlpha"
+													></feColorMatrix>
+													<feOffset dy="4"></feOffset>
+													<feGaussianBlur
+														stdDeviation="2"
+													></feGaussianBlur>
+													<feComposite
+														in2="hardAlpha"
+														operator="out"
+													></feComposite>
+													<feColorMatrix
+														values="0 0 0 0 0 0 0 0 0 1 0 0 0 0 0.933333 0 0 0 0.25 0"
+													></feColorMatrix>
+													<feBlend
+														in2="BackgroundImageFix"
+														result="effect1_dropShadow_1080_4257"
+													></feBlend>
+													<feBlend
+														in="SourceGraphic"
+														in2="effect1_dropShadow_1080_4257"
+														result="shape"
+													></feBlend>
+												</filter>
+											</defs>
+										</svg>
+									</InlineSVG>
+								</div>
 
-                    <!-- Valeur 2 -->
-                    <div
-                        class="bg-bleu-fonce border-2 border-turquoise/30 rounded-xl p-8 hover:border-turquoise transition-all duration-300 hover:shadow-[0_0_30px_rgba(0,255,238,0.2)]"
-                    >
-                        <div
-                            class="w-16 h-16 bg-turquoise/10 rounded-full flex items-center justify-center mb-6 mx-auto"
-                        >
-                            <svg
-                                class="w-8 h-8 text-turquoise"
-                                fill="none"
-                                stroke="currentColor"
-                                viewBox="0 0 24 24"
-                            >
-                                <path
-                                    stroke-linecap="round"
-                                    stroke-linejoin="round"
-                                    stroke-width="2"
-                                    d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"
-                                ></path>
-                            </svg>
-                        </div>
-                        <h3 class="text-xl font-bold text-turquoise text-center mb-4">
-                            Technique
-                        </h3>
-                        <p class="text-blanc text-center leading-relaxed">
-                            Une maîtrise des technologies modernes pour des
-                            sites performants et responsive.
-                        </p>
-                    </div>
+								<!-- Contenus texte positionnés avec classe timeline-content -->
+								<div
+									class="absolute top-0 left-0 w-full h-full"
+									id="timeline-texts"
+								>
+									<!-- Texte 1 -->
+									<div
+										class="timeline-content absolute left-[8.7%] top-[19%] -translate-x-1/2 w-72"
+									>
+										<div class="text-center space-y-2">
+											<h3
+												class="text-xl font-semibold text-blanc"
+											>
+												2024 - aujourd'hui
+											</h3>
+											<h4
+												class="text-lg font-semibold text-turquoise"
+											>
+												xxxx
+											</h4>
+											<p class="text-blanc/70 text-sm">
+												xxxx
+											</p>
+										</div>
+									</div>
 
-                    <!-- Valeur 3 -->
-                    <div
-                        class="bg-bleu-fonce border-2 border-turquoise/30 rounded-xl p-8 hover:border-turquoise transition-all duration-300 hover:shadow-[0_0_30px_rgba(0,255,238,0.2)]"
-                    >
-                        <div
-                            class="w-16 h-16 bg-turquoise/10 rounded-full flex items-center justify-center mb-6 mx-auto"
-                        >
-                            <svg
-                                class="w-8 h-8 text-turquoise"
-                                fill="none"
-                                stroke="currentColor"
-                                viewBox="0 0 24 24"
-                            >
-                                <path
-                                    stroke-linecap="round"
-                                    stroke-linejoin="round"
-                                    stroke-width="2"
-                                    d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
-                                ></path>
-                            </svg>
-                        </div>
-                        <h3 class="text-xl font-bold text-turquoise text-center mb-4">
-                            Engagement
-                        </h3>
-                        <p class="text-blanc text-center leading-relaxed">
-                            Un suivi régulier et une communication
-                            transparente tout au long du projet.
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+									<!-- Texte 2 -->
+									<div
+										class="timeline-content absolute left-[28.7%] top-[65%] -translate-x-1/2 w-72"
+									>
+										<div class="text-center space-y-2">
+											<h3
+												class="text-xl font-semibold text-blanc"
+											>
+												2023 - 2024
+											</h3>
+											<h4
+												class="text-lg font-semibold text-turquoise"
+											>
+												xxxxx
+											</h4>
+											<p class="text-blanc/70 text-sm">
+												xxxx
+											</p>
+										</div>
+									</div>
+
+									<!-- Texte 3 -->
+									<div
+										class="timeline-content absolute left-[50.3%] top-[19%] -translate-x-1/2 w-72"
+									>
+										<div class="text-center space-y-2">
+											<h3
+												class="text-xl font-semibold text-blanc"
+											>
+												Année - Année
+											</h3>
+											<h4
+												class="text-lg font-semibold text-turquoise"
+											>
+												xxxx
+											</h4>
+											<p class="text-blanc/70 text-sm">
+												xxxx
+											</p>
+										</div>
+									</div>
+
+									<!-- Texte 4 -->
+									<div
+										class="timeline-content absolute left-[69.1%] top-[65%] -translate-x-1/2 w-72"
+									>
+										<div class="text-center space-y-2">
+											<h3
+												class="text-xl font-semibold text-blanc"
+											>
+												Année - Année
+											</h3>
+											<h4
+												class="text-lg font-semibold text-turquoise"
+											>
+												xxxx
+											</h4>
+											<p class="text-blanc/70 text-sm">
+												xxxx
+											</p>
+										</div>
+									</div>
+
+									<!-- Texte 5 -->
+									<div
+										class="timeline-content absolute left-[89.2%] top-[19%] -translate-x-1/2 w-72"
+									>
+										<div class="text-center space-y-2">
+											<h3
+												class="text-xl font-semibold text-blanc"
+											>
+												Année - Année
+											</h3>
+											<h4
+												class="text-lg font-semibold text-turquoise"
+											>
+												xxxx
+											</h4>
+											<p class="text-blanc/70 text-sm">
+												xxxx
+											</p>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</ScrollReveal>
+				<!-- Valeurs / Approche -->
+				 <ScrollReveal>
+				<div class="mb-20 px-10">
+					<h2
+						class="text-3xl font-bold text-turquoise mb-12 text-center"
+					>
+						Mon approche
+					</h2>
+					<div class="grid md:grid-cols-3 gap-8">
+						<!-- Valeur 1 -->
+						<div
+							class="bg-bleu-fonce border-2 border-turquoise/30 rounded-xl p-8 hover:border-turquoise transition-all duration-300 hover:shadow-[0_0_30px_rgba(0,255,238,0.2)]"
+						>
+							<div
+								class="w-16 h-16 bg-turquoise/10 rounded-full flex items-center justify-center mb-6 mx-auto"
+							>
+								<svg
+									class="w-8 h-8 text-turquoise"
+									fill="none"
+									stroke="currentColor"
+									viewBox="0 0 24 24"
+								>
+									<path
+										stroke-linecap="round"
+										stroke-linejoin="round"
+										stroke-width="2"
+										d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"
+									></path>
+								</svg>
+							</div>
+							<h3
+								class="text-xl font-bold text-turquoise text-center mb-4"
+							>
+								Créativité
+							</h3>
+							<p class="text-blanc text-center leading-relaxed">
+								Des designs uniques et innovants qui captent
+								l'attention et marquent les esprits.
+							</p>
+						</div>
+
+						<!-- Valeur 2 -->
+						<div
+							class="bg-bleu-fonce border-2 border-turquoise/30 rounded-xl p-8 hover:border-turquoise transition-all duration-300 hover:shadow-[0_0_30px_rgba(0,255,238,0.2)]"
+						>
+							<div
+								class="w-16 h-16 bg-turquoise/10 rounded-full flex items-center justify-center mb-6 mx-auto"
+							>
+								<svg
+									class="w-8 h-8 text-turquoise"
+									fill="none"
+									stroke="currentColor"
+									viewBox="0 0 24 24"
+								>
+									<path
+										stroke-linecap="round"
+										stroke-linejoin="round"
+										stroke-width="2"
+										d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"
+									></path>
+								</svg>
+							</div>
+							<h3
+								class="text-xl font-bold text-turquoise text-center mb-4"
+							>
+								Technique
+							</h3>
+							<p class="text-blanc text-center leading-relaxed">
+								Une maîtrise des technologies modernes pour des
+								sites performants et responsive.
+							</p>
+						</div>
+
+						<!-- Valeur 3 -->
+						<div
+							class="bg-bleu-fonce border-2 border-turquoise/30 rounded-xl p-8 hover:border-turquoise transition-all duration-300 hover:shadow-[0_0_30px_rgba(0,255,238,0.2)]"
+						>
+							<div
+								class="w-16 h-16 bg-turquoise/10 rounded-full flex items-center justify-center mb-6 mx-auto"
+							>
+								<svg
+									class="w-8 h-8 text-turquoise"
+									fill="none"
+									stroke="currentColor"
+									viewBox="0 0 24 24"
+								>
+									<path
+										stroke-linecap="round"
+										stroke-linejoin="round"
+										stroke-width="2"
+										d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
+									></path>
+								</svg>
+							</div>
+							<h3
+								class="text-xl font-bold text-turquoise text-center mb-4"
+							>
+								Engagement
+							</h3>
+							<p class="text-blanc text-center leading-relaxed">
+								Un suivi régulier et une communication
+								transparente tout au long du projet.
+							</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		</ScrollReveal>
+	</section>
+
+	<style>
+		/* Animation de tracé SVG */
+		[data-svg-animate] svg path,
+		[data-svg-animate] svg line,
+		[data-svg-animate] svg polyline {
+			stroke-dasharray: 1000;
+			stroke-dashoffset: 1000;
+			transition: stroke-dashoffset 2s cubic-bezier(0.4, 0, 0.2, 1);
+		}
+
+		[data-svg-animate].visible svg path,
+		[data-svg-animate].visible svg line,
+		[data-svg-animate].visible svg polyline {
+			stroke-dashoffset: 0;
+		}
+
+		/* Animation pour les cercles */
+		[data-svg-animate] svg circle {
+			stroke-dasharray: 1000;
+			stroke-dashoffset: 1000;
+			transition: stroke-dashoffset 1.5s cubic-bezier(0.4, 0, 0.2, 1);
+		}
+
+		[data-svg-animate].visible svg circle {
+			stroke-dashoffset: 0;
+		}
+
+		/* Effet de glow progressif */
+		[data-svg-animate].visible svg path,
+		[data-svg-animate].visible svg line {
+			filter: drop-shadow(0 0 8px rgba(0, 255, 238, 0.6));
+			transition: filter 0.5s ease-in-out 1s;
+		}
+		/* Masquer les éléments avant l'animation */
+		.timeline-content {
+			opacity: 0;
+			transform: translateY(20px);
+			transition:
+				opacity 0.8s ease,
+				transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+		}
+
+		/* Animation des textes */
+		.timeline-content.visible {
+			opacity: 1;
+			transform: translateY(0);
+		}
+
+		/* Délais progressifs pour les textes */
+		.timeline-content:nth-child(1) {
+			transition-delay: 1.5s;
+		}
+		.timeline-content:nth-child(2) {
+			transition-delay: 1.8s;
+		}
+		.timeline-content:nth-child(3) {
+			transition-delay: 2.1s;
+		}
+		.timeline-content:nth-child(4) {
+			transition-delay: 2.4s;
+		}
+		.timeline-content:nth-child(5) {
+			transition-delay: 2.7s;
+		}
+	</style>
+	<script>
+    function animateTimelineTexts() {
+        const timelineSection = document.getElementById('timeline-texts');
+        if (!timelineSection) return;
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const texts = entry.target.querySelectorAll('.timeline-content');
+                    texts.forEach(text => {
+                        text.classList.add('visible');
+                    });
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, {
+            threshold: 0.3,
+            rootMargin: '0px 0px -100px 0px'
+        });
+
+        observer.observe(timelineSection);
+    }
+
+    // Init
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', animateTimelineTexts);
+    } else {
+        animateTimelineTexts();
+    }
+
+    document.addEventListener('astro:page-load', animateTimelineTexts);
+</script>
+
 </Layout>
-
-<style>
-    /* Animation de tracé SVG */
-    [data-svg-animate] svg path,
-    [data-svg-animate] svg line,
-    [data-svg-animate] svg polyline {
-        stroke-dasharray: 1000;
-        stroke-dashoffset: 1000;
-        transition: stroke-dashoffset 2s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-
-    [data-svg-animate].visible svg path,
-    [data-svg-animate].visible svg line,
-    [data-svg-animate].visible svg polyline {
-        stroke-dashoffset: 0;
-    }
-
-    /* Animation pour les cercles */
-    [data-svg-animate] svg circle {
-        stroke-dasharray: 1000;
-        stroke-dashoffset: 1000;
-        transition: stroke-dashoffset 1.5s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-
-    [data-svg-animate].visible svg circle {
-        stroke-dashoffset: 0;
-    }
-
-    /* Effet de glow progressif */
-    [data-svg-animate].visible svg path,
-    [data-svg-animate].visible svg line {
-        filter: drop-shadow(0 0 8px rgba(0, 255, 238, 0.6));
-        transition: filter 0.5s ease-in-out 1s;
-    }
-</style>

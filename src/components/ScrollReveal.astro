@@ -1,0 +1,79 @@
+---
+const { 
+    class: className = "", 
+    delay = 0,
+    direction = "up", // up, down, left, right, none
+    duration = 0.8,
+    threshold = 0.2
+} = Astro.props;
+
+const directionMap = {
+    up: "translateY(40px)",
+    down: "translateY(-40px)",
+    left: "translateX(40px)",
+    right: "translateX(-40px)",
+    none: "translateY(0)"
+};
+
+const initialTransform = directionMap[direction as keyof typeof directionMap] || directionMap.up;
+---
+
+<div 
+    class={`scroll-reveal ${className}`} 
+    data-scroll-reveal
+    data-delay={delay}
+    data-direction={direction}
+    style={`--initial-transform: ${initialTransform}; --duration: ${duration}s;`}
+>
+    <slot />
+</div>
+
+<script>
+    function initScrollReveal() {
+        const elements = document.querySelectorAll('[data-scroll-reveal]');
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const element = entry.target as HTMLElement;
+                    const delay = parseFloat(element.dataset.delay || '0');
+                    
+                    setTimeout(() => {
+                        element.classList.add('revealed');
+                    }, delay * 1000);
+                    
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, {
+            threshold: 0.2,
+            rootMargin: '0px 0px -50px 0px'
+        });
+
+        elements.forEach(el => observer.observe(el));
+    }
+
+    // Init
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initScrollReveal);
+    } else {
+        initScrollReveal();
+    }
+
+    // Reinit après navigation Astro
+    document.addEventListener('astro:page-load', initScrollReveal);
+</script>
+
+<style>
+    .scroll-reveal {
+        opacity: 0;
+        transform: var(--initial-transform);
+        transition: opacity var(--duration) cubic-bezier(0.4, 0, 0.2, 1),
+                    transform var(--duration) cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .scroll-reveal.revealed {
+        opacity: 1;
+        transform: translateY(0) translateX(0);
+    }
+</style>

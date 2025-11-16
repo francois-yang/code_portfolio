@@ -70,3 +70,36 @@
 .animate-stroke[data-animate="true"] rect {
   /* optional final state tweaks can be added here */
 }
+
+/* Styles pour les animations de scroll */
+[data-scroll-reveal] {
+    opacity: 0;
+    transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1),
+                transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+[data-scroll-reveal].revealed {
+    opacity: 1;
+    transform: translateY(0) translateX(0) !important;
+}
+
+/* Directions d'animation */
+[data-scroll-reveal][data-direction="up"] {
+    transform: translateY(40px);
+}
+
+[data-scroll-reveal][data-direction="down"] {
+    transform: translateY(-40px);
+}
+
+[data-scroll-reveal][data-direction="left"] {
+    transform: translateX(40px);
+}
+
+[data-scroll-reveal][data-direction="right"] {
+    transform: translateX(-40px);
+}
+
+[data-scroll-reveal][data-direction="none"] {
+    transform: translateY(0);
+}

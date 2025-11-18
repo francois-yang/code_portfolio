@@ -372,3 +372,13 @@
     transform: none !important;
 }
 
+/* Scroll fluide pour toutes les ancres */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Ajuste le padding pour compenser le header fixe */
+section[id] {
+    scroll-margin-top: 0px; /* Ajuste selon la hauteur de ton header */
+}
+

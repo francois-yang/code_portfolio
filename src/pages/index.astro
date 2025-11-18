@@ -1179,5 +1179,89 @@ import Layout from "../layouts/Layout.astro";
 			</div>
 		</section>
 	</ScrollReveal>
+	<ScrollReveal>
+		<section
+			id="contact"
+			class="relative py-20 px-6 bg-bleu-fonce fade-in-section"
+		>
+			<div class="relative z-10 max-w-2xl mx-auto">
+				<!-- Titre de section -->
+				<h2 class="text-center mb-16">
+					<span class="text-blanc text-4xl font-bold">Contactez-</span
+					><span class="text-turquoise text-4xl font-bold">moi</span>
+				</h2>
+
+				<!-- Formulaire de contact -->
+				<form class="space-y-6">
+					<!-- Champ Nom -->
+					<div>
+						<input
+							type="text"
+							placeholder="Nom"
+							class="contact-input w-full bg-transparent border-b-2 border-blanc/30 text-blanc placeholder-blanc/70 px-0 py-3 focus:border-turquoise focus:outline-none transition-all"
+						/>
+					</div>
+
+					<!-- Champ Prénom -->
+					<div>
+						<input
+							type="text"
+							placeholder="Prénom"
+							class="contact-input w-full bg-transparent border-b-2 border-blanc/30 text-blanc placeholder-blanc/70 px-0 py-3 focus:border-turquoise focus:outline-none transition-all"
+						/>
+					</div>
+
+					<!-- Champ Email -->
+					<div>
+						<input
+							type="email"
+							placeholder="Email"
+							class="contact-input w-full bg-transparent border-b-2 border-blanc/30 text-blanc placeholder-blanc/70 px-0 py-3 focus:border-turquoise focus:outline-none transition-all"
+						/>
+					</div>
+
+					<!-- Champ Numéro de téléphone -->
+					<div>
+						<input
+							type="tel"
+							placeholder="Numéro de téléphone"
+							class="contact-input w-full bg-transparent border-b-2 border-blanc/30 text-blanc placeholder-blanc/70 px-0 py-3 focus:border-turquoise focus:outline-none transition-all"
+						/>
+					</div>
+
+					<!-- Champ Message -->
+					<div>
+						<textarea
+							placeholder="Message"
+							rows="4"
+							class="contact-input w-full bg-transparent border-b-2 border-blanc/30 text-blanc placeholder-blanc/70 px-0 py-3 focus:border-turquoise focus:outline-none transition-all resize-none"
+						></textarea>
+					</div>
+
+					<!-- Bouton Envoyer -->
+					<div class="flex justify-center pt-6">
+						<button
+							type="submit"
+							class="bg-turquoise hover:bg-turquoise/90 text-bleu-fonce font-semibold px-10 py-3 rounded-lg transition-colors shadow-lg flex items-center gap-2"
+						>
+							Envoyer
+							<svg
+								class="w-5 h-5"
+								fill="none"
+								stroke="currentColor"
+								viewBox="0 0 24 24"
+							>
+								<path
+									stroke-linecap="round"
+									stroke-linejoin="round"
+									stroke-width="2"
+									d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+							</svg>
+						</button>
+					</div>
+				</form>
+			</div>
+		</section>
+	</ScrollReveal>
 </Layout>
 <script src="/scripts/main.js" type="module"></script>

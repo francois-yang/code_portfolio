@@ -10,21 +10,14 @@ function init() {
     initProjectSwitcher();
     animateHeroSVGs();
     initLineAnimations();
-    
-    // Attendre que ScrollReveal soit prêt avant d'initialiser les SVG
-    setTimeout(() => {
-        initSVGAnimations();
-    }, 500);
+    initSVGAnimations(); // ← Vérifie que c'est bien appelé
     
     console.log('✅ All animations initialized');
 }
 
 // Init au chargement
-if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', init);
+if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", init);
 } else {
     init();
 }
-
-// Réinit après navigation Astro (si tu utilises View Transitions)
-document.addEventListener('astro:page-load', init);

@@ -19,7 +19,6 @@ try {
     // Récupérer le projet
     projet = await pb.collection("projet").getOne<Projet>(id!);
 
-
     // Essayer d'abord avec le filtre PocketBase
     try {
         sections = await pb
@@ -28,7 +27,6 @@ try {
                 filter: `projet_id = "${id}"`,
                 sort: "+ordre", // + pour ascendant, si le champ n'existe pas, il sera ignoré
             });
-        
     } catch (filterError) {
         console.warn(
             "⚠️ Filtre PocketBase échoué, tentative avec fetch manuel:",
@@ -42,7 +40,6 @@ try {
                 sort: "created", // Tri par date de création si pas d'ordre
             });
 
-        
         allSections.forEach((section, index) => {
             console.log(`  Section ${index + 1}:`, {
                 id: section.id,
@@ -427,9 +424,6 @@ export async function getStaticPaths() {
                 <!-- Section 1 : Description du projet -->
                 <div class="content-section active" data-section="description">
                     <div class="flex items-center gap-4 mb-8">
-                        <span class="text-5xl font-bold text-turquoise/20"
-                            >01</span
-                        >
                         <h2 class="text-3xl font-bold text-turquoise">
                             Description du projet
                         </h2>
@@ -727,7 +721,6 @@ export async function getStaticPaths() {
                         {
                             projet.lien_site ? (
                                 <>
-                                    
                                     <a
                                         class="mt-4 break-all text-turquoise inline-flex text-xl font-semibold hover:underline"
                                         href={projet.lien_site}

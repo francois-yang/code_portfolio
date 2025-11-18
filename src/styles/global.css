@@ -1,12 +1,12 @@
 @import "tailwindcss";
 
-@theme {
+@theme  {
   /* Couleurs personnalisées Figma */
   --color-bleu-fonce: #072255;
-  --color-screen-color: #045F85B2;
-  --color-turquoise: #00FFEE;
-  --color-blanc: #FFFFFF;
-  --color-line-blue: #00EAFF;
+  --color-screen-color: #045f85B2;
+  --color-turquoise: #00ffee;
+  --color-blanc: #ffffff;
+  --color-line-blue: #00eaff;
 
   /* Animations personnalisées */
   --animate-draw-circle: draw-circle 1.2s cubic-bezier(0.4, 0, 0.2, 1) infinite;
@@ -16,31 +16,56 @@
 }
 
 @keyframes draw-circle {
-  0% { stroke-dashoffset: 0; }
-  100% { stroke-dashoffset: -200; }
+  0% {
+    stroke-dashoffset: 0;
+  }
+
+  100% {
+    stroke-dashoffset: -200;
+  }
 }
 
 @keyframes pulse-dot {
-  0% { opacity: 0.7; transform: scale(1); }
-  100% { opacity: 1; transform: scale(1.3); }
+  0% {
+    opacity: 0.7;
+    transform: scale(1);
+  }
+
+  100% {
+    opacity: 1;
+    transform: scale(1.3);
+  }
 }
 
 @keyframes glow {
-  0% { filter: drop-shadow(0 0 2px currentColor); }
-  100% { filter: drop-shadow(0 0 6px currentColor); }
+  0% {
+    filter: drop-shadow(0 0 2px currentColor);
+  }
+
+  100% {
+    filter: drop-shadow(0 0 6px currentColor);
+  }
 }
 
 @keyframes rotate-slight {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(5deg); }
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(5deg);
+  }
 }
 
 @layer base {
-  *, *::before, *::after {
+  *,
+  *::before,
+  *::after {
     box-sizing: border-box;
   }
 
-  html, body {
+  html,
+  body {
     height: 100%;
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
     margin: 0;
@@ -73,36 +98,259 @@
 
 /* Styles pour les animations de scroll */
 [data-scroll-reveal] {
-    opacity: 0;
-    transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1),
-                transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  opacity: 0;
+  transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1), transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 [data-scroll-reveal].revealed {
-    opacity: 1;
-    transform: translateY(0) translateX(0) !important;
+  opacity: 1;
+  transform: translateY(0) translateX(0) !important;
 }
 
 /* Directions d'animation */
 [data-scroll-reveal][data-direction="up"] {
-    transform: translateY(40px);
+  transform: translateY(40px);
 }
 
 [data-scroll-reveal][data-direction="down"] {
-    transform: translateY(-40px);
+  transform: translateY(-40px);
 }
 
 [data-scroll-reveal][data-direction="left"] {
-    transform: translateX(40px);
+  transform: translateX(40px);
 }
 
 [data-scroll-reveal][data-direction="right"] {
-    transform: translateX(-40px);
+  transform: translateX(-40px);
 }
 
 [data-scroll-reveal][data-direction="none"] {
-    transform: translateY(0);
+  transform: translateY(0);
 }
+
 [data-scroll-reveal][data-direction="none"].revealed {
+  transform: translateY(0);
+}
+/* Animation de rotation lente */
+@keyframes spin-slow {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Effet glow sur le cercle central */
+.glow-circle {
+  filter: drop-shadow(0 0 20px rgba(0, 234, 255, 0.4)) drop-shadow(0 0 40px rgba(0, 234, 255, 0.2));
+}
+
+/* Gradient hero */
+.hero-gradient {
+  background: radial-gradient(ellipse at center, #0e4686 11%, rgba(0, 44, 106, 0.96) 50%, #072255 100%);
+}
+
+.bg-gradient-radial {
+  background: radial-gradient(ellipse at center, transparent 0%, transparent 50%, #072255 100%);
+}
+
+/* Container */
+.hologram-container {
+  min-height: 700px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+/* Écran holographique */
+.hologram-screen {
+  position: absolute;
+  width: 100%;
+  opacity: 0;
+  pointer-events: none;
+  transform: scaleX(0);
+  transform-origin: center;
+}
+
+.hologram-screen.active {
+  position: relative;
+  opacity: 1;
+  pointer-events: all;
+  transform: scaleX(1);
+  transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Animation de fermeture : rétrécissement horizontal */
+.hologram-screen.closing {
+  animation: hologram-close 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+@keyframes hologram-close {
+  0% {
+    transform: scaleX(1) scaleY(1);
+    opacity: 1;
+    filter: blur(0px) brightness(1);
+  }
+
+  100% {
+    transform: scaleX(0) scaleY(0.95);
+    opacity: 0;
+    filter: blur(5px) brightness(1.5);
+  }
+}
+
+/* Animation d'ouverture : dépliage horizontal */
+.hologram-screen.opening {
+  animation: hologram-open 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+@keyframes hologram-open {
+  0% {
+    transform: scaleX(0) scaleY(0.95);
+    opacity: 0;
+    filter: blur(5px) brightness(1.5);
+  }
+
+  100% {
+    transform: scaleX(1) scaleY(1);
+    opacity: 1;
+    filter: blur(0px) brightness(1);
+  }
+}
+
+/* Container de l'écran */
+.screen-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+/* Display holographique avec effet glow */
+.hologram-display {
+  position: relative;
+  width: 100%;
+  max-width: 900px;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 0 40px rgba(0, 234, 255, 0.3), 0 0 80px rgba(0, 234, 255, 0.2), inset 0 0 40px rgba(0, 234, 255, 0.1);
+  background: linear-gradient(135deg, rgba(0, 234, 255, 0.05), rgba(0, 194, 223, 0.05));
+  animation: hologram-pulse 3s ease-in-out infinite;
+}
+
+@keyframes hologram-pulse {
+  0%,
+  100% {
+    box-shadow: 0 0 40px rgba(0, 234, 255, 0.3), 0 0 80px rgba(0, 234, 255, 0.2), inset 0 0 40px rgba(0, 234, 255, 0.1);
+  }
+
+  50% {
+    box-shadow: 0 0 60px rgba(0, 234, 255, 0.5), 0 0 100px rgba(0, 234, 255, 0.3), inset 0 0 60px rgba(0, 234, 255, 0.15);
+  }
+}
+
+/* Image du projet */
+.project-image {
+  width: 100%;
+  height: auto;
+  display: block;
+  filter: brightness(1.1) contrast(1.05);
+}
+
+/* Diffuseur holographique */
+.diffuser {
+  position: relative;
+  width: 100%;
+  max-width: 321px;
+  margin-top: -20px;
+  animation: diffuser-glow 2s ease-in-out infinite;
+}
+
+.diffuser-svg {
+  width: 100%;
+  height: auto;
+  filter: drop-shadow(0 0 20px rgba(0, 234, 255, 0.6));
+}
+
+@keyframes diffuser-glow {
+  0%,
+  100% {
+    opacity: 0.8;
+    transform: scale(1);
+  }
+
+  50% {
+    opacity: 1;
+    transform: scale(1.05);
+  }
+}
+
+/* Bouton CTA */
+.hologram-cta {
+  position: relative;
+  z-index: 10;
+  animation: cta-float 3s ease-in-out infinite;
+}
+
+@keyframes cta-float {
+  0%,
+  100% {
     transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
+/* Effet de scan holographique */
+.hologram-display::after {
+  content: "";
+  position: absolute;
+  top: -100%;
+  left: 0;
+  right: 0;
+  height: 100%;
+  background: linear-gradient(to bottom, transparent, rgba(0, 234, 255, 0.1) 50%, transparent);
+  animation: hologram-scan 4s linear infinite;
+}
+
+@keyframes hologram-scan {
+  0% {
+    top: -100%;
+  }
+
+  100% {
+    top: 100%;
+  }
+}
+
+.line-anim path,
+.line-anim circle {
+  stroke-dasharray: 2000; /* ou plus/moins selon la taille du tracé */
+  stroke-dashoffset: 2000;
+  transition: stroke-dashoffset 1.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.line-anim.revealed path,
+.line-anim.revealed circle {
+  stroke-dashoffset: 0;
+}
+
+.typewriter-invisible {
+  opacity: 0;
+}
+.draw-path {
+    stroke-dasharray: 2000;
+    stroke-dashoffset: 2000;
+    animation: draw 3s ease-in-out forwards;
+}
+
+@keyframes draw {
+    to {
+        stroke-dashoffset: 0;
+    }
 }

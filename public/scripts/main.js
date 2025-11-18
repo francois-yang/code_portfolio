@@ -5,16 +5,26 @@ import { initLineAnimations } from './lineAnimations.js';
 import { initSVGAnimations } from './svgAnimations.js';
 
 function init() {
-    // Initialiser toutes les animations
+    console.log('🚀 Initializing all animations...');
+    
     initProjectSwitcher();
     animateHeroSVGs();
     initLineAnimations();
-    initSVGAnimations(); // ← Vérifie que c'est bien là
+    
+    // Attendre que ScrollReveal soit prêt avant d'initialiser les SVG
+    setTimeout(() => {
+        initSVGAnimations();
+    }, 500);
+    
+    console.log('✅ All animations initialized');
 }
 
 // Init au chargement
-if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", init);
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
 } else {
     init();
 }
+
+// Réinit après navigation Astro (si tu utilises View Transitions)
+document.addEventListener('astro:page-load', init);

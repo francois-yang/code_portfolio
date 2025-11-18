@@ -1,8 +1,54 @@
-// svgAnimations.js
+// /public/scripts/svgAnimations.js
 export function initSVGAnimations() {
-    const svgElements = document.querySelectorAll('[data-svg-animate]');
+    console.log('=== SVG ANIMATION START ===');
     
-    console.log('🔍 SVG elements found:', svgElements.length); // ← Debug
+    function animateSVGElement(el, index) {
+        const svg = el.querySelector('svg');
+        if (!svg) {
+            console.warn(`No SVG in element ${index}`);
+            return;
+        }
+        
+        // Force la visibilité de l'élément
+        el.style.opacity = '1';
+        el.style.visibility = 'visible';
+        svg.style.opacity = '1';
+        svg.style.visibility = 'visible';
+        
+        const shapes = svg.querySelectorAll('path, circle, line, polyline');
+        console.log(`Element ${index}: Found ${shapes.length} shapes`);
+        
+        shapes.forEach((shape, shapeIndex) => {
+            try {
+                requestAnimationFrame(() => {
+                    requestAnimationFrame(() => {
+                        const length = shape.getTotalLength ? shape.getTotalLength() : 1000;
+                        console.log(`  Shape ${shapeIndex} length:`, length);
+                        
+                        // Configuration initiale : ligne invisible
+                        shape.style.strokeDasharray = `${length}`;
+                        shape.style.strokeDashoffset = `${length}`;
+                        shape.style.transition = 'none';
+                        
+                        // Force un reflow
+                        shape.getBoundingClientRect();
+                        
+                        // Active la transition puis anime
+                        setTimeout(() => {
+                            shape.style.transition = `stroke-dashoffset ${2 + shapeIndex * 0.3}s ease-in-out`;
+                            shape.style.strokeDashoffset = '0';
+                            console.log(`  ✅ Animating shape ${shapeIndex}`);
+                        }, 100 + (shapeIndex * 200));
+                    });
+                });
+            } catch (error) {
+                console.error(`  ❌ Error on shape ${shapeIndex}:`, error);
+            }
+        });
+    }
+    
+    const svgElements = document.querySelectorAll('[data-svg-animate]');
+    console.log('📊 Total elements:', svgElements.length);
     
     if (svgElements.length === 0) {
         console.warn('⚠️ No elements with data-svg-animate found!');
@@ -11,38 +57,27 @@ export function initSVGAnimations() {
     
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
-            console.log('👀 Element visible:', entry.isIntersecting); // ← Debug
             if (entry.isIntersecting) {
-                const svgElement = entry.target.querySelector('svg');
-                if (svgElement) {
-                    console.log('✅ Animating SVG'); // ← Debug
-                    animateSVGPaths(svgElement);
-                    observer.unobserve(entry.target);
-                }
+                const index = Array.from(svgElements).indexOf(entry.target);
+                console.log(`👁️ Element ${index} is visible, animating...`);
+                
+                setTimeout(() => {
+                    animateSVGElement(entry.target, index);
+                }, 100);
+                
+                observer.unobserve(entry.target);
             }
         });
     }, {
-        threshold: 0.2,
-        rootMargin: '0px 0px -100px 0px'
+        threshold: 0.1,
+        rootMargin: '50px'
     });
-
-    svgElements.forEach(el => observer.observe(el));
-}
-
-function animateSVGPaths(svg) {
-    const paths = svg.querySelectorAll('path, line, polyline, circle');
     
-    console.log('🎨 Paths to animate:', paths.length); // ← Debug
-    
-    paths.forEach((path, index) => {
-        const length = path.getTotalLength ? path.getTotalLength() : 1000;
-        
-        path.style.strokeDasharray = length;
-        path.style.strokeDashoffset = length;
-        path.style.transition = `stroke-dashoffset ${1.5 + index * 0.2}s ease-in-out`;
-        
-        setTimeout(() => {
-            path.style.strokeDashoffset = '0';
-        }, index * 100);
+    svgElements.forEach(el => {
+        el.style.opacity = '1';
+        el.style.visibility = 'visible';
+        observer.observe(el);
     });
+    
+    console.log('=== SVG OBSERVER INITIALIZED ===');
 }

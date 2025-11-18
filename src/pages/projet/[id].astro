@@ -261,7 +261,7 @@ export async function getStaticPaths() {
             <div class="grid lg:grid-cols-2 gap-12 items-center">
                 <!-- Colonne gauche : Titre et image -->
                 <div class="space-y-8">
-                    <h1 class="text-5xl font-bold text-blanc">
+                    <h1 class="text-5xl font-bold text-blanc typewriter">
                         Projet <span style={`color: ${colors.decoration};`}
                             >{projet.nom_projet_hero}</span
                         >
@@ -286,7 +286,7 @@ export async function getStaticPaths() {
                         class="rounded-xl p-6 transition-all duration-300"
                         style={`background-color: ${colors.decoration}15; border: 1px solid ${colors.decoration}4D; &:hover { border-color: ${colors.decoration}; }`}
                     >
-                        <p class="text-blanc text-lg leading-relaxed">
+                        <p class="text-blanc text-lg leading-relaxed typewriter">
                             {projet.info1_hero}
                         </p>
                     </div>
@@ -296,7 +296,7 @@ export async function getStaticPaths() {
                         class="inline-block rounded-full px-6 py-3"
                         style={`background-color: ${colors.decoration}33; border: 2px solid ${colors.decoration};`}
                     >
-                        <p class="text-blanc font-semibold">
+                        <p class="text-blanc font-semibold typewriter">
                             {projet.info2_hero}
                         </p>
                     </div>
@@ -306,7 +306,7 @@ export async function getStaticPaths() {
                         class="inline-block rounded-full px-6 py-3 ml-4"
                         style={`background-color: ${colors.decoration}33; border: 2px solid ${colors.decoration};`}
                     >
-                        <p class="text-blanc font-semibold">
+                        <p class="text-blanc font-semibold typewriter">
                             {projet.info3_hero}
                         </p>
                     </div>

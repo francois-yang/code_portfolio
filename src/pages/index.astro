@@ -1,7 +1,6 @@
 ---
 import ScrollReveal from "../components/ScrollReveal.astro";
 import Layout from "../layouts/Layout.astro";
-import Typewriter from "../../public/scripts/typeWriter.js";
 ---
 
 <Layout>
@@ -296,49 +295,44 @@ import Typewriter from "../../public/scripts/typeWriter.js";
 	</section>
 
 	<!-- Section Présentation -->
-	<ScrollReveal>
-		<section
-			data-scroll-reveal
-			data-direction="up"
-			data-delay="0"
-			class="relative py-20 pb-40 px-6 bg-bleu-fonce overflow-hidden"
-		>
-			<div class="absolute inset-0 z-0 pointer-events-none">
-				<!-- Cercle avec animation existante -->
-				<div data-svg-animate>
-					<svg
-						width="552"
-						height="552"
-						fill="none"
-						xmlns="http://www.w3.org/2000/svg"
-					>
-						<circle
-							cx="276"
-							cy="276"
-							r="275.5"
-							stroke="#00EAFF"
-							stroke-opacity=".48"></circle>
-					</svg>
-				</div>
 
-				<!-- Ligne avec la même animation -->
-				<div data-svg-animate>
-					<svg
-						width="100%"
-						height="31"
-						viewBox="0 0 1177 31"
-						fill="none"
-						xmlns="http://www.w3.org/2000/svg"
-						preserveAspectRatio="none"
-						class="mt-15 block"
-					>
-						<path
-							d="M0 30.5h257.733L360.955.5h323.302l105.171 30h270.712l33.11-30H1177"
-							stroke="#00EAFF"></path>
-					</svg>
-				</div>
+	<section class="relative py-20 pb-40 px-6 bg-bleu-fonce overflow-hidden">
+		<div class="absolute inset-0 z-0 pointer-events-none">
+			<!-- Cercle avec animation existante -->
+			<div data-svg-animate>
+				<svg
+					width="552"
+					height="552"
+					fill="none"
+					xmlns="http://www.w3.org/2000/svg"
+				>
+					<circle
+						cx="276"
+						cy="276"
+						r="275.5"
+						stroke="#00EAFF"
+						stroke-opacity=".48"></circle>
+				</svg>
 			</div>
 
+			<!-- Ligne avec la même animation -->
+			<div data-svg-animate>
+				<svg
+					width="100%"
+					height="31"
+					viewBox="0 0 1177 31"
+					fill="none"
+					xmlns="http://www.w3.org/2000/svg"
+					preserveAspectRatio="none"
+					class="mt-15 block"
+				>
+					<path
+						d="M0 30.5h257.733L360.955.5h323.302l105.171 30h270.712l33.11-30H1177"
+						stroke="#00EAFF"></path>
+				</svg>
+			</div>
+		</div>
+		<ScrollReveal direction="up" delay={0}>
 			<div class="relative z-10 max-w-7xl mx-auto">
 				<h2 class="text-turquoise text-4xl font-bold mb-16">
 					Présentation
@@ -383,16 +377,11 @@ import Typewriter from "../../public/scripts/typeWriter.js";
 					</div>
 				</div>
 			</div>
-		</section>
-	</ScrollReveal>
+		</ScrollReveal>
+	</section>
 	<ScrollReveal>
 		<!-- Section Mes prestations -->
-		<section
-			data-scroll-reveal
-			data-direction="up"
-			data-delay="0"
-			class="relative py-20 px-6 bg-bleu-fonce overflow-hidden"
-		>
+		<section class="relative py-20 px-6 bg-bleu-fonce overflow-hidden">
 			<!-- SVG centré au milieu de la section -->
 			<div
 				class="absolute inset-0 flex items-center justify-center z-0 pointer-events-none top-20 max-w-3xl mx-auto"
@@ -552,221 +541,476 @@ import Typewriter from "../../public/scripts/typeWriter.js";
 	</ScrollReveal>
 	<ScrollReveal>
 		<section class="relative py-20 px-0 bg-bleu-fonce overflow-visible">
-    <h2 class="text-turquoise text-3xl md:text-4xl font-bold mb-12 md:mb-16 text-center px-4">
-        Mes compétences
-    </h2>
+			<h2
+				class="text-turquoise text-3xl md:text-4xl font-bold mb-12 md:mb-16 text-center px-4"
+			>
+				Mes compétences
+			</h2>
 
-    <!-- VERSION MOBILE (< md) : Layout simple avec petites branches -->
-    <div class="block md:hidden px-4 space-y-10">
-        <!-- Illustrator à gauche -->
-        <div class="relative flex items-center" data-svg-animate>
-            <svg class="absolute left-0 top-1/2 -translate-y-1/2" width="80" height="30" viewBox="0 0 80 30" fill="none">
-                <polyline points="0,15 50,15 65,25 80,25" stroke="#00EAFF" stroke-width="2" fill="none"></polyline>
-            </svg>
-            <div class="ml-[85px] flex flex-col items-center">
-                <div class="w-16 h-16 rounded-full bg-turquoise flex items-center justify-center mb-1">
-                    <img src="/branches-num/img-illustrator.webp" alt="Illustrator" class="w-10 h-10" />
-                </div>
-                <span class="text-blanc text-sm">Illustrator</span>
-            </div>
-        </div>
+			<!-- VERSION MOBILE (< md) : Layout simple avec petites branches -->
+			<div class="block md:hidden px-4 space-y-10">
+				<!-- Illustrator à gauche -->
+				<div class="relative flex items-center" data-svg-animate>
+					<svg
+						class="absolute left-0 top-1/2 -translate-y-1/2"
+						width="80"
+						height="30"
+						viewBox="0 0 80 30"
+						fill="none"
+					>
+						<polyline
+							points="0,15 50,15 65,25 80,25"
+							stroke="#00EAFF"
+							stroke-width="2"
+							fill="none"></polyline>
+					</svg>
+					<div class="ml-[85px] flex flex-col items-center">
+						<div
+							class="w-16 h-16 rounded-full bg-turquoise flex items-center justify-center mb-1"
+						>
+							<img
+								src="/branches-num/img-illustrator.webp"
+								alt="Illustrator"
+								class="w-10 h-10"
+							/>
+						</div>
+						<span class="text-blanc text-sm">Illustrator</span>
+					</div>
+				</div>
 
-        <!-- VS Code à droite -->
-        <div class="relative flex items-center justify-end" data-svg-animate>
-            <div class="mr-[85px] flex flex-col items-center">
-                <div class="w-16 h-16 rounded-full bg-turquoise flex items-center justify-center mb-1">
-                    <img src="/branches-num/img-vs_code.webp" alt="VS Code" class="w-10 h-10" />
-                </div>
-                <span class="text-blanc text-sm">VS Code</span>
-            </div>
-            <svg class="absolute right-0 top-1/2 -translate-y-1/2" width="80" height="30" viewBox="0 0 80 30" fill="none">
-                <polyline points="80,15 30,15 15,25 0,25" stroke="#00EAFF" stroke-width="2" fill="none"></polyline>
-            </svg>
-        </div>
+				<!-- VS Code à droite -->
+				<div
+					class="relative flex items-center justify-end"
+					data-svg-animate
+				>
+					<div class="mr-[85px] flex flex-col items-center">
+						<div
+							class="w-16 h-16 rounded-full bg-turquoise flex items-center justify-center mb-1"
+						>
+							<img
+								src="/branches-num/img-vs_code.webp"
+								alt="VS Code"
+								class="w-10 h-10"
+							/>
+						</div>
+						<span class="text-blanc text-sm">VS Code</span>
+					</div>
+					<svg
+						class="absolute right-0 top-1/2 -translate-y-1/2"
+						width="80"
+						height="30"
+						viewBox="0 0 80 30"
+						fill="none"
+					>
+						<polyline
+							points="80,15 30,15 15,25 0,25"
+							stroke="#00EAFF"
+							stroke-width="2"
+							fill="none"></polyline>
+					</svg>
+				</div>
 
-        
-        <!-- WordPress à gauche -->
-    <div class="relative flex items-center" data-svg-animate>
-        <svg class="absolute left-0 top-1/2 -translate-y-1/2" width="110" height="30" viewBox="0 0 110 30" fill="none">
-            <polyline points="0,15 70,15 90,25 110,25" stroke="#00EAFF" stroke-width="2" fill="none"></polyline>
-        </svg>
-        <div class="ml-[115px] flex flex-col items-center">
-            <div class="w-16 h-16 rounded-full bg-turquoise flex items-center justify-center mb-1">
-                <img src="/branches-num/img-wordpress.webp" alt="WordPress" class="w-10 h-10" />
-            </div>
-            <span class="text-blanc text-sm">WordPress</span>
-        </div>
-    </div>
+				<!-- WordPress à gauche -->
+				<div class="relative flex items-center" data-svg-animate>
+					<svg
+						class="absolute left-0 top-1/2 -translate-y-1/2"
+						width="110"
+						height="30"
+						viewBox="0 0 110 30"
+						fill="none"
+					>
+						<polyline
+							points="0,15 70,15 90,25 110,25"
+							stroke="#00EAFF"
+							stroke-width="2"
+							fill="none"></polyline>
+					</svg>
+					<div class="ml-[115px] flex flex-col items-center">
+						<div
+							class="w-16 h-16 rounded-full bg-turquoise flex items-center justify-center mb-1"
+						>
+							<img
+								src="/branches-num/img-wordpress.webp"
+								alt="WordPress"
+								class="w-10 h-10"
+							/>
+						</div>
+						<span class="text-blanc text-sm">WordPress</span>
+					</div>
+				</div>
 
-        <!-- Notion à droite -->
-        <div class="relative flex items-center justify-end" data-svg-animate>
-        <div class="mr-[115px] flex flex-col items-center">
-            <div class="w-16 h-16 rounded-full bg-turquoise flex items-center justify-center mb-1">
-                <img src="/branches-num/img-notion.webp" alt="Notion" class="w-10 h-10" />
-            </div>
-            <span class="text-blanc text-sm">Notion</span>
-        </div>
-        <svg class="absolute right-0 top-1/2 -translate-y-1/2" width="110" height="30" viewBox="0 0 110 30" fill="none">
-            <polyline points="110,15 40,15 20,25 0,25" stroke="#00EAFF" stroke-width="2" fill="none"></polyline>
-        </svg>
-    </div>
+				<!-- Notion à droite -->
+				<div
+					class="relative flex items-center justify-end"
+					data-svg-animate
+				>
+					<div class="mr-[115px] flex flex-col items-center">
+						<div
+							class="w-16 h-16 rounded-full bg-turquoise flex items-center justify-center mb-1"
+						>
+							<img
+								src="/branches-num/img-notion.webp"
+								alt="Notion"
+								class="w-10 h-10"
+							/>
+						</div>
+						<span class="text-blanc text-sm">Notion</span>
+					</div>
+					<svg
+						class="absolute right-0 top-1/2 -translate-y-1/2"
+						width="110"
+						height="30"
+						viewBox="0 0 110 30"
+						fill="none"
+					>
+						<polyline
+							points="110,15 40,15 20,25 0,25"
+							stroke="#00EAFF"
+							stroke-width="2"
+							fill="none"></polyline>
+					</svg>
+				</div>
 
-        <!-- Astro à gauche -->
-        <div class="relative flex items-center" data-svg-animate>
-            <svg class="absolute left-0 top-1/2 -translate-y-1/2" width="90" height="30" viewBox="0 0 90 30" fill="none">
-                <polyline points="0,15 55,15 70,25 90,25" stroke="#00EAFF" stroke-width="2" fill="none"></polyline>
-            </svg>
-            <div class="ml-[95px] flex flex-col items-center">
-                <div class="w-16 h-16 rounded-full bg-turquoise flex items-center justify-center mb-1">
-                    <img src="/branches-num/img-astro.webp" alt="Astro" class="w-10 h-10" />
-                </div>
-                <span class="text-blanc text-sm">Astro</span>
-            </div>
-        </div>
+				<!-- Astro à gauche -->
+				<div class="relative flex items-center" data-svg-animate>
+					<svg
+						class="absolute left-0 top-1/2 -translate-y-1/2"
+						width="90"
+						height="30"
+						viewBox="0 0 90 30"
+						fill="none"
+					>
+						<polyline
+							points="0,15 55,15 70,25 90,25"
+							stroke="#00EAFF"
+							stroke-width="2"
+							fill="none"></polyline>
+					</svg>
+					<div class="ml-[95px] flex flex-col items-center">
+						<div
+							class="w-16 h-16 rounded-full bg-turquoise flex items-center justify-center mb-1"
+						>
+							<img
+								src="/branches-num/img-astro.webp"
+								alt="Astro"
+								class="w-10 h-10"
+							/>
+						</div>
+						<span class="text-blanc text-sm">Astro</span>
+					</div>
+				</div>
 
-        <!-- Canva à droite -->
-        <div class="relative flex items-center justify-end" data-svg-animate>
-            <div class="mr-[95px] flex flex-col items-center">
-                <div class="w-16 h-16 rounded-full bg-turquoise flex items-center justify-center mb-1">
-                    <img src="/branches-num/img-canva.webp" alt="Canva" class="w-10 h-10" />
-                </div>
-                <span class="text-blanc text-sm">Canva</span>
-            </div>
-            <svg class="absolute right-0 top-1/2 -translate-y-1/2" width="90" height="30" viewBox="0 0 90 30" fill="none">
-                <polyline points="90,15 35,15 20,25 0,25" stroke="#00EAFF" stroke-width="2" fill="none"></polyline>
-            </svg>
-        </div>
+				<!-- Canva à droite -->
+				<div
+					class="relative flex items-center justify-end"
+					data-svg-animate
+				>
+					<div class="mr-[95px] flex flex-col items-center">
+						<div
+							class="w-16 h-16 rounded-full bg-turquoise flex items-center justify-center mb-1"
+						>
+							<img
+								src="/branches-num/img-canva.webp"
+								alt="Canva"
+								class="w-10 h-10"
+							/>
+						</div>
+						<span class="text-blanc text-sm">Canva</span>
+					</div>
+					<svg
+						class="absolute right-0 top-1/2 -translate-y-1/2"
+						width="90"
+						height="30"
+						viewBox="0 0 90 30"
+						fill="none"
+					>
+						<polyline
+							points="90,15 35,15 20,25 0,25"
+							stroke="#00EAFF"
+							stroke-width="2"
+							fill="none"></polyline>
+					</svg>
+				</div>
 
-        <!-- Figma à droite -->
-        <div class="relative flex items-center justify-end" data-svg-animate>
-            <div class="mr-[95px] flex flex-col items-center">
-                <div class="w-16 h-16 rounded-full bg-turquoise flex items-center justify-center mb-1">
-                    <img src="/branches-num/img-figma.webp" alt="Figma" class="w-10 h-10" />
-                </div>
-                <span class="text-blanc text-sm">Figma</span>
-            </div>
-            <svg class="absolute right-0 top-1/2 -translate-y-1/2" width="90" height="30" viewBox="0 0 90 30" fill="none">
-                <polyline points="90,15 35,15 20,25 0,25" stroke="#00EAFF" stroke-width="2" fill="none"></polyline>
-            </svg>
-        </div>
-    </div>
+				<!-- Figma à droite -->
+				<div
+					class="relative flex items-center justify-end"
+					data-svg-animate
+				>
+					<div class="mr-[95px] flex flex-col items-center">
+						<div
+							class="w-16 h-16 rounded-full bg-turquoise flex items-center justify-center mb-1"
+						>
+							<img
+								src="/branches-num/img-figma.webp"
+								alt="Figma"
+								class="w-10 h-10"
+							/>
+						</div>
+						<span class="text-blanc text-sm">Figma</span>
+					</div>
+					<svg
+						class="absolute right-0 top-1/2 -translate-y-1/2"
+						width="90"
+						height="30"
+						viewBox="0 0 90 30"
+						fill="none"
+					>
+						<polyline
+							points="90,15 35,15 20,25 0,25"
+							stroke="#00EAFF"
+							stroke-width="2"
+							fill="none"></polyline>
+					</svg>
+				</div>
+			</div>
 
-    <!-- VERSION DESKTOP (>= md) : Avec branches complètes -->
-    <div class="hidden md:block">
-        <!-- Ligne 1 : Illustrator & VS Code -->
-        <div class="relative flex items-center mb-12 w-full" style="min-height:120px;">
-            <div class="relative flex items-center" data-svg-animate>
-                <svg class="absolute left-0 top-1/2 -translate-y-1/2" width="315" height="44" fill="none">
-                    <polyline points="0,22 200,22 250,44 315,44" stroke="#00EAFF" stroke-width="2.2" fill="none"></polyline>
-                </svg>
-                <div class="ml-[315px] flex flex-col items-center z-10">
-                    <span class="text-blanc text-base font-normal mb-1">Illustrator</span>
-                    <div class="w-24 h-24 rounded-full bg-turquoise flex items-center justify-center">
-                        <img src="/branches-num/img-illustrator.webp" alt="Illustrator" class="w-14 h-14" />
-                    </div>
-                </div>
-            </div>
+			<!-- VERSION DESKTOP (>= md) : Avec branches complètes -->
+			<div class="hidden md:block">
+				<!-- Ligne 1 : Illustrator & VS Code -->
+				<div
+					class="relative flex items-center mb-12 w-full"
+					style="min-height:120px;"
+				>
+					<div class="relative flex items-center" data-svg-animate>
+						<svg
+							class="absolute left-0 top-1/2 -translate-y-1/2"
+							width="315"
+							height="44"
+							fill="none"
+						>
+							<polyline
+								points="0,22 200,22 250,44 315,44"
+								stroke="#00EAFF"
+								stroke-width="2.2"
+								fill="none"></polyline>
+						</svg>
+						<div class="ml-[315px] flex flex-col items-center z-10">
+							<span class="text-blanc text-base font-normal mb-1"
+								>Illustrator</span
+							>
+							<div
+								class="w-24 h-24 rounded-full bg-turquoise flex items-center justify-center"
+							>
+								<img
+									src="/branches-num/img-illustrator.webp"
+									alt="Illustrator"
+									class="w-14 h-14"
+								/>
+							</div>
+						</div>
+					</div>
 
-            <div class="flex-1"></div>
+					<div class="flex-1"></div>
 
-            <div class="relative flex items-center justify-end" data-svg-animate>
-                <div class="flex flex-col items-center z-10 mr-[315px]">
-                    <span class="text-blanc text-base font-normal mb-1">VS Code</span>
-                    <div class="w-24 h-24 rounded-full bg-turquoise flex items-center justify-center">
-                        <img src="/branches-num/img-vs_code.webp" alt="VS Code" class="w-14 h-14" />
-                    </div>
-                </div>
-                <svg class="absolute right-0 top-1/2 -translate-y-1/2" width="315" height="44" fill="none">
-                    <polyline points="315,22 115,22 65,44 0,44" stroke="#00EAFF" stroke-width="2.2" fill="none"></polyline>
-                </svg>
-            </div>
-        </div>
+					<div
+						class="relative flex items-center justify-end"
+						data-svg-animate
+					>
+						<div class="flex flex-col items-center z-10 mr-[315px]">
+							<span class="text-blanc text-base font-normal mb-1"
+								>VS Code</span
+							>
+							<div
+								class="w-24 h-24 rounded-full bg-turquoise flex items-center justify-center"
+							>
+								<img
+									src="/branches-num/img-vs_code.webp"
+									alt="VS Code"
+									class="w-14 h-14"
+								/>
+							</div>
+						</div>
+						<svg
+							class="absolute right-0 top-1/2 -translate-y-1/2"
+							width="315"
+							height="44"
+							fill="none"
+						>
+							<polyline
+								points="315,22 115,22 65,44 0,44"
+								stroke="#00EAFF"
+								stroke-width="2.2"
+								fill="none"></polyline>
+						</svg>
+					</div>
+				</div>
 
-        <!-- Ligne 2 : WordPress & Notion -->
-       <div class="relative flex items-center mb-12 w-full" style="min-height:120px;">
-        <!-- WordPress à gauche -->
-        <div class="relative flex items-center" data-svg-animate>
-            <svg class="absolute left-0 top-1/2 -translate-y-1/2" width="380" height="44" fill="none">
-                <polyline points="0,22 200,22 250,44 380,44" stroke="#00EAFF" stroke-width="2.2" fill="none"></polyline>
-            </svg>
-            <div class="ml-[355px] flex flex-col items-center z-10">
-                <span class="text-blanc text-base font-normal mb-1">WordPress</span>
-                <div class="w-24 h-24 rounded-full bg-turquoise flex items-center justify-center">
-                    <img src="/branches-num/img-wordpress.webp" alt="WordPress" class="w-14 h-14" />
-                </div>
-            </div>
-        </div>
+				<!-- Ligne 2 : WordPress & Notion -->
+				<div
+					class="relative flex items-center mb-12 w-full"
+					style="min-height:120px;"
+				>
+					<!-- WordPress à gauche -->
+					<div class="relative flex items-center" data-svg-animate>
+						<svg
+							class="absolute left-0 top-1/2 -translate-y-1/2"
+							width="380"
+							height="44"
+							fill="none"
+						>
+							<polyline
+								points="0,22 200,22 250,44 380,44"
+								stroke="#00EAFF"
+								stroke-width="2.2"
+								fill="none"></polyline>
+						</svg>
+						<div class="ml-[355px] flex flex-col items-center z-10">
+							<span class="text-blanc text-base font-normal mb-1"
+								>WordPress</span
+							>
+							<div
+								class="w-24 h-24 rounded-full bg-turquoise flex items-center justify-center"
+							>
+								<img
+									src="/branches-num/img-wordpress.webp"
+									alt="WordPress"
+									class="w-14 h-14"
+								/>
+							</div>
+						</div>
+					</div>
 
-            <div class="flex-1"></div>
+					<div class="flex-1"></div>
 
-            <div class="relative flex items-center" data-svg-animate>
-            <div class="flex flex-col items-center z-10 mr-[355px]">
-                <span class="text-blanc text-base font-normal mb-1">Notion</span>
-                <div class="w-24 h-24 rounded-full bg-turquoise flex items-center justify-center">
-                    <img src="/branches-num/img-notion.webp" alt="Notion" class="w-14 h-14" />
-                </div>
-            </div>
-            <svg class="absolute right-0 top-1/2 -translate-y-1/2" width="380" height="44" fill="none">
-                <polyline points="380,22 180,22 130,44 0,44" stroke="#00EAFF" stroke-width="2.2" fill="none"></polyline>
-            </svg>
-        </div>
-    </div>
+					<div class="relative flex items-center" data-svg-animate>
+						<div class="flex flex-col items-center z-10 mr-[355px]">
+							<span class="text-blanc text-base font-normal mb-1"
+								>Notion</span
+							>
+							<div
+								class="w-24 h-24 rounded-full bg-turquoise flex items-center justify-center"
+							>
+								<img
+									src="/branches-num/img-notion.webp"
+									alt="Notion"
+									class="w-14 h-14"
+								/>
+							</div>
+						</div>
+						<svg
+							class="absolute right-0 top-1/2 -translate-y-1/2"
+							width="380"
+							height="44"
+							fill="none"
+						>
+							<polyline
+								points="380,22 180,22 130,44 0,44"
+								stroke="#00EAFF"
+								stroke-width="2.2"
+								fill="none"></polyline>
+						</svg>
+					</div>
+				</div>
 
-        <!-- Ligne 3 : Astro & Canva -->
-        <div class="relative flex items-center mb-12 w-full" style="min-height:120px;">
-            <div class="relative flex items-center" data-svg-animate>
-                <svg class="absolute left-0 top-1/2 -translate-y-1/2" width="350" height="44" fill="none">
-                    <polyline points="0,22 130,22 170,44 350,44" stroke="#00EAFF" stroke-width="2.2" fill="none"></polyline>
-                </svg>
-                <div class="ml-[315px] flex flex-col items-center z-10">
-                    <span class="text-blanc text-base font-normal mb-1">Astro</span>
-                    <div class="w-24 h-24 rounded-full bg-turquoise flex items-center justify-center">
-                        <img src="/branches-num/img-astro.webp" alt="Astro" class="w-14 h-14" />
-                    </div>
-                </div>
-            </div>
+				<!-- Ligne 3 : Astro & Canva -->
+				<div
+					class="relative flex items-center mb-12 w-full"
+					style="min-height:120px;"
+				>
+					<div class="relative flex items-center" data-svg-animate>
+						<svg
+							class="absolute left-0 top-1/2 -translate-y-1/2"
+							width="350"
+							height="44"
+							fill="none"
+						>
+							<polyline
+								points="0,22 130,22 170,44 350,44"
+								stroke="#00EAFF"
+								stroke-width="2.2"
+								fill="none"></polyline>
+						</svg>
+						<div class="ml-[315px] flex flex-col items-center z-10">
+							<span class="text-blanc text-base font-normal mb-1"
+								>Astro</span
+							>
+							<div
+								class="w-24 h-24 rounded-full bg-turquoise flex items-center justify-center"
+							>
+								<img
+									src="/branches-num/img-astro.webp"
+									alt="Astro"
+									class="w-14 h-14"
+								/>
+							</div>
+						</div>
+					</div>
 
-            <div class="flex-1"></div>
+					<div class="flex-1"></div>
 
-            <div class="relative flex items-center" data-svg-animate>
-                <div class="flex flex-col items-center z-10 mr-[315px]">
-                    <span class="text-blanc text-base font-normal mb-1">Canva</span>
-                    <div class="w-24 h-24 rounded-full bg-turquoise flex items-center justify-center">
-                        <img src="/branches-num/img-canva.webp" alt="Canva" class="w-14 h-14" />
-                    </div>
-                </div>
-                <svg class="absolute right-0 top-1/2 -translate-y-1/2" width="350" height="44" fill="none">
-                    <polyline points="350,22 220,22 180,44 0,44" stroke="#00EAFF" stroke-width="2.2" fill="none"></polyline>
-                </svg>
-            </div>
-        </div>
+					<div class="relative flex items-center" data-svg-animate>
+						<div class="flex flex-col items-center z-10 mr-[315px]">
+							<span class="text-blanc text-base font-normal mb-1"
+								>Canva</span
+							>
+							<div
+								class="w-24 h-24 rounded-full bg-turquoise flex items-center justify-center"
+							>
+								<img
+									src="/branches-num/img-canva.webp"
+									alt="Canva"
+									class="w-14 h-14"
+								/>
+							</div>
+						</div>
+						<svg
+							class="absolute right-0 top-1/2 -translate-y-1/2"
+							width="350"
+							height="44"
+							fill="none"
+						>
+							<polyline
+								points="350,22 220,22 180,44 0,44"
+								stroke="#00EAFF"
+								stroke-width="2.2"
+								fill="none"></polyline>
+						</svg>
+					</div>
+				</div>
 
-        <!-- Ligne 4 : Figma seul à droite -->
-        <div class="relative flex items-center mb-12 w-full" style="min-height:120px;">
-            <div class="flex-1"></div>
-            <div class="relative flex items-center" data-svg-animate>
-                <div class="flex flex-col items-center z-10 mr-[315px]">
-                    <span class="text-blanc text-base font-normal mb-1">Figma</span>
-                    <div class="w-24 h-24 rounded-full bg-turquoise flex items-center justify-center">
-                        <img src="/branches-num/img-figma.webp" alt="Figma" class="w-14 h-14" />
-                    </div>
-                </div>
-                <svg class="absolute right-0 top-1/2 -translate-y-1/2" width="350" height="44" fill="none">
-                    <polyline points="350,22 220,22 180,44 0,44" stroke="#00EAFF" stroke-width="2.2" fill="none"></polyline>
-                </svg>
-            </div>
-        </div>
-    </div>
-</section>
-
+				<!-- Ligne 4 : Figma seul à droite -->
+				<div
+					class="relative flex items-center mb-12 w-full"
+					style="min-height:120px;"
+				>
+					<div class="flex-1"></div>
+					<div class="relative flex items-center" data-svg-animate>
+						<div class="flex flex-col items-center z-10 mr-[315px]">
+							<span class="text-blanc text-base font-normal mb-1"
+								>Figma</span
+							>
+							<div
+								class="w-24 h-24 rounded-full bg-turquoise flex items-center justify-center"
+							>
+								<img
+									src="/branches-num/img-figma.webp"
+									alt="Figma"
+									class="w-14 h-14"
+								/>
+							</div>
+						</div>
+						<svg
+							class="absolute right-0 top-1/2 -translate-y-1/2"
+							width="350"
+							height="44"
+							fill="none"
+						>
+							<polyline
+								points="350,22 220,22 180,44 0,44"
+								stroke="#00EAFF"
+								stroke-width="2.2"
+								fill="none"></polyline>
+						</svg>
+					</div>
+				</div>
+			</div>
+		</section>
 	</ScrollReveal>
 
 	<ScrollReveal>
 		<!-- Section Mes projets avec animation de rétrécissement/dépliage -->
 		<section
-			data-scroll-reveal
-			data-direction="up"
-			data-delay="0"
 			class="relative py-20 px-6 overflow-hidden"
 			style="background-color: #053361;"
 		>
@@ -782,7 +1026,7 @@ import Typewriter from "../../public/scripts/typeWriter.js";
 					<!-- Bouton gauche -->
 					<button
 						id="prev-btn"
-						class="flex-shrink-0 w-16 h-16 border-2 border-turquoise rounded-lg flex items-center justify-center hover:bg-turquoise/20 transition-colors z-20 typewriter"
+						class="flex-shrink-0 w-16 h-16 border-2 border-turquoise rounded-lg flex items-center justify-center hover:bg-turquoise/20 transition-colors z-20"
 					>
 						<img
 							src="/icon/fleche-gauche.svg"
@@ -935,6 +1179,5 @@ import Typewriter from "../../public/scripts/typeWriter.js";
 			</div>
 		</section>
 	</ScrollReveal>
-
-	<script src="/scripts/main.js" type="module"></script>
 </Layout>
+<script src="/scripts/main.js" type="module"></script>

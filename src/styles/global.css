@@ -354,3 +354,21 @@
         stroke-dashoffset: 0;
     }
 }
+/* Force la visibilité des SVG animés */
+[data-svg-animate] {
+    opacity: 1 !important;
+    visibility: visible !important;
+}
+
+[data-svg-animate] svg {
+    opacity: 1 !important;
+    visibility: visible !important;
+    display: block !important;
+}
+
+/* N'applique pas l'opacity de ScrollReveal aux SVG */
+.scroll-reveal [data-svg-animate] {
+    opacity: 1 !important;
+    transform: none !important;
+}
+

@@ -286,7 +286,9 @@ export async function getStaticPaths() {
                         class="rounded-xl p-6 transition-all duration-300"
                         style={`background-color: ${colors.decoration}15; border: 1px solid ${colors.decoration}4D; &:hover { border-color: ${colors.decoration}; }`}
                     >
-                        <p class="text-blanc text-lg leading-relaxed typewriter">
+                        <p
+                            class="text-blanc text-lg leading-relaxed typewriter"
+                        >
                             {projet.info1_hero}
                         </p>
                     </div>
@@ -318,478 +320,530 @@ export async function getStaticPaths() {
     <!-- Section Body avec Accordéon -->
 
     <section
-  data-scroll-reveal
-  data-direction="up"
-  data-delay="0"
-  class="relative py-20 px-0 bg-bleu-fonce overflow-hidden"
->
-
-    <div class="relative z-10 max-w-7xl mx-auto">
-        <!-- Accordéon horizontal en haut (4 items statiques) -->
-        <nav
-            class="bg-bleu-fonce border-2 border-turquoise/30 rounded-2xl p-4 mb-12"
-        >
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-                <!-- Item 1 : Description du projet -->
-                <button
-                    class="accordion-btn active px-6 py-4 rounded-xl bg-turquoise/10 border border-turquoise transition-all duration-300 flex items-center justify-between group hover:bg-turquoise/20"
-                    data-section="description"
-                >
-                    <span
-                        class="text-blanc font-semibold group-hover:text-turquoise transition-colors"
-                        >Description du projet</span
-                    >
-                    <svg
-                        class="w-5 h-5 text-turquoise transition-transform group-hover:rotate-90"
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
-                    >
-                        <path
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            stroke-width="2"
-                            d="M19 9l-7 7-7-7"></path>
-                    </svg>
-                </button>
-
-                <!-- Item 2 : Mon rôle -->
-                <button
-                    class="accordion-btn px-6 py-4 rounded-xl bg-transparent border border-turquoise/30 hover:bg-turquoise/20 hover:border-turquoise transition-all duration-300 flex items-center justify-between group"
-                    data-section="role"
-                >
-                    <span
-                        class="text-blanc font-semibold group-hover:text-turquoise transition-colors"
-                        >Mon rôle</span
-                    >
-                    <svg
-                        class="w-5 h-5 text-turquoise transition-transform group-hover:rotate-90"
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
-                    >
-                        <path
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            stroke-width="2"
-                            d="M19 9l-7 7-7-7"></path>
-                    </svg>
-                </button>
-
-                <!-- Item 3 : Logiciels utilisés -->
-                <button
-                    class="accordion-btn px-6 py-4 rounded-xl bg-transparent border border-turquoise/30 hover:bg-turquoise/20 hover:border-turquoise transition-all duration-300 flex items-center justify-between group"
-                    data-section="logiciels"
-                >
-                    <span
-                        class="text-blanc font-semibold group-hover:text-turquoise transition-colors"
-                        >Logiciels utilisés</span
-                    >
-                    <svg
-                        class="w-5 h-5 text-turquoise transition-transform group-hover:rotate-90"
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
-                    >
-                        <path
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            stroke-width="2"
-                            d="M19 9l-7 7-7-7"></path>
-                    </svg>
-                </button>
-
-                <!-- Item 4 : Lien du site -->
-                <button
-                    class="accordion-btn px-6 py-4 rounded-xl bg-transparent border border-turquoise/30 hover:bg-turquoise/20 hover:border-turquoise transition-all duration-300 flex items-center justify-between group"
-                    data-section="lien"
-                >
-                    <span
-                        class="text-blanc font-semibold group-hover:text-turquoise transition-colors"
-                        >Lien du site</span
-                    >
-                    <svg
-                        class="w-5 h-5 text-turquoise transition-transform group-hover:rotate-90"
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
-                    >
-                        <path
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            stroke-width="2"
-                            d="M19 9l-7 7-7-7"></path>
-                    </svg>
-                </button>
-            </div>
-        </nav>
-
-        <!-- Contenu dynamique -->
-        <div class="space-y-8">
-            <!-- Section 1 : Description du projet (affichée par défaut) -->
-            <div class="content-section active" data-section="description">
-                <h2 class="text-3xl font-bold text-turquoise mb-8">
-                    Description du projet
-                </h2>
-
-                <!-- Texte intro -->
+        data-scroll-reveal
+        data-direction="up"
+        data-delay="0"
+        class="relative py-20 px-0 bg-bleu-fonce overflow-hidden"
+    >
+        <div class="relative z-10 max-w-7xl mx-auto">
+            <!-- Accordéon horizontal en haut (4 items statiques) -->
+            <nav
+                class="bg-bleu-fonce border-2 border-turquoise/30 rounded-2xl p-4 mb-12"
+            >
                 <div
-                    class="bg-turquoise/10 border border-turquoise/30 rounded-xl p-8 mb-12"
+                    class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4"
                 >
-                    <p
-                        class="text-blanc text-lg leading-relaxed whitespace-pre-line"
+                    <!-- Item 1 : Description du projet -->
+                    <button
+                        class="accordion-btn active px-6 py-4 rounded-xl bg-turquoise/10 border border-turquoise transition-all duration-300 flex items-center justify-between group hover:bg-turquoise/20"
+                        data-section="description"
                     >
-                        {projet.description_projet_texte_intro}
-                    </p>
+                        <span
+                            class="text-blanc font-semibold group-hover:text-turquoise transition-colors"
+                            >Description du projet</span
+                        >
+                        <svg
+                            class="w-5 h-5 text-turquoise transition-transform group-hover:rotate-90"
+                            fill="none"
+                            stroke="currentColor"
+                            viewBox="0 0 24 24"
+                        >
+                            <path
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                stroke-width="2"
+                                d="M19 9l-7 7-7-7"></path>
+                        </svg>
+                    </button>
+
+                    <!-- Item 2 : Mon rôle -->
+                    <button
+                        class="accordion-btn px-6 py-4 rounded-xl bg-transparent border border-turquoise/30 hover:bg-turquoise/20 hover:border-turquoise transition-all duration-300 flex items-center justify-between group"
+                        data-section="role"
+                    >
+                        <span
+                            class="text-blanc font-semibold group-hover:text-turquoise transition-colors"
+                            >Mon rôle</span
+                        >
+                        <svg
+                            class="w-5 h-5 text-turquoise transition-transform group-hover:rotate-90"
+                            fill="none"
+                            stroke="currentColor"
+                            viewBox="0 0 24 24"
+                        >
+                            <path
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                stroke-width="2"
+                                d="M19 9l-7 7-7-7"></path>
+                        </svg>
+                    </button>
+
+                    <!-- Item 3 : Logiciels utilisés -->
+                    <button
+                        class="accordion-btn px-6 py-4 rounded-xl bg-transparent border border-turquoise/30 hover:bg-turquoise/20 hover:border-turquoise transition-all duration-300 flex items-center justify-between group"
+                        data-section="logiciels"
+                    >
+                        <span
+                            class="text-blanc font-semibold group-hover:text-turquoise transition-colors"
+                            >Logiciels utilisés</span
+                        >
+                        <svg
+                            class="w-5 h-5 text-turquoise transition-transform group-hover:rotate-90"
+                            fill="none"
+                            stroke="currentColor"
+                            viewBox="0 0 24 24"
+                        >
+                            <path
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                stroke-width="2"
+                                d="M19 9l-7 7-7-7"></path>
+                        </svg>
+                    </button>
+
+                    <!-- Item 4 : Lien du site -->
+                    <button
+                        class="accordion-btn px-6 py-4 rounded-xl bg-transparent border border-turquoise/30 hover:bg-turquoise/20 hover:border-turquoise transition-all duration-300 flex items-center justify-between group"
+                        data-section="lien"
+                    >
+                        <span
+                            class="text-blanc font-semibold group-hover:text-turquoise transition-colors"
+                            >Lien du site</span
+                        >
+                        <svg
+                            class="w-5 h-5 text-turquoise transition-transform group-hover:rotate-90"
+                            fill="none"
+                            stroke="currentColor"
+                            viewBox="0 0 24 24"
+                        >
+                            <path
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                stroke-width="2"
+                                d="M19 9l-7 7-7-7"></path>
+                        </svg>
+                    </button>
                 </div>
+            </nav>
 
-                <!-- Toutes les sections du projet -->
-                {
-                    sections.length > 0 ? (
-                        <div class="space-y-16">
-                            {/* Vérifier si on a les sections Logo et Mockup */}
-                            {(() => {
-                                const logoSection = sections.find(
-                                    (s) =>
-                                        s.titre_section?.toLowerCase() ===
-                                        "logo",
-                                );
-                                const mockupSection = sections.find(
-                                    (s) =>
-                                        s.titre_section?.toLowerCase() ===
-                                        "mockup",
-                                );
-                                const otherSections = sections.filter(
-                                    (s) =>
-                                        s.titre_section?.toLowerCase() !==
-                                            "logo" &&
-                                        s.titre_section?.toLowerCase() !==
+            <!-- Contenu dynamique -->
+            <div class="space-y-8">
+                <!-- Section 1 : Description du projet -->
+                <div class="content-section active" data-section="description">
+                    <div class="flex items-center gap-4 mb-8">
+                        <span class="text-5xl font-bold text-turquoise/20"
+                            >01</span
+                        >
+                        <h2 class="text-3xl font-bold text-turquoise">
+                            Description du projet
+                        </h2>
+                    </div>
+
+                    <!-- Texte intro -->
+                    <div
+                        class="bg-turquoise/10 border border-turquoise/30 rounded-xl p-8 mb-12"
+                    >
+                        <p
+                            class="text-blanc text-lg leading-relaxed whitespace-pre-line"
+                        >
+                            {projet.description_projet_texte_intro}
+                        </p>
+                    </div>
+
+                    <!-- Sections avec numérotation automatique -->
+                    {
+                        sections.length > 0 ? (
+                            <div class="space-y-16">
+                                {(() => {
+                                    const logoSection = sections.find(
+                                        (s) =>
+                                            s.titre_section?.toLowerCase() ===
+                                            "logo",
+                                    );
+                                    const mockupSection = sections.find(
+                                        (s) =>
+                                            s.titre_section?.toLowerCase() ===
                                             "mockup",
-                                );
+                                    );
+                                    const otherSections = sections.filter(
+                                        (s) =>
+                                            s.titre_section?.toLowerCase() !==
+                                                "logo" &&
+                                            s.titre_section?.toLowerCase() !==
+                                                "mockup",
+                                    );
 
-                                return (
-                                    <>
-                                        {/* Sections normales avec alternance */}
-                                        {otherSections.map((section, index) => (
-                                            <div
-                                                class={`grid lg:grid-cols-2 gap-8 items-start ${index % 2 === 1 ? "lg:flex-row-reverse" : ""}`}
-                                            >
-                                                {index % 2 === 0 ? (
-                                                    <>
-                                                        {/* Image à gauche */}
-                                                        {section.img_section && (
-                                                            <div class="relative rounded-2xl overflow-hidden border-2 border-turquoise/30 shadow-[0_0_30px_rgba(0,255,238,0.2)] bg-turquoise/5">
-                                                                <img
-                                                                    src={getImageUrl(
-                                                                        section,
-                                                                        section.img_section,
-                                                                    )}
-                                                                    alt={
-                                                                        section.titre_section
-                                                                    }
-                                                                    class="w-full h-auto object-cover"
-                                                                />
-                                                            </div>
-                                                        )}
-
-                                                        {/* Texte à droite */}
-                                                        <div class="flex flex-col justify-center">
-                                                            <h3 class="text-3xl font-bold text-turquoise mb-6 border-l-4 border-turquoise pl-6">
-                                                                {
-                                                                    section.titre_section
-                                                                }
-                                                            </h3>
-                                                            <div class="bg-turquoise/10 border border-turquoise/30 rounded-xl p-8">
-                                                                <p class="text-blanc text-lg leading-relaxed whitespace-pre-line">
-                                                                    {
-                                                                        section.description_section
-                                                                    }
-                                                                </p>
-                                                            </div>
-                                                        </div>
-                                                    </>
-                                                ) : (
-                                                    <>
-                                                        {/* Texte à gauche */}
-                                                        <div class="flex flex-col justify-center lg:order-1">
-                                                            <h3 class="text-3xl font-bold text-turquoise mb-6 border-l-4 border-turquoise pl-6">
-                                                                {
-                                                                    section.titre_section
-                                                                }
-                                                            </h3>
-                                                            <div class="bg-turquoise/10 border border-turquoise/30 rounded-xl p-8">
-                                                                <p class="text-blanc text-lg leading-relaxed whitespace-pre-line">
-                                                                    {
-                                                                        section.description_section
-                                                                    }
-                                                                </p>
-                                                            </div>
-                                                        </div>
-
-                                                        {/* Image à droite */}
-                                                        {section.img_section && (
-                                                            <div class="relative rounded-2xl overflow-hidden border-2 border-turquoise/30 shadow-[0_0_30px_rgba(0,255,238,0.2)] bg-turquoise/5 lg:order-2">
-                                                                <img
-                                                                    src={getImageUrl(
-                                                                        section,
-                                                                        section.img_section,
-                                                                    )}
-                                                                    alt={
-                                                                        section.titre_section
-                                                                    }
-                                                                    class="w-full h-auto object-cover"
-                                                                />
-                                                            </div>
-                                                        )}
-                                                    </>
-                                                )}
-                                            </div>
-                                        ))}
-
-                                        {/* Section Logo + Mockup côte à côte */}
-                                        {logoSection && mockupSection && (
-                                            <div class="grid lg:grid-cols-2 gap-8">
-                                                {/* Colonne gauche : Logo */}
-                                                <div class="space-y-6">
-                                                    <div class="flex items-center justify-between">
-                                                        <h3 class="text-3xl font-bold text-blanc border-l-4 border-turquoise pl-6">
-                                                            {
-                                                                logoSection.titre_section
-                                                            }
-                                                        </h3>
-                                                        <span class="text-4xl font-bold text-turquoise/20">
-                                                            {String(
-                                                                logoSection.ordre ||
-                                                                    1,
-                                                            ).padStart(2, "0")}
-                                                        </span>
-                                                    </div>
-
-                                                    {logoSection.img_section && (
-                                                        <div class="bg-blanc rounded-2xl overflow-hidden p-8">
-                                                            <img
-                                                                src={getImageUrl(
-                                                                    logoSection,
-                                                                    logoSection.img_section,
+                                    return (
+                                        <>
+                                            {/* Sections normales avec alternance ET NUMÉROS */}
+                                            {otherSections.map(
+                                                (section, index) => (
+                                                    <div
+                                                        class={`grid lg:grid-cols-2 gap-8 items-start ${index % 2 === 1 ? "lg:flex-row-reverse" : ""}`}
+                                                    >
+                                                        {index % 2 === 0 ? (
+                                                            <>
+                                                                {/* Image à gauche */}
+                                                                {section.img_section && (
+                                                                    <div class="relative rounded-2xl overflow-hidden border-2 border-turquoise/30 shadow-[0_0_30px_rgba(0,255,238,0.2)] bg-turquoise/5">
+                                                                        <img
+                                                                            src={getImageUrl(
+                                                                                section,
+                                                                                section.img_section,
+                                                                            )}
+                                                                            alt={
+                                                                                section.titre_section
+                                                                            }
+                                                                            class="w-full h-auto object-cover"
+                                                                        />
+                                                                    </div>
                                                                 )}
-                                                                alt={
+
+                                                                {/* Texte à droite AVEC NUMÉRO */}
+                                                                <div class="flex flex-col justify-center">
+                                                                    <div class="flex items-center gap-4 mb-6">
+                                                                        <span class="text-4xl font-bold text-turquoise/20">
+                                                                            {String(
+                                                                                index +
+                                                                                    1,
+                                                                            ).padStart(
+                                                                                2,
+                                                                                "0",
+                                                                            )}
+                                                                        </span>
+                                                                        <h3 class="text-3xl font-bold border-l-4 border-turquoise pl-6 bg-white text-[#072255] rounded-lg px-4 py-2">
+                                                                            {
+                                                                                section.titre_section
+                                                                            }
+                                                                        </h3>
+                                                                    </div>
+                                                                    <div class="bg-turquoise/10 border border-turquoise/30 rounded-xl p-8">
+                                                                        <p class="text-blanc text-lg leading-relaxed whitespace-pre-line">
+                                                                            {
+                                                                                section.description_section
+                                                                            }
+                                                                        </p>
+                                                                    </div>
+                                                                </div>
+                                                            </>
+                                                        ) : (
+                                                            <>
+                                                                {/* Texte à gauche AVEC NUMÉRO */}
+                                                                <div class="flex flex-col justify-center lg:order-1">
+                                                                    <div class="flex items-center gap-4 mb-6">
+                                                                        <span class="text-4xl font-bold text-turquoise/20">
+                                                                            {String(
+                                                                                index +
+                                                                                    1,
+                                                                            ).padStart(
+                                                                                2,
+                                                                                "0",
+                                                                            )}
+                                                                        </span>
+                                                                        <h3 class="text-3xl font-bold border-l-4 border-turquoise pl-6 bg-white text-[#072255] rounded-lg px-4 py-2">
+                                                                            {
+                                                                                section.titre_section
+                                                                            }
+                                                                        </h3>
+                                                                    </div>
+                                                                    <div class="bg-turquoise/10 border border-turquoise/30 rounded-xl p-8">
+                                                                        <p class="text-blanc text-lg leading-relaxed whitespace-pre-line">
+                                                                            {
+                                                                                section.description_section
+                                                                            }
+                                                                        </p>
+                                                                    </div>
+                                                                </div>
+
+                                                                {/* Image à droite */}
+                                                                {section.img_section && (
+                                                                    <div class="relative rounded-2xl overflow-hidden border-2 border-turquoise/30 shadow-[0_0_30px_rgba(0,255,238,0.2)] bg-turquoise/5 lg:order-2">
+                                                                        <img
+                                                                            src={getImageUrl(
+                                                                                section,
+                                                                                section.img_section,
+                                                                            )}
+                                                                            alt={
+                                                                                section.titre_section
+                                                                            }
+                                                                            class="w-full h-auto object-cover"
+                                                                        />
+                                                                    </div>
+                                                                )}
+                                                            </>
+                                                        )}
+                                                    </div>
+                                                ),
+                                            )}
+
+                                            {/* Section Logo + Mockup côte à côte AVEC NUMÉROS */}
+                                            {logoSection && mockupSection && (
+                                                <div class="grid lg:grid-cols-2 gap-8">
+                                                    {/* Colonne gauche : Logo */}
+                                                    <div class="space-y-6">
+                                                        <div class="flex items-center gap-4">
+                                                            <span class="text-4xl font-bold text-turquoise/20">
+                                                                {String(
+                                                                    otherSections.length +
+                                                                        1,
+                                                                ).padStart(
+                                                                    2,
+                                                                    "0",
+                                                                )}
+                                                            </span>
+                                                            <h3 class="text-3xl font-bold border-l-4 border-turquoise pl-6 bg-white text-[#072255] rounded-lg px-4 py-2">
+                                                                {
                                                                     logoSection.titre_section
                                                                 }
-                                                                class="w-full h-auto object-contain"
-                                                            />
+                                                            </h3>
                                                         </div>
-                                                    )}
 
-                                                    <div class="bg-turquoise/10 border border-turquoise/30 rounded-xl p-6">
-                                                        <p class="text-blanc text-base leading-relaxed whitespace-pre-line">
-                                                            {
-                                                                logoSection.description_section
-                                                            }
-                                                        </p>
+                                                        {logoSection.img_section && (
+                                                            <div class="bg-blanc rounded-2xl overflow-hidden p-8">
+                                                                <img
+                                                                    src={getImageUrl(
+                                                                        logoSection,
+                                                                        logoSection.img_section,
+                                                                    )}
+                                                                    alt={
+                                                                        logoSection.titre_section
+                                                                    }
+                                                                    class="w-full h-auto object-contain"
+                                                                />
+                                                            </div>
+                                                        )}
+
+                                                        <div class="bg-turquoise/10 border border-turquoise/30 rounded-xl p-6">
+                                                            <p class="text-blanc text-base leading-relaxed whitespace-pre-line">
+                                                                {
+                                                                    logoSection.description_section
+                                                                }
+                                                            </p>
+                                                        </div>
                                                     </div>
-                                                </div>
 
-                                                {/* Colonne droite : Mockup */}
-                                                <div class="space-y-6">
-                                                    <div class="flex items-center justify-between">
-                                                        <h3 class="text-3xl font-bold text-blanc border-l-4 border-turquoise pl-6">
-                                                            {
-                                                                mockupSection.titre_section
-                                                            }
-                                                        </h3>
-                                                        <span class="text-4xl font-bold text-turquoise/20">
-                                                            {String(
-                                                                mockupSection.ordre ||
+                                                    {/* Colonne droite : Mockup */}
+                                                    <div class="space-y-6">
+                                                        <div class="flex items-center gap-4">
+                                                            <span class="text-4xl font-bold text-turquoise/20">
+                                                                {String(
+                                                                    otherSections.length +
+                                                                        2,
+                                                                ).padStart(
                                                                     2,
-                                                            ).padStart(2, "0")}
-                                                        </span>
-                                                    </div>
-
-                                                    {mockupSection.img_section && (
-                                                        <div class="bg-blanc rounded-2xl overflow-hidden p-8">
-                                                            <img
-                                                                src={getImageUrl(
-                                                                    mockupSection,
-                                                                    mockupSection.img_section,
+                                                                    "0",
                                                                 )}
-                                                                alt={
+                                                            </span>
+                                                            <h3 class="text-3xl font-bold border-l-4 border-turquoise pl-6 bg-white text-[#072255] rounded-lg px-4 py-2">
+                                                                {
                                                                     mockupSection.titre_section
                                                                 }
-                                                                class="w-full h-auto object-contain"
-                                                            />
+                                                            </h3>
                                                         </div>
-                                                    )}
+
+                                                        {mockupSection.img_section && (
+                                                            <div class="bg-blanc rounded-2xl overflow-hidden p-8">
+                                                                <img
+                                                                    src={getImageUrl(
+                                                                        mockupSection,
+                                                                        mockupSection.img_section,
+                                                                    )}
+                                                                    alt={
+                                                                        mockupSection.titre_section
+                                                                    }
+                                                                    class="w-full h-auto object-contain"
+                                                                />
+                                                            </div>
+                                                        )}
+                                                    </div>
                                                 </div>
-                                            </div>
-                                        )}
-                                    </>
-                                );
-                            })()}
-                        </div>
-                    ) : (
-                        <div class="bg-orange-500/10 border border-orange-500/30 rounded-xl p-8">
-                            <p class="text-orange-300 text-center">
-                                ⚠️ Aucune section trouvée pour ce projet.
-                                <br />
-                                Vérifiez que des sections existent dans
-                                PocketBase avec le bon{" "}
-                                <code class="bg-orange-500/20 px-2 py-1 rounded">
-                                    projet_id
-                                </code>
-                            </p>
-                        </div>
-                    )
-                }
-            </div>
-
-            <!-- Section 2 : Mon rôle -->
-            <div class="content-section hidden" data-section="role">
-                <h2 class="text-3xl font-bold text-turquoise mb-8">Mon rôle</h2>
-                <div
-                    class="bg-turquoise/10 border border-turquoise/30 rounded-xl p-8"
-                >
-                    <p
-                        class="text-blanc text-lg leading-relaxed whitespace-pre-line"
-                    >
-                        {projet.mon_role}
-                    </p>
-                </div>
-            </div>
-
-            <!-- Section 3 : Logiciels utilisés -->
-            <div class="content-section hidden" data-section="logiciels">
-                <h2 class="text-3xl font-bold text-turquoise mb-8">
-                    Logiciels utilisés
-                </h2>
-                <div
-                    class="bg-turquoise/10 border border-turquoise/30 rounded-xl p-8"
-                >
-                    <p
-                        class="text-blanc text-lg leading-relaxed whitespace-pre-line"
-                    >
-                        {projet.logiciels_utilises}
-                    </p>
-                </div>
-            </div>
-
-            <!-- Section 4 : Lien du site -->
-            <div class="content-section hidden" data-section="lien">
-                <h2 class="text-3xl font-bold text-turquoise mb-8">
-                    Lien du site
-                </h2>
-                <div
-                    class="bg-turquoise/10 border border-turquoise/30 rounded-xl p-8"
-                >
-                    {
-                        projet.lien_site ? (
-                            <>
-                                <a
-                                    href={projet.lien_site}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    class="inline-flex items-center gap-3 text-turquoise text-xl font-semibold hover:underline"
-                                >
-                                    Visiter le site
-                                    <svg
-                                        class="w-6 h-6"
-                                        fill="none"
-                                        stroke="currentColor"
-                                        viewBox="0 0 24 24"
-                                    >
-                                        <path
-                                            stroke-linecap="round"
-                                            stroke-linejoin="round"
-                                            stroke-width="2"
-                                            d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
-                                        />
-                                    </svg>
-                                </a>
-                                <p class="text-blanc/70 mt-4 break-all">
-                                    {projet.lien_site}
-                                </p>
-                            </>
+                                            )}
+                                        </>
+                                    );
+                                })()}
+                            </div>
                         ) : (
-                            <p class="text-blanc/70">Aucun lien disponible</p>
+                            <div class="bg-orange-500/10 border border-orange-500/30 rounded-xl p-8">
+                                <p class="text-orange-300 text-center">
+                                    ⚠️ Aucune section trouvée pour ce projet.
+                                </p>
+                            </div>
                         )
                     }
                 </div>
+                <!-- ✅ FIN DE LA SECTION 1 - BALISE FERMANTE AJOUTÉE -->
+
+                <!-- Section 2 : Mon rôle -->
+                <div class="content-section hidden" data-section="role">
+                    <div class="flex items-center gap-4 mb-8">
+                        <span class="text-5xl font-bold text-turquoise/20"
+                            >02</span
+                        >
+                        <h2 class="text-3xl font-bold text-turquoise">
+                            Mon rôle
+                        </h2>
+                    </div>
+                    <div
+                        class="bg-turquoise/10 border border-turquoise/30 rounded-xl p-8"
+                    >
+                        <p
+                            class="text-blanc text-lg leading-relaxed whitespace-pre-line"
+                        >
+                            {projet.mon_role}
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Section 3 : Logiciels utilisés -->
+                <div class="content-section hidden" data-section="logiciels">
+                    <div class="flex items-center gap-4 mb-8">
+                        <span class="text-5xl font-bold text-turquoise/20"
+                            >03</span
+                        >
+                        <h2 class="text-3xl font-bold text-turquoise">
+                            Logiciels utilisés
+                        </h2>
+                    </div>
+                    <div
+                        class="bg-turquoise/10 border border-turquoise/30 rounded-xl p-8"
+                    >
+                        <p
+                            class="text-blanc text-lg leading-relaxed whitespace-pre-line"
+                        >
+                            {projet.logiciels_utilises}
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Section 4 : Lien du site -->
+                <div class="content-section hidden" data-section="lien">
+                    <div class="flex items-center gap-4 mb-8">
+                        <span class="text-5xl font-bold text-turquoise/20"
+                            >04</span
+                        >
+                        <h2 class="text-3xl font-bold text-turquoise">
+                            Lien du site
+                        </h2>
+                    </div>
+                    <div
+                        class="bg-turquoise/10 border border-turquoise/30 rounded-xl p-8"
+                    >
+                        {
+                            projet.lien_site ? (
+                                <>
+                                    
+                                    <a
+                                        class="mt-4 break-all text-turquoise inline-flex text-xl font-semibold hover:underline"
+                                        href={projet.lien_site}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                    >
+                                        {projet.lien_site}{" "}
+                                        <svg
+                                            class="w-6 h-6"
+                                            fill="none"
+                                            stroke="currentColor"
+                                            viewBox="0 0 24 24"
+                                        >
+                                            <path
+                                                stroke-linecap="round"
+                                                stroke-linejoin="round"
+                                                stroke-width="2"
+                                                d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
+                                            />
+                                        </svg>
+                                    </a>
+                                </>
+                            ) : (
+                                <p class="text-blanc/70">
+                                    Aucun lien disponible
+                                </p>
+                            )
+                        }
+                    </div>
+                </div>
+            </div>
+            <!-- ✅ FIN DU CONTENEUR space-y-8 -->
+
+            <!-- Bouton retour -->
+            <div class="mt-16 text-center">
+                <a
+                    href="/projet/projets"
+                    class="inline-flex items-center gap-2 border-2 border-turquoise text-turquoise hover:bg-turquoise hover:text-bleu-fonce font-semibold px-8 py-4 rounded-lg transition-all duration-300"
+                >
+                    <svg
+                        class="w-5 h-5"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                    >
+                        <path
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            stroke-width="2"
+                            d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
+                    </svg>
+                    Retour aux projets
+                </a>
             </div>
         </div>
+    </section>
 
-        <!-- Bouton retour -->
-        <div class="mt-16 text-center">
-            <a
-                href="/projet/projets"
-                class="inline-flex items-center gap-2 border-2 border-turquoise text-turquoise hover:bg-turquoise hover:text-bleu-fonce font-semibold px-8 py-4 rounded-lg transition-all duration-300"
-            >
-                <svg
-                    class="w-5 h-5"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                >
-                    <path
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        stroke-width="2"
-                        d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
-                </svg>
-                Retour aux projets
-            </a>
-        </div>
-    </div>
-</Layout>
+    <script>
+        // Gestion de l'accordéon
+        const buttons = document.querySelectorAll(".accordion-btn");
+        const sections = document.querySelectorAll(".content-section");
 
-<script>
-    // Gestion de l'accordéon
-    const buttons = document.querySelectorAll(".accordion-btn");
-    const sections = document.querySelectorAll(".content-section");
+        buttons.forEach((button) => {
+            button.addEventListener("click", () => {
+                const sectionName = button.getAttribute("data-section");
 
-    buttons.forEach((button) => {
-        button.addEventListener("click", () => {
-            const sectionName = button.getAttribute("data-section");
+                // Retirer l'état actif de tous les boutons
+                buttons.forEach((btn) => {
+                    btn.classList.remove("bg-turquoise/10", "border-turquoise");
+                    btn.classList.add("bg-transparent", "border-turquoise/30");
+                });
 
-            // Retirer l'état actif de tous les boutons
-            buttons.forEach((btn) => {
-                btn.classList.remove("bg-turquoise/10", "border-turquoise");
-                btn.classList.add("bg-transparent", "border-turquoise/30");
+                // Ajouter l'état actif au bouton cliqué
+                button.classList.remove(
+                    "bg-transparent",
+                    "border-turquoise/30",
+                );
+                button.classList.add("bg-turquoise/10", "border-turquoise");
+
+                // Cacher toutes les sections
+                sections.forEach((section) => {
+                    section.classList.add("hidden");
+                    section.classList.remove("active");
+                });
+
+                // Afficher la section correspondante
+                const targetSection = document.querySelector(
+                    `.content-section[data-section="${sectionName}"]`,
+                );
+                if (targetSection) {
+                    targetSection.classList.remove("hidden");
+                    targetSection.classList.add("active");
+                }
             });
-
-            // Ajouter l'état actif au bouton cliqué
-            button.classList.remove("bg-transparent", "border-turquoise/30");
-            button.classList.add("bg-turquoise/10", "border-turquoise");
-
-            // Cacher toutes les sections
-            sections.forEach((section) => {
-                section.classList.add("hidden");
-                section.classList.remove("active");
-            });
-
-            // Afficher la section correspondante
-            const targetSection = document.querySelector(
-                `.content-section[data-section="${sectionName}"]`,
-            );
-            if (targetSection) {
-                targetSection.classList.remove("hidden");
-                targetSection.classList.add("active");
-            }
         });
-    });
-</script>
+    </script>
 
-<style>
-    .content-section {
-        animation: fadeIn 0.3s ease-in-out;
-    }
+    <style>
+        .content-section {
+            animation: fadeIn 0.3s ease-in-out;
+        }
 
-    @keyframes fadeIn {
-        from {
-            opacity: 0;
-            transform: translateY(10px);
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
-        to {
-            opacity: 1;
-            transform: translateY(0);
-        }
-    }
-</style>
+    </style>
+</Layout>

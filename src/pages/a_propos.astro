@@ -87,244 +87,293 @@ import ScrollReveal from "../components/ScrollReveal.astro";
 				</div>
 			</div>
 
-			<!-- Parcours / Timeline -->
-			 <ScrollReveal>
-			<div class="mb-20">
-				<h2 class="text-3xl font-bold text-turquoise mb-12 text-center">
-					Mon parcours
-				</h2>
+			<!-- Parcours / Timeline avec scroll horizontal -->
+			<ScrollReveal>
+				<div class="mb-20">
+					<h2
+						class="text-3xl font-bold text-turquoise mb-12 text-center"
+					>
+						Mon parcours
+					</h2>
 
-				<!-- Container avec scroll horizontal -->
-				<div class="relative overflow-x-auto pb-8">
-					<!-- Container principal centré -->
-					<div class="flex justify-center">
+					<!-- Container avec scroll horizontal -->
+					<div class="relative overflow-x-auto pb-8 px-0">
+						<!-- Indicateur de scroll -->
 						<div
-							class="relative py-20"
-							style="width: 100%; max-width: 2088px;"
+							class="text-center text-turquoise/60 text-sm mb-4 md:hidden"
 						>
+							← Faites défiler horizontalement →
+						</div>
+
+						<!-- Container principal (2800px) -->
+						<div class="relative py-20 w-[2800px] min-w-full">
 							<!-- SVG de la frise animée -->
-							<InlineSVG class="w-full" delay={0.3}>
-								<svg
-									width="2088"
-									height="524"
-									viewBox="0 0 2088 524"
-									fill="none"
-									xmlns="http://www.w3.org/2000/svg"
-								>
-									<!-- Forme de fond -->
-									<path
-										d="M104.968 494.747H0V36.145h104.968L163.45 1h1745.01l53.51 35.145H2087v458.602h-125.03L1908.46 523H163.45l-58.482-28.253z"
-										fill="#113D60"
-										stroke="none"></path>
+							<div data-svg-animate>
+								<InlineSVG class="w-full" delay={0.3}>
+									<svg
+										width="2800"
+										height="629"
+										viewBox="0 0 2800 629"
+										fill="none"
+										xmlns="http://www.w3.org/2000/svg"
+									>
+										<!-- Forme de fond -->
+										<path
+											d="M140.6 593.7H0V43.37h140.6L219 1.2h2340l71.7 42.17H2800v550.33h-168.3L2559 628H219l-78.4-34.3z"
+											fill="#113D60"
+											stroke="none"></path>
 
-									<!-- Contours animés -->
-									<!-- Ligne gauche verticale -->
-									<line
-										x1="1"
-										y1="36.145"
-										x2="1"
-										y2="494.747"
-										stroke="#00EAFF"
-										stroke-width="2"></line>
+										<!-- Contours animés -->
+										<line
+											x1="1"
+											y1="43.37"
+											x2="1"
+											y2="593.7"
+											stroke="#00EAFF"
+											stroke-width="2"></line>
+										<line
+											x1="1"
+											y1="43.37"
+											x2="140.6"
+											y2="43.37"
+											stroke="#00EAFF"
+											stroke-width="2"></line>
+										<line
+											x1="140.6"
+											y1="43.37"
+											x2="219"
+											y2="1.2"
+											stroke="#00EAFF"
+											stroke-width="2"></line>
+										<line
+											x1="219"
+											y1="1.2"
+											x2="2559"
+											y2="1.2"
+											stroke="#00EAFF"
+											stroke-width="2"></line>
+										<line
+											x1="2559"
+											y1="1.2"
+											x2="2631.7"
+											y2="43.37"
+											stroke="#00EAFF"
+											stroke-width="2"></line>
+										<line
+											x1="2631.7"
+											y1="43.37"
+											x2="2800"
+											y2="43.37"
+											stroke="#00EAFF"
+											stroke-width="2"></line>
+										<line
+											x1="2800"
+											y1="43.37"
+											x2="2800"
+											y2="593.7"
+											stroke="#00EAFF"
+											stroke-width="2"></line>
+										<line
+											x1="2800"
+											y1="593.7"
+											x2="2631.7"
+											y2="593.7"
+											stroke="#00EAFF"
+											stroke-width="2"></line>
+										<line
+											x1="2631.7"
+											y1="593.7"
+											x2="2559"
+											y2="628"
+											stroke="#00EAFF"
+											stroke-width="2"></line>
+										<line
+											x1="2559"
+											y1="628"
+											x2="219"
+											y2="628"
+											stroke="#00EAFF"
+											stroke-width="2"></line>
+										<line
+											x1="219"
+											y1="628"
+											x2="140.6"
+											y2="593.7"
+											stroke="#00EAFF"
+											stroke-width="2"></line>
+										<line
+											x1="140.6"
+											y1="593.7"
+											x2="1"
+											y2="593.7"
+											stroke="#00EAFF"
+											stroke-width="2"></line>
+									</svg>
+								</InlineSVG>
+							</div>
+							<!-- Ligne temporelle centrale -->
 
-									<!-- Coin supérieur gauche -->
-									<line
-										x1="1"
-										y1="36.145"
-										x2="104.968"
-										y2="36.145"
-										stroke="#00EAFF"
-										stroke-width="2"></line>
-									<line
-										x1="104.968"
-										y1="36.145"
-										x2="163.45"
-										y2="1"
-										stroke="#00EAFF"
-										stroke-width="2"></line>
-
-									<!-- Ligne supérieure horizontale -->
-									<line
-										x1="163.45"
-										y1="1"
-										x2="1908.46"
-										y2="1"
-										stroke="#00EAFF"
-										stroke-width="2"></line>
-
-									<!-- Coin supérieur droit -->
-									<line
-										x1="1908.46"
-										y1="1"
-										x2="1962"
-										y2="36.145"
-										stroke="#00EAFF"
-										stroke-width="2"></line>
-									<line
-										x1="1962"
-										y1="36.145"
-										x2="2087"
-										y2="36.145"
-										stroke="#00EAFF"
-										stroke-width="2"></line>
-
-									<!-- Ligne droite verticale -->
-									<line
-										x1="2087"
-										y1="36.145"
-										x2="2087"
-										y2="494.747"
-										stroke="#00EAFF"
-										stroke-width="2"></line>
-
-									<!-- Coin inférieur droit -->
-									<line
-										x1="2087"
-										y1="494.747"
-										x2="1962"
-										y2="494.747"
-										stroke="#00EAFF"
-										stroke-width="2"></line>
-									<line
-										x1="1962"
-										y1="494.747"
-										x2="1908.46"
-										y2="523"
-										stroke="#00EAFF"
-										stroke-width="2"></line>
-
-									<!-- Ligne inférieure horizontale -->
-									<line
-										x1="1908.46"
-										y1="523"
-										x2="163.45"
-										y2="523"
-										stroke="#00EAFF"
-										stroke-width="2"></line>
-
-									<!-- Coin inférieur gauche -->
-									<line
-										x1="163.45"
-										y1="523"
-										x2="104.968"
-										y2="494.747"
-										stroke="#00EAFF"
-										stroke-width="2"></line>
-									<line
-										x1="104.968"
-										y1="494.747"
-										x2="1"
-										y2="494.747"
-										stroke="#00EAFF"
-										stroke-width="2"></line>
-								</svg>
-							</InlineSVG>
-
-							<!-- Items du parcours avec points lumineux -->
-							<div class="absolute top-0 left-0 w-full h-full">
-								<!-- Ligne temporelle centrale -->
-								<!-- Ligne temporelle centrale avec animation de tracé -->
-								<div
-									class="absolute left-0 right-0 top-1/2 -translate-y-1/2 pointer-events-none"
-								>
+							<div
+								class="absolute left-0 right-0 top-1/2 -translate-y-1/2 pointer-events-none"
+							>
+								<div data-svg-animate>
 									<InlineSVG class="w-full" delay={0.5}>
 										<svg
-											width="2005"
-											height="180"
-											viewBox="0 0 2005 180"
+											width="2690"
+											height="216"
+											viewBox="0 0 2690 216"
 											fill="none"
 											xmlns="http://www.w3.org/2000/svg"
 											class="w-full h-auto"
 										>
-											<g filter="url(#timeline-a)"
-												><circle
-													cx="174.5"
-													cy="13"
-													r="9"
-													fill="#00EAFF"></circle></g
-											>
-											<g filter="url(#timeline-b)">
-												<path
-													d="M4 91.5h170.5m1826 0h-212m-1614 0V22m0 69.5h400m0 0V159m0-67.5h435m0 0v-76m0 76h375m0 0V159m0-67.5h404m0 0V15"
-													stroke="#00EAFF"
-													stroke-width="3"></path>
+											<!-- Points lumineux -->
+											<g filter="url(#timeline-a)">
+												<circle
+													cx="234"
+													cy="15.6"
+													r="10.8"
+													fill="#00EAFF"></circle>
 											</g>
-											<g filter="url(#timeline-c)"
-												><circle
-													cx="1009.5"
-													cy="9"
-													r="9"
-													fill="#00EAFF"></circle></g
-											>
-											<g filter="url(#timeline-d)"
-												><circle
-													cx="1384.5"
-													cy="163"
-													r="9"
-													fill="#00EAFF"></circle></g
-											>
-											<g filter="url(#timeline-e)"
-												><circle
-													cx="574.5"
-													cy="159"
-													r="13"
+											<g filter="url(#timeline-c)">
+												<circle
+													cx="1350"
+													cy="11"
+													r="10.8"
+													fill="#00EAFF"></circle>
+											</g>
+											<g filter="url(#timeline-d)">
+												<circle
+													cx="1850"
+													cy="196"
+													r="10.8"
+													fill="#00EAFF"></circle>
+											</g>
+											<g filter="url(#timeline-e)">
+												<circle
+													cx="770"
+													cy="191"
+													r="15.6"
 													fill="#00B4BD"
-													fill-opacity=".71"
-												></circle></g
-											>
-											<g filter="url(#timeline-f)"
-												><circle
-													cx="1788.5"
-													cy="9"
-													r="9"
-													fill="#00EAFF"></circle></g
-											>
+													fill-opacity=".71"></circle>
+											</g>
+											<g filter="url(#timeline-f)">
+												<circle
+													cx="2390"
+													cy="11"
+													r="10.8"
+													fill="#00EAFF"></circle>
+											</g>
+
+											<!-- Ligne principale avec TOUS les segments -->
+											<g filter="url(#timeline-b)">
+												<!-- Début à gauche -->
+												<line
+													x1="5"
+													y1="110"
+													x2="235"
+													y2="110"
+													stroke="#00EAFF"
+													stroke-width="3.6"></line>
+
+												<!-- Trait vertical vers le haut (étape 1) -->
+												<line
+													x1="235"
+													y1="110"
+													x2="235"
+													y2="26"
+													stroke="#00EAFF"
+													stroke-width="3.6"></line>
+
+												<!-- Segment horizontal 1 -->
+												<line
+													x1="235"
+													y1="110"
+													x2="770"
+													y2="110"
+													stroke="#00EAFF"
+													stroke-width="3.6"></line>
+
+												<!-- Trait vertical vers le bas (étape 2) -->
+												<line
+													x1="770"
+													y1="110"
+													x2="770"
+													y2="191"
+													stroke="#00EAFF"
+													stroke-width="3.6"></line>
+
+												<!-- Segment horizontal 2 -->
+												<line
+													x1="770"
+													y1="110"
+													x2="1350"
+													y2="110"
+													stroke="#00EAFF"
+													stroke-width="3.6"></line>
+
+												<!-- Trait vertical vers le haut (étape 3) -->
+												<line
+													x1="1350"
+													y1="110"
+													x2="1350"
+													y2="18"
+													stroke="#00EAFF"
+													stroke-width="3.6"></line>
+
+												<!-- Segment horizontal 3 -->
+												<line
+													x1="1350"
+													y1="110"
+													x2="1850"
+													y2="110"
+													stroke="#00EAFF"
+													stroke-width="3.6"></line>
+
+												<!-- Trait vertical vers le bas (étape 4) -->
+												<line
+													x1="1850"
+													y1="110"
+													x2="1850"
+													y2="191"
+													stroke="#00EAFF"
+													stroke-width="3.6"></line>
+
+												<!-- Segment horizontal 4 -->
+												<line
+													x1="1850"
+													y1="110"
+													x2="2390"
+													y2="110"
+													stroke="#00EAFF"
+													stroke-width="3.6"></line>
+
+												<!-- Trait vertical vers le haut (étape 5) -->
+												<line
+													x1="2390"
+													y1="110"
+													x2="2390"
+													y2="18"
+													stroke="#00EAFF"
+													stroke-width="3.6"></line>
+
+												<!-- Fin à droite -->
+												<line
+													x1="2390"
+													y1="110"
+													x2="2685"
+													y2="110"
+													stroke="#00EAFF"
+													stroke-width="3.6"></line>
+											</g>
+
+											<!-- Filtres (defs) -->
 											<defs>
 												<filter
 													id="timeline-a"
-													x="161.5"
-													y="4"
-													width="26"
-													height="26"
-													filterUnits="userSpaceOnUse"
-													color-interpolation-filters="sRGB"
-												>
-													<feFlood
-														flood-opacity="0"
-														result="BackgroundImageFix"
-													></feFlood>
-													<feColorMatrix
-														in="SourceAlpha"
-														values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
-														result="hardAlpha"
-													></feColorMatrix>
-													<feOffset dy="4"></feOffset>
-													<feGaussianBlur
-														stdDeviation="2"
-													></feGaussianBlur>
-													<feComposite
-														in2="hardAlpha"
-														operator="out"
-													></feComposite>
-													<feColorMatrix
-														values="0 0 0 0 0 0 0 0 0 1 0 0 0 0 0.933333 0 0 0 0.25 0"
-													></feColorMatrix>
-													<feBlend
-														in2="BackgroundImageFix"
-														result="effect1_dropShadow_1080_4257"
-													></feBlend>
-													<feBlend
-														in="SourceGraphic"
-														in2="effect1_dropShadow_1080_4257"
-														result="shape"
-													></feBlend>
-												</filter>
-												<filter
-													id="timeline-b"
-													x="0"
-													y="15"
-													width="2004.5"
-													height="153"
+													x="218"
+													y="0"
+													width="32"
+													height="32"
 													filterUnits="userSpaceOnUse"
 													color-interpolation-filters="sRGB"
 												>
@@ -339,31 +388,72 @@ import ScrollReveal from "../components/ScrollReveal.astro";
 													></feColorMatrix>
 													<feOffset dy="5"></feOffset>
 													<feGaussianBlur
-														stdDeviation="2"
+														stdDeviation="2.4"
 													></feGaussianBlur>
 													<feComposite
 														in2="hardAlpha"
 														operator="out"
 													></feComposite>
 													<feColorMatrix
-														values="0 0 0 0 0 0 0 0 0 1 0 0 0 0 0.933333 0 0 0 0.4 0"
+														values="0 0 0 0 0 0 0 0 0 1 0 0 0 0 0.933 0 0 0 0.25 0"
 													></feColorMatrix>
 													<feBlend
 														in2="BackgroundImageFix"
-														result="effect1_dropShadow_1080_4257"
+														result="effect1_dropShadow"
 													></feBlend>
 													<feBlend
 														in="SourceGraphic"
-														in2="effect1_dropShadow_1080_4257"
+														in2="effect1_dropShadow"
 														result="shape"
 													></feBlend>
 												</filter>
+
+												<filter
+													id="timeline-b"
+													x="0"
+													y="18"
+													width="2690"
+													height="184"
+													filterUnits="userSpaceOnUse"
+													color-interpolation-filters="sRGB"
+												>
+													<feFlood
+														flood-opacity="0"
+														result="BackgroundImageFix"
+													></feFlood>
+													<feColorMatrix
+														in="SourceAlpha"
+														values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+														result="hardAlpha"
+													></feColorMatrix>
+													<feOffset dy="6"></feOffset>
+													<feGaussianBlur
+														stdDeviation="2.4"
+													></feGaussianBlur>
+													<feComposite
+														in2="hardAlpha"
+														operator="out"
+													></feComposite>
+													<feColorMatrix
+														values="0 0 0 0 0 0 0 0 0 1 0 0 0 0 0.933 0 0 0 0.4 0"
+													></feColorMatrix>
+													<feBlend
+														in2="BackgroundImageFix"
+														result="effect1_dropShadow"
+													></feBlend>
+													<feBlend
+														in="SourceGraphic"
+														in2="effect1_dropShadow"
+														result="shape"
+													></feBlend>
+												</filter>
+
 												<filter
 													id="timeline-c"
-													x="996.5"
+													x="1334"
 													y="0"
-													width="26"
-													height="26"
+													width="32"
+													height="32"
 													filterUnits="userSpaceOnUse"
 													color-interpolation-filters="sRGB"
 												>
@@ -376,33 +466,34 @@ import ScrollReveal from "../components/ScrollReveal.astro";
 														values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
 														result="hardAlpha"
 													></feColorMatrix>
-													<feOffset dy="4"></feOffset>
+													<feOffset dy="5"></feOffset>
 													<feGaussianBlur
-														stdDeviation="2"
+														stdDeviation="2.4"
 													></feGaussianBlur>
 													<feComposite
 														in2="hardAlpha"
 														operator="out"
 													></feComposite>
 													<feColorMatrix
-														values="0 0 0 0 0 0 0 0 0 1 0 0 0 0 0.933333 0 0 0 0.25 0"
+														values="0 0 0 0 0 0 0 0 0 1 0 0 0 0 0.933 0 0 0 0.25 0"
 													></feColorMatrix>
 													<feBlend
 														in2="BackgroundImageFix"
-														result="effect1_dropShadow_1080_4257"
+														result="effect1_dropShadow"
 													></feBlend>
 													<feBlend
 														in="SourceGraphic"
-														in2="effect1_dropShadow_1080_4257"
+														in2="effect1_dropShadow"
 														result="shape"
 													></feBlend>
 												</filter>
+
 												<filter
 													id="timeline-d"
-													x="1371.5"
-													y="154"
-													width="26"
-													height="26"
+													x="1834"
+													y="180"
+													width="32"
+													height="32"
 													filterUnits="userSpaceOnUse"
 													color-interpolation-filters="sRGB"
 												>
@@ -415,33 +506,34 @@ import ScrollReveal from "../components/ScrollReveal.astro";
 														values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
 														result="hardAlpha"
 													></feColorMatrix>
-													<feOffset dy="4"></feOffset>
+													<feOffset dy="5"></feOffset>
 													<feGaussianBlur
-														stdDeviation="2"
+														stdDeviation="2.4"
 													></feGaussianBlur>
 													<feComposite
 														in2="hardAlpha"
 														operator="out"
 													></feComposite>
 													<feColorMatrix
-														values="0 0 0 0 0 0 0 0 0 1 0 0 0 0 0.933333 0 0 0 0.25 0"
+														values="0 0 0 0 0 0 0 0 0 1 0 0 0 0 0.933 0 0 0 0.25 0"
 													></feColorMatrix>
 													<feBlend
 														in2="BackgroundImageFix"
-														result="effect1_dropShadow_1080_4257"
+														result="effect1_dropShadow"
 													></feBlend>
 													<feBlend
 														in="SourceGraphic"
-														in2="effect1_dropShadow_1080_4257"
+														in2="effect1_dropShadow"
 														result="shape"
 													></feBlend>
 												</filter>
+
 												<filter
 													id="timeline-e"
-													x="557.5"
-													y="142"
-													width="34"
-													height="34"
+													x="749"
+													y="170"
+													width="42"
+													height="42"
 													filterUnits="userSpaceOnUse"
 													color-interpolation-filters="sRGB"
 												>
@@ -455,16 +547,17 @@ import ScrollReveal from "../components/ScrollReveal.astro";
 														result="shape"
 													></feBlend>
 													<feGaussianBlur
-														stdDeviation="2"
-														result="effect1_foregroundBlur_1080_4257"
+														stdDeviation="2.8"
+														result="effect1_foregroundBlur"
 													></feGaussianBlur>
 												</filter>
+
 												<filter
 													id="timeline-f"
-													x="1775.5"
+													x="2374"
 													y="0"
-													width="26"
-													height="26"
+													width="32"
+													height="32"
 													filterUnits="userSpaceOnUse"
 													color-interpolation-filters="sRGB"
 												>
@@ -477,24 +570,24 @@ import ScrollReveal from "../components/ScrollReveal.astro";
 														values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
 														result="hardAlpha"
 													></feColorMatrix>
-													<feOffset dy="4"></feOffset>
+													<feOffset dy="5"></feOffset>
 													<feGaussianBlur
-														stdDeviation="2"
+														stdDeviation="2.4"
 													></feGaussianBlur>
 													<feComposite
 														in2="hardAlpha"
 														operator="out"
 													></feComposite>
 													<feColorMatrix
-														values="0 0 0 0 0 0 0 0 0 1 0 0 0 0 0.933333 0 0 0 0.25 0"
+														values="0 0 0 0 0 0 0 0 0 1 0 0 0 0 0.933 0 0 0 0.25 0"
 													></feColorMatrix>
 													<feBlend
 														in2="BackgroundImageFix"
-														result="effect1_dropShadow_1080_4257"
+														result="effect1_dropShadow"
 													></feBlend>
 													<feBlend
 														in="SourceGraphic"
-														in2="effect1_dropShadow_1080_4257"
+														in2="effect1_dropShadow"
 														result="shape"
 													></feBlend>
 												</filter>
@@ -502,115 +595,122 @@ import ScrollReveal from "../components/ScrollReveal.astro";
 										</svg>
 									</InlineSVG>
 								</div>
+							</div>
 
-								<!-- Contenus texte positionnés avec classe timeline-content -->
+							<!-- Contenus texte positionnés -->
+							<div
+								class="absolute top-0 left-0 w-full h-full pointer-events-none"
+							>
+								<!-- Étape 1 : 2024 (gauche haut) -->
+								<div class="absolute left-[8.5%] top-[10%]">
+									<div
+										class="text-center space-y-2 pointer-events-auto w-[280px]"
+									>
+										<h3
+											class="text-xl font-semibold text-blanc"
+										>
+											2024 - aujourd'hui
+										</h3>
+										<h4
+											class="text-lg font-semibold text-turquoise"
+										>
+											BUT Métier du Multimédia et de
+											l'Internet
+										</h4>
+										<p class="text-blanc/70 text-sm">
+											IUT de Montbéliard - Parcours
+											Création Numérique
+										</p>
+									</div>
+								</div>
+
+								<!-- Étape 2 : 2023-2024 (gauche bas) -->
+								<div class="absolute left-[27.5%] top-[58%]">
+									<div
+										class="text-center space-y-2 pointer-events-auto w-[280px]"
+									>
+										<h3
+											class="text-xl font-semibold text-blanc"
+										>
+											2023 - 2024
+										</h3>
+										<h4
+											class="text-lg font-semibold text-turquoise"
+										>
+											Intérimaire - Agent de Maintenance
+										</h4>
+										<p class="text-blanc/70 text-sm">
+											Carrefour Supply Chain à xxxx
+										</p>
+									</div>
+								</div>
+
+								<!-- Étape 3 : 2022-2023 (centre haut) -->
 								<div
-									class="absolute top-0 left-0 w-full h-full"
-									id="timeline-texts"
+									class="absolute left-1/2 top-[10%] -translate-x-1/2"
 								>
-									<!-- Texte 1 -->
 									<div
-										class="timeline-content absolute left-[8.7%] top-[19%] -translate-x-1/2 w-72"
+										class="text-center space-y-2 pointer-events-auto w-[320px]"
 									>
-										<div class="text-center space-y-2">
-											<h3
-												class="text-xl font-semibold text-blanc"
-											>
-												2024 - aujourd'hui
-											</h3>
-											<h4
-												class="text-lg font-semibold text-turquoise"
-											>
-												xxxx
-											</h4>
-											<p class="text-blanc/70 text-sm">
-												xxxx
-											</p>
-										</div>
+										<h3
+											class="text-xl font-semibold text-blanc"
+										>
+											2022 - 2023
+										</h3>
+										<h4
+											class="text-lg font-semibold text-turquoise"
+										>
+											Licence Professionnelle Maintenance
+											Industrielle et Sûreté des Process -
+											Alternance
+										</h4>
+										<p class="text-blanc/70 text-sm">
+											Université Gustave Eiffel -
+											Champs-sur-Marne
+										</p>
 									</div>
+								</div>
 
-									<!-- Texte 2 -->
+								<!-- Étape 4 : 2019-2021 (droite bas) -->
+								<div class="absolute left-[66%] top-[58%]">
 									<div
-										class="timeline-content absolute left-[28.7%] top-[65%] -translate-x-1/2 w-72"
+										class="text-center space-y-2 pointer-events-auto w-[280px]"
 									>
-										<div class="text-center space-y-2">
-											<h3
-												class="text-xl font-semibold text-blanc"
-											>
-												2023 - 2024
-											</h3>
-											<h4
-												class="text-lg font-semibold text-turquoise"
-											>
-												xxxxx
-											</h4>
-											<p class="text-blanc/70 text-sm">
-												xxxx
-											</p>
-										</div>
+										<h3
+											class="text-xl font-semibold text-blanc"
+										>
+											2019 - 2021
+										</h3>
+										<h4
+											class="text-lg font-semibold text-turquoise"
+										>
+											DUT Génie Électrique et Informatique
+											Industrielle
+										</h4>
+										<p class="text-blanc/70 text-sm">
+											IUT de Valenciennes
+										</p>
 									</div>
+								</div>
 
-									<!-- Texte 3 -->
+								<!-- Étape 5 : 2018-2019 (droite haut) -->
+								<div class="absolute left-[85%] top-[10%]">
 									<div
-										class="timeline-content absolute left-[50.3%] top-[19%] -translate-x-1/2 w-72"
+										class="text-center space-y-2 pointer-events-auto w-[280px]"
 									>
-										<div class="text-center space-y-2">
-											<h3
-												class="text-xl font-semibold text-blanc"
-											>
-												Année - Année
-											</h3>
-											<h4
-												class="text-lg font-semibold text-turquoise"
-											>
-												xxxx
-											</h4>
-											<p class="text-blanc/70 text-sm">
-												xxxx
-											</p>
-										</div>
-									</div>
-
-									<!-- Texte 4 -->
-									<div
-										class="timeline-content absolute left-[69.1%] top-[65%] -translate-x-1/2 w-72"
-									>
-										<div class="text-center space-y-2">
-											<h3
-												class="text-xl font-semibold text-blanc"
-											>
-												Année - Année
-											</h3>
-											<h4
-												class="text-lg font-semibold text-turquoise"
-											>
-												xxxx
-											</h4>
-											<p class="text-blanc/70 text-sm">
-												xxxx
-											</p>
-										</div>
-									</div>
-
-									<!-- Texte 5 -->
-									<div
-										class="timeline-content absolute left-[89.2%] top-[19%] -translate-x-1/2 w-72"
-									>
-										<div class="text-center space-y-2">
-											<h3
-												class="text-xl font-semibold text-blanc"
-											>
-												Année - Année
-											</h3>
-											<h4
-												class="text-lg font-semibold text-turquoise"
-											>
-												xxxx
-											</h4>
-											<p class="text-blanc/70 text-sm">
-												xxxx
-											</p>
-										</div>
+										<h3
+											class="text-xl font-semibold text-blanc"
+										>
+											2018 - 2019
+										</h3>
+										<h4
+											class="text-lg font-semibold text-turquoise"
+										>
+											Terminal STI2D
+										</h4>
+										<p class="text-blanc/70 text-sm">
+											Lycée xxx
+										</p>
 									</div>
 								</div>
 							</div>
@@ -618,8 +718,8 @@ import ScrollReveal from "../components/ScrollReveal.astro";
 					</div>
 				</div>
 			</ScrollReveal>
-				<!-- Valeurs / Approche -->
-				 <ScrollReveal>
+			<!-- Valeurs / Approche -->
+			<ScrollReveal>
 				<div class="mb-20 px-10">
 					<h2
 						class="text-3xl font-bold text-turquoise mb-12 text-center"
@@ -724,107 +824,82 @@ import ScrollReveal from "../components/ScrollReveal.astro";
 						</div>
 					</div>
 				</div>
-			</div>
+			</ScrollReveal>
 		</div>
-		</ScrollReveal>
 	</section>
 
-	<style>
-		/* Animation de tracé SVG */
-		[data-svg-animate] svg path,
-		[data-svg-animate] svg line,
-		[data-svg-animate] svg polyline {
-			stroke-dasharray: 1000;
-			stroke-dashoffset: 1000;
-			transition: stroke-dashoffset 2s cubic-bezier(0.4, 0, 0.2, 1);
-		}
+<style>
+    /* Animation des textes uniquement */
+    .timeline-content {
+        opacity: 0;
+        transform: translateY(30px) scale(0.95);
+        transition:
+            opacity 1s ease-out,
+            transform 1s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
 
-		[data-svg-animate].visible svg path,
-		[data-svg-animate].visible svg line,
-		[data-svg-animate].visible svg polyline {
-			stroke-dashoffset: 0;
-		}
+    /* Textes visibles avec effet bounce */
+    .timeline-content.visible {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
 
-		/* Animation pour les cercles */
-		[data-svg-animate] svg circle {
-			stroke-dasharray: 1000;
-			stroke-dashoffset: 1000;
-			transition: stroke-dashoffset 1.5s cubic-bezier(0.4, 0, 0.2, 1);
-		}
+    /* Délais progressifs pour les textes */
+    .timeline-content:nth-child(1) {
+        transition-delay: 2.6s;
+    }
+    .timeline-content:nth-child(2) {
+        transition-delay: 2.9s;
+    }
+    .timeline-content:nth-child(3) {
+        transition-delay: 3.2s;
+    }
+    .timeline-content:nth-child(4) {
+        transition-delay: 3.5s;
+    }
+    .timeline-content:nth-child(5) {
+        transition-delay: 3.8s;
+    }
 
-		[data-svg-animate].visible svg circle {
-			stroke-dashoffset: 0;
-		}
-
-		/* Effet de glow progressif */
-		[data-svg-animate].visible svg path,
-		[data-svg-animate].visible svg line {
-			filter: drop-shadow(0 0 8px rgba(0, 255, 238, 0.6));
-			transition: filter 0.5s ease-in-out 1s;
-		}
-		/* Masquer les éléments avant l'animation */
-		.timeline-content {
-			opacity: 0;
-			transform: translateY(20px);
-			transition:
-				opacity 0.8s ease,
-				transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-		}
-
-		/* Animation des textes */
-		.timeline-content.visible {
-			opacity: 1;
-			transform: translateY(0);
-		}
-
-		/* Délais progressifs pour les textes */
-		.timeline-content:nth-child(1) {
-			transition-delay: 1.5s;
-		}
-		.timeline-content:nth-child(2) {
-			transition-delay: 1.8s;
-		}
-		.timeline-content:nth-child(3) {
-			transition-delay: 2.1s;
-		}
-		.timeline-content:nth-child(4) {
-			transition-delay: 2.4s;
-		}
-		.timeline-content:nth-child(5) {
-			transition-delay: 2.7s;
-		}
-	</style>
-	<script>
+    /* Effet de hover sur les textes */
+    .timeline-content:hover {
+        transform: translateY(-5px) scale(1.02);
+        transition: transform 0.3s ease;
+    }
+</style>
+</Layout>
+<script>
     function animateTimelineTexts() {
-        const timelineSection = document.getElementById('timeline-texts');
+        const timelineSection = document.getElementById("timeline-texts");
         if (!timelineSection) return;
-        
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    const texts = entry.target.querySelectorAll('.timeline-content');
-                    texts.forEach(text => {
-                        text.classList.add('visible');
-                    });
-                    observer.unobserve(entry.target);
-                }
-            });
-        }, {
-            threshold: 0.3,
-            rootMargin: '0px 0px -100px 0px'
-        });
+
+        const observer = new IntersectionObserver(
+            (entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        const texts = entry.target.querySelectorAll(".timeline-content");
+                        texts.forEach((text) => {
+                            text.classList.add("visible");
+                        });
+                        observer.unobserve(entry.target);
+                    }
+                });
+            },
+            {
+                threshold: 0.3,
+                rootMargin: "0px 0px -100px 0px",
+            },
+        );
 
         observer.observe(timelineSection);
     }
 
     // Init
-    if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', animateTimelineTexts);
+    if (document.readyState === "loading") {
+        document.addEventListener("DOMContentLoaded", animateTimelineTexts);
     } else {
         animateTimelineTexts();
     }
 
-    document.addEventListener('astro:page-load', animateTimelineTexts);
+    document.addEventListener("astro:page-load", animateTimelineTexts);
 </script>
-
-</Layout>

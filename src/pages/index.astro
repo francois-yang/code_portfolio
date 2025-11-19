@@ -1,6 +1,11 @@
 ---
-import ScrollReveal from "../components/ScrollReveal.astro";
 import Layout from "../layouts/Layout.astro";
+import ScrollReveal from "../components/ScrollReveal.astro";
+import { pb, type Projet, getImageUrl } from "../lib/pocketbase";
+
+const projets = await pb.collection("projet").getFullList<Projet>({
+  sort: "-created",
+});
 ---
 
 <Layout>
@@ -354,7 +359,8 @@ import Layout from "../layouts/Layout.astro";
 					<div class="space-y-8">
 						<p class="text-blanc text-lg leading-relaxed">
 							En tant que webdesigner, moi <span
-								class="font-semibold text-line-blue">François YANG</span
+								class="font-semibold text-line-blue"
+								>François YANG</span
 							>, je vous propose mes conceptions d'interface
 							moderne, claires et intuitives qui valorisent votre
 							identité et facilitent l'expérience de vos
@@ -549,7 +555,7 @@ import Layout from "../layouts/Layout.astro";
 				Mes compétences
 			</h2>
 
-			<!-- VERSION MOBILE (< md) : Layout simple avec petites branches -->
+			<!-- VERSION MOBILE -->
 			<div class="block md:hidden px-4 space-y-10">
 				<!-- Illustrator à gauche -->
 				<div class="relative flex items-center" data-svg-animate>
@@ -767,7 +773,7 @@ import Layout from "../layouts/Layout.astro";
 				</div>
 			</div>
 
-			<!-- VERSION DESKTOP (>= md) : Avec branches complètes -->
+			<!-- VERSION DESKTOP  -->
 			<div class="hidden md:block">
 				<!-- Ligne 1 : Illustrator & VS Code -->
 				<div
@@ -1010,177 +1016,109 @@ import Layout from "../layouts/Layout.astro";
 		</section>
 	</ScrollReveal>
 
-	<ScrollReveal>
-		<!-- Section Mes projets avec animation de rétrécissement/dépliage -->
-		<section
-			class="relative py-20 px-6 overflow-hidden"
-			style="background-color: #053361;"
-		>
-			<div class="relative z-10 max-w-7xl mx-auto">
-				<h2 class="text-line-blue text-4xl font-bold mb-4">
-					Mes projets
-				</h2>
-				<p class="text-blanc text-lg mb-16">
-					Voici les projets que j'ai réalisés
-				</p>
+<ScrollReveal>
+    <section
+        class="relative py-20 px-6 overflow-hidden"
+        style="background-color: #053361;"
+    >
+        <div class="relative z-10 max-w-7xl mx-auto">
+            <h2 class="text-line-blue text-4xl font-bold mb-4">
+                Mes projets
+            </h2>
+            <p class="text-blanc text-lg mb-16">
+                Voici les projets que j'ai réalisés
+            </p>
 
-				<div class="relative flex items-center justify-center gap-8">
-					<!-- Bouton gauche -->
-					<button
-						id="prev-btn"
-						class="flex-shrink-0 w-16 h-16 border-2 border-turquoise rounded-lg flex items-center justify-center hover:bg-turquoise/20 transition-colors z-20"
-					>
-						<img
-							src="/icon/fleche-gauche.svg"
-							alt="Précédent"
-							class="w-8 h-8"
-						/>
-					</button>
+            <div class="relative flex items-center justify-center gap-8">
+                <!-- Bouton gauche -->
+                <button
+                    id="prev-btn"
+                    class="flex-shrink-0 w-16 h-16 border-2 border-turquoise rounded-lg flex items-center justify-center hover:bg-turquoise/20 transition-colors z-20"
+                >
+                    <img
+                        src="/icon/fleche-gauche.svg"
+                        alt="Précédent"
+                        class="w-8 h-8"
+                    />
+                </button>
 
-					<!-- Container holographique -->
-					<div class="relative flex-1 max-w-4xl hologram-container">
-						<!-- Projet 1 : ShareAmi -->
-						<div
-							id="project-0"
-							class="hologram-screen active"
-							data-project="0"
-						>
-							<div class="screen-wrapper">
-								<!-- Écran holographique  -->
-								<div class="hologram-display">
-									<img
-										src="/projet-shareami.webp"
-										alt="Projet ShareAmi"
-										class="project-image"
-									/>
-								</div>
+                <!-- Container holographique -->
+                <div class="relative flex-1 max-w-4xl hologram-container">
+                    {projets.map((projet, index) => (
+                        <div
+                            id={`project-${index}`}
+                            class={`hologram-screen ${index === 0 ? 'active' : ''}`}
+                            data-project={index}
+                            data-projet-id={projet.id}
+                        >
+                            <div class="screen-wrapper">
+                                <!-- Écran holographique -->
+                                <div class="hologram-display">
+                                    <img
+                                        src={getImageUrl(projet, projet.img_hero)}
+                                        alt={`Projet ${projet.nom_projet_hero}`}
+                                        class="project-image"
+                                    />
+                                </div>
 
-								<!-- Diffuseur en bas -->
-								<div class="diffuser">
-									<svg
-										width="321"
-										height="64"
-										fill="none"
-										xmlns="http://www.w3.org/2000/svg"
-										viewBox="0 0 321 64"
-										class="diffuser-svg"
-									>
-										<path
-											d="M321 0H0l40.493 32 40.493 32h157.555L321 0z"
-											fill="url(#diffuser-gradient)"
-										></path>
-										<defs>
-											<linearGradient
-												id="diffuser-gradient"
-												x1="160.482"
-												y1="64"
-												x2="160.506"
-												y2="0"
-												gradientUnits="userSpaceOnUse"
-											>
-												<stop
-													offset=".149"
-													stop-color="#072255"></stop>
-												<stop
-													offset=".659"
-													stop-color="#00C2DF"
-													stop-opacity=".6"></stop>
-												<stop
-													offset="1"
-													stop-color="#00EAFF"
-													stop-opacity=".18"></stop>
-											</linearGradient>
-										</defs>
-									</svg>
-								</div>
+                                <!-- Diffuseur en bas -->
+                                <div class="diffuser">
+                                    <svg
+                                        width="321"
+                                        height="64"
+                                        fill="none"
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        viewBox="0 0 321 64"
+                                        class="diffuser-svg"
+                                    >
+                                        <path
+                                            d="M321 0H0l40.493 32 40.493 32h157.555L321 0z"
+                                            fill={`url(#diffuser-gradient-${index})`}
+                                        />
+                                        <defs>
+                                            <linearGradient
+                                                id={`diffuser-gradient-${index}`}
+                                                x1="160.482"
+                                                y1="64"
+                                                x2="160.506"
+                                                y2="0"
+                                                gradientUnits="userSpaceOnUse"
+                                            >
+                                                <stop offset=".149" stop-color="#072255" />
+                                                <stop offset=".659" stop-color="#00C2DF" stop-opacity=".6" />
+                                                <stop offset="1" stop-color="#00EAFF" stop-opacity=".18" />
+                                            </linearGradient>
+                                        </defs>
+                                    </svg>
+                                </div>
 
-								<!-- Bouton CTA -->
-								<button
-									class="hologram-cta bg-turquoise hover:bg-turquoise/90 text-bleu-fonce font-semibold px-8 py-3 rounded-lg transition-colors shadow-lg mt-6"
-								>
-									En savoir plus sur ShareAmi
-								</button>
-							</div>
-						</div>
+                                <!-- Bouton CTA avec data-projet-id -->
+                                <button
+                                    class="projet-cta hologram-cta bg-turquoise hover:bg-turquoise/90 text-bleu-fonce font-semibold px-8 py-3 rounded-lg transition-colors shadow-lg mt-6 cursor-pointer"
+                                    data-projet-id={projet.id}
+                                >
+                                    En savoir plus sur {projet.nom_projet_hero}
+                                </button>
+                            </div>
+                        </div>
+                    ))}
+                </div>
 
-						<!-- Projet 2 : Asafram -->
-						<div
-							id="project-1"
-							class="hologram-screen"
-							data-project="1"
-						>
-							<div class="screen-wrapper">
-								<div class="hologram-display">
-									<img
-										src="/projet-asafram.webp"
-										alt="Projet Asafram"
-										class="project-image"
-									/>
-								</div>
-
-								<div class="diffuser">
-									<svg
-										width="321"
-										height="64"
-										fill="none"
-										xmlns="http://www.w3.org/2000/svg"
-										viewBox="0 0 321 64"
-										class="diffuser-svg"
-									>
-										<path
-											d="M321 0H0l40.493 32 40.493 32h157.555L321 0z"
-											fill="url(#diffuser-gradient-2)"
-										></path>
-										<defs>
-											<linearGradient
-												id="diffuser-gradient-2"
-												x1="160.482"
-												y1="64"
-												x2="160.506"
-												y2="0"
-												gradientUnits="userSpaceOnUse"
-											>
-												<stop
-													offset=".149"
-													stop-color="#072255"></stop>
-												<stop
-													offset=".659"
-													stop-color="#00C2DF"
-													stop-opacity=".6"></stop>
-												<stop
-													offset="1"
-													stop-color="#00EAFF"
-													stop-opacity=".18"></stop>
-											</linearGradient>
-										</defs>
-									</svg>
-								</div>
-
-								<button
-									style="background-color: #053361;"
-									class="hologram-cta text-white font-semibold px-8 py-3 rounded-lg transition-colors shadow-lg mt-6 hover:scale-105"
-								>
-									En savoir plus sur ASAFRAM
-								</button>
-							</div>
-						</div>
-					</div>
-
-					<!-- Bouton droite -->
-					<button
-						id="next-btn"
-						class="flex-shrink-0 w-16 h-16 border-2 border-turquoise rounded-lg flex items-center justify-center hover:bg-turquoise/20 transition-colors z-20"
-					>
-						<img
-							src="/icon/fleche-droite.svg"
-							alt="Suivant"
-							class="w-8 h-8"
-						/>
-					</button>
-				</div>
-			</div>
-		</section>
-	</ScrollReveal>
+                <!-- Bouton droite -->
+                <button
+                    id="next-btn"
+                    class="flex-shrink-0 w-16 h-16 border-2 border-turquoise rounded-lg flex items-center justify-center hover:bg-turquoise/20 transition-colors z-20"
+                >
+                    <img
+                        src="/icon/fleche-droite.svg"
+                        alt="Suivant"
+                        class="w-8 h-8"
+                    />
+                </button>
+            </div>
+        </div>
+    </section>
+</ScrollReveal>
 	<ScrollReveal>
 		<section
 			id="contact"
@@ -1295,4 +1233,21 @@ import Layout from "../layouts/Layout.astro";
 <script>
 	import { initContactForm } from "../scripts/contact-form.js";
 	initContactForm();
+</script>
+<script>
+
+  const ctaButtons = document.querySelectorAll('.projet-cta');
+  
+  console.log(`Nombre de boutons trouvés: ${ctaButtons.length}`);
+  
+ 
+  ctaButtons.forEach((button, index) => {
+    const projetId = button.getAttribute('data-projet-id');
+    console.log(`Bouton ${index}: ID projet = ${projetId}`);
+    
+    button.addEventListener('click', () => {
+      console.log(`Clic sur le bouton, redirection vers /projet/${projetId}`);
+      window.location.href = `/projet/${projetId}`;
+    });
+  });
 </script>

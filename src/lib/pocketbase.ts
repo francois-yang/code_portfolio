@@ -9,7 +9,7 @@ if (import.meta.env.MODE === 'development') {
     PB_URL = import.meta.env.PUBLIC_POCKETBASE_URL || 'http://127.0.0.1:8090';
 } else {
     // En production : utilise l'URL du VPS
-    PB_URL = 'https://portfolio.fryg.fr:443'; // ← Remplace par ton URL de production
+    PB_URL = 'https://portfolio.fryg.fr'; 
 }
 
 // Création du client PocketBase

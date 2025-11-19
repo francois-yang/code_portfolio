@@ -35,14 +35,14 @@ try {
             filterError,
         );
 
-        // Si le filtre échoue, récupérer toutes les sections et filtrer manuellement
+        
         const allSections = await pb
             .collection("sections_projets")
             .getFullList<SectionProjet>({
                 sort: "created",
             });
 
-        // Filtrer manuellement
+       
         sections = allSections.filter((section) => section.projet_id === id);
         console.log(
             "Sections filtrées manuellement:",
@@ -59,15 +59,15 @@ try {
     console.error(e);
 }
 
-// Si le projet n'existe pas, redirection
+
 if (!projet) {
     return Astro.redirect("/projet/projets");
 }
 
-// Construction de l'URL de l'image hero
+
 const imgHeroUrl = getImageUrl(projet, projet.img_hero);
 
-// Définir les couleurs du hero en fonction du projet
+
 const couleurConfig: Record<
     string,
     { from: string; via: string; to: string; decoration: string }
@@ -97,10 +97,10 @@ const couleurConfig: Record<
         decoration: "#ec4899",
     },
     jaune: {
-        from: "#6b5c1e", // Version foncée de FFE074
-        via: "#8a771f", // Version moyenne
-        to: "#a89020", // Version plus claire mais pas trop
-        decoration: "#FFE074", // La couleur vive pour la décoration
+        from: "#6b5c1e", 
+        via: "#8a771f", 
+        to: "#a89020", 
+        decoration: "#FFE074", 
     },
 };
 
@@ -133,18 +133,18 @@ const colors = couleurConfig[couleur] || couleurConfig.bleu;
                 projet.svg_hero.length > 0 && (
                     <>
                         {projet.svg_hero.map((svg, index) => {
-                            // Vérifier le type de fichier
+                            
                             const isDecor3 = svg.includes("decor3");
                             const isGroup98 = svg.includes("group9_8");
 
-                            // Positions variées pour les SVG uploadés
+                     
                             let position;
                             let zIndex = index + 1;
                             let opacityClass = "opacity-15";
                             let filterStyle = `filter: brightness(0) saturate(100%) invert(1) sepia(1) saturate(5) hue-rotate(${couleur === "violet" ? "270deg" : couleur === "vert" ? "90deg" : couleur === "rose" ? "310deg" : "180deg"});`;
 
                             if (isDecor3) {
-                                // decor3.svg : en bas à droite, couleur #A374FF
+                            
                                 position = {
                                     bottom: "0",
                                     right: "0",
@@ -154,7 +154,7 @@ const colors = couleurConfig[couleur] || couleurConfig.bleu;
                                 filterStyle =
                                     "filter: brightness(0) saturate(100%) invert(56%) sepia(73%) saturate(2619%) hue-rotate(238deg) brightness(102%) contrast(101%);";
                             } else if (isGroup98) {
-                                // group9_8.svg : derrière les textes à droite
+                               
                                 position = {
                                     top: "30%",
                                     right: "5%",

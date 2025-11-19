@@ -18,7 +18,7 @@ let error: string | null = null;
 try {
     // Récupérer le projet
     projet = await pb.collection("projet").getOne<Projet>(id!);
-    console.log("✅ Projet récupéré:", projet.nom_projet_hero);
+    console.log("Projet récupéré:", projet.nom_projet_hero);
 
     // Essayer d'abord avec le filtre PocketBase
     try {
@@ -28,9 +28,9 @@ try {
                 filter: `projet_id = "${id}"`,
                 sort: "+ordre",
             });
-        console.log(`✅ ${sections.length} sections récupérées`);
+        console.log(`${sections.length} sections récupérées`);
     } catch (filterError) {
-        console.warn("⚠️ Filtre PocketBase échoué, tentative avec fetch manuel:", filterError);
+        console.warn("Filtre PocketBase échoué, tentative avec fetch manuel:", filterError);
 
         // Si le filtre échoue, récupérer toutes les sections et filtrer manuellement
         const allSections = await pb
@@ -41,15 +41,15 @@ try {
 
         // Filtrer manuellement
         sections = allSections.filter((section) => section.projet_id === id);
-        console.log("✅ Sections filtrées manuellement:", sections.length, "sections trouvées");
+        console.log("Sections filtrées manuellement:", sections.length, "sections trouvées");
     }
 
     if (sections.length === 0) {
-        console.warn("⚠️ ATTENTION: Aucune section trouvée pour ce projet !");
+        console.warn("Aucune section trouvée pour ce projet !");
     }
 } catch (e) {
     error = "Projet non trouvé";
-    console.error("❌ Erreur complète:", e);
+    console.error(e);
 }
 
 // Si le projet n'existe pas, redirection

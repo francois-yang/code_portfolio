@@ -1188,16 +1188,20 @@ import Layout from "../layouts/Layout.astro";
 				<!-- Titre de section -->
 				<h2 class="text-center mb-16">
 					<span class="text-blanc text-4xl font-bold">Contactez-</span
-					><span class="text-turquoise text-4xl font-bold">moi</span>
+					>
+					<span class="text-turquoise text-4xl font-bold">moi</span>
 				</h2>
 
 				<!-- Formulaire de contact -->
-				<form class="space-y-6">
+				<form id="contact-form" class="space-y-6">
 					<!-- Champ Nom -->
 					<div>
 						<input
 							type="text"
+							name="nom"
+							id="nom"
 							placeholder="Nom"
+							required
 							class="contact-input w-full bg-transparent border-b-2 border-blanc/30 text-blanc placeholder-blanc/70 px-0 py-3 focus:border-turquoise focus:outline-none transition-all"
 						/>
 					</div>
@@ -1206,7 +1210,10 @@ import Layout from "../layouts/Layout.astro";
 					<div>
 						<input
 							type="text"
+							name="prenom"
+							id="prenom"
 							placeholder="Prénom"
+							required
 							class="contact-input w-full bg-transparent border-b-2 border-blanc/30 text-blanc placeholder-blanc/70 px-0 py-3 focus:border-turquoise focus:outline-none transition-all"
 						/>
 					</div>
@@ -1215,7 +1222,10 @@ import Layout from "../layouts/Layout.astro";
 					<div>
 						<input
 							type="email"
+							name="email"
+							id="email"
 							placeholder="Email"
+							required
 							class="contact-input w-full bg-transparent border-b-2 border-blanc/30 text-blanc placeholder-blanc/70 px-0 py-3 focus:border-turquoise focus:outline-none transition-all"
 						/>
 					</div>
@@ -1224,6 +1234,8 @@ import Layout from "../layouts/Layout.astro";
 					<div>
 						<input
 							type="tel"
+							name="telephone"
+							id="telephone"
 							placeholder="Numéro de téléphone"
 							class="contact-input w-full bg-transparent border-b-2 border-blanc/30 text-blanc placeholder-blanc/70 px-0 py-3 focus:border-turquoise focus:outline-none transition-all"
 						/>
@@ -1232,20 +1244,32 @@ import Layout from "../layouts/Layout.astro";
 					<!-- Champ Message -->
 					<div>
 						<textarea
+							name="message"
+							id="message"
 							placeholder="Message"
 							rows="4"
+							required
 							class="contact-input w-full bg-transparent border-b-2 border-blanc/30 text-blanc placeholder-blanc/70 px-0 py-3 focus:border-turquoise focus:outline-none transition-all resize-none"
 						></textarea>
+					</div>
+
+					<!-- Message de confirmation/erreur -->
+					<div
+						id="form-message"
+						class="hidden rounded-lg p-4 text-center"
+					>
 					</div>
 
 					<!-- Bouton Envoyer -->
 					<div class="flex justify-center pt-6">
 						<button
 							type="submit"
+							id="submit-btn"
 							class="bg-turquoise hover:bg-turquoise/90 text-bleu-fonce font-semibold px-10 py-3 rounded-lg transition-colors shadow-lg flex items-center gap-2"
 						>
-							Envoyer
+							<span id="btn-text">Envoyer</span>
 							<svg
+								id="btn-icon"
 								class="w-5 h-5"
 								fill="none"
 								stroke="currentColor"

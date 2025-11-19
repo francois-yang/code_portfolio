@@ -5,10 +5,13 @@ import node from '@astrojs/node';
 
 // https://astro.build/config
 export default defineConfig({
-  output: 'server', // ← Mode serveur pour site dynamique
+  output: 'server',
   adapter: node({
     mode: 'standalone'
   }),
+  server: {
+    host: true 
+  },
   vite: {
     plugins: [tailwindcss()]
   }

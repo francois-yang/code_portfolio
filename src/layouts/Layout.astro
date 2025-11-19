@@ -10,7 +10,7 @@ import "../styles/global.css";
         <meta charset="UTF-8" />
         <script type="module" src="/scripts/typed-init.js"></script>
         <meta name="viewport" content="width=device-width" />
-        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+        <link rel="icon" type="image/svg+xml" href="/logo.svg" />
         <meta name="generator" content={Astro.generator} />
         <title>Mon Portfolio</title>
     </head>
@@ -65,9 +65,9 @@ import "../styles/global.css";
         });
     }
 
-    // ✅ SOLUTION : Attendre que tout soit vraiment chargé
+
     function safeInit() {
-        // Attendre un peu pour être sûr que le DOM est stable
+
         requestAnimationFrame(() => {
             setTimeout(() => {
                 initScrollReveal();
@@ -75,14 +75,14 @@ import "../styles/global.css";
         });
     }
 
-    // Init selon l'état du document
+
     if (document.readyState === 'loading') {
         document.addEventListener('DOMContentLoaded', safeInit);
     } else {
         safeInit();
     }
     
-    // Reinit après navigation Astro avec délai
+ 
     document.addEventListener('astro:page-load', () => {
         console.log('🚀 astro:page-load');
         safeInit();

@@ -4,10 +4,11 @@ import { pb, type Projet, getImageUrl } from '../../lib/pocketbase';
 
 // Fetch de tous les projets depuis PocketBase
 let projets: Projet[] = [];
+let erro = false;
 
 try {
 	projets = await pb.collection('projet').getFullList<Projet>({
-		sort: '-created', // Trier par date de création (plus récent en premier)
+		sort: '-created',
 	});
 } catch (e) {
 	console.error('Erreur lors du chargement des projets:', e);

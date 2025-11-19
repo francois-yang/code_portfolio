@@ -124,13 +124,25 @@ const couleur = projet.couleur_hero || "bleu";
 const colors = couleurConfig[couleur] || couleurConfig.bleu;
 
 // Génération statique : retourne tous les projets
+// Génération statique : retourne tous les projets
 export async function getStaticPaths() {
-    const projets = await pb.collection("projet").getFullList<Projet>();
+    try {
+        console.log('🔍 Tentative de connexion à PocketBase...');
+        const projets = await pb.collection("projet").getFullList<Projet>();
+        console.log(`✅ ${projets.length} projets récupérés`);
 
-    return projets.map((projet) => ({
-        params: { id: projet.id },
-    }));
+        return projets.map((projet) => ({
+            params: { id: projet.id },
+        }));
+    } catch (error) {
+        console.error('❌ Erreur lors de la récupération des projets:', error);
+        
+        // Retourne un tableau vide pour permettre au build de continuer
+        // Les pages ne seront pas générées mais le build ne crashera pas
+        return [];
+    }
 }
+
 ---
 
 <Layout>

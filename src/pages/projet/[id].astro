@@ -10,7 +10,7 @@ import {
 // Récupération de l'ID depuis les params
 const { id } = Astro.params;
 
-// Fetch du projet depuis PocketBase
+// Fetch du projet depuis PocketBase (à la demande, à chaque requête)
 let projet: Projet | null = null;
 let sections: SectionProjet[] = [];
 let error: string | null = null;
@@ -18,6 +18,7 @@ let error: string | null = null;
 try {
     // Récupérer le projet
     projet = await pb.collection("projet").getOne<Projet>(id!);
+    console.log("✅ Projet récupéré:", projet.nom_projet_hero);
 
     // Essayer d'abord avec le filtre PocketBase
     try {
@@ -25,56 +26,26 @@ try {
             .collection("sections_projets")
             .getFullList<SectionProjet>({
                 filter: `projet_id = "${id}"`,
-                sort: "+ordre", // + pour ascendant, si le champ n'existe pas, il sera ignoré
+                sort: "+ordre",
             });
+        console.log(`✅ ${sections.length} sections récupérées`);
     } catch (filterError) {
-        console.warn(
-            "⚠️ Filtre PocketBase échoué, tentative avec fetch manuel:",
-            filterError,
-        );
+        console.warn("⚠️ Filtre PocketBase échoué, tentative avec fetch manuel:", filterError);
 
         // Si le filtre échoue, récupérer toutes les sections et filtrer manuellement
         const allSections = await pb
             .collection("sections_projets")
             .getFullList<SectionProjet>({
-                sort: "created", // Tri par date de création si pas d'ordre
+                sort: "created",
             });
-
-        allSections.forEach((section, index) => {
-            console.log(`  Section ${index + 1}:`, {
-                id: section.id,
-                titre: section.titre_section,
-                projet_id: section.projet_id,
-                projet_id_type: typeof section.projet_id,
-                id_recherche: id,
-                id_type: typeof id,
-                match: section.projet_id === id,
-            });
-        });
 
         // Filtrer manuellement
         sections = allSections.filter((section) => section.projet_id === id);
-        console.log(
-            "✅ Sections filtrées manuellement:",
-            sections.length,
-            "sections trouvées",
-        );
+        console.log("✅ Sections filtrées manuellement:", sections.length, "sections trouvées");
     }
 
     if (sections.length === 0) {
         console.warn("⚠️ ATTENTION: Aucune section trouvée pour ce projet !");
-        console.log("ID du projet recherché:", id);
-        console.log(
-            "Vérifiez que le champ projet_id dans PocketBase contient bien cet ID",
-        );
-    } else {
-        console.log(
-            "✅ Sections trouvées:",
-            sections.map((s) => ({
-                titre: s.titre_section,
-                projet_id: s.projet_id,
-            })),
-        );
     }
 } catch (e) {
     error = "Projet non trouvé";
@@ -123,28 +94,7 @@ const couleurConfig: Record<
 const couleur = projet.couleur_hero || "bleu";
 const colors = couleurConfig[couleur] || couleurConfig.bleu;
 
-// Génération statique : retourne tous les projets
-// Génération statique : retourne tous les projets
-export async function getStaticPaths() {
-    try {
-        console.log('🔍 Tentative de connexion à PocketBase...');
-        const projets = await pb.collection("projet").getFullList<Projet>();
-        console.log(`✅ ${projets.length} projets récupérés`);
-
-        return projets.map((projet) => ({
-            params: { id: projet.id },
-        }));
-    } catch (error) {
-        console.error('❌ Erreur lors de la récupération des projets:', error);
-        
-        // Retourne un tableau vide pour permettre au build de continuer
-        // Les pages ne seront pas générées mais le build ne crashera pas
-        return [];
-    }
-}
-
 ---
-
 <Layout>
     <!-- Section Hero -->
     <section

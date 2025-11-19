@@ -23,13 +23,12 @@ import "../styles/global.css";
 
 <script>
     function initScrollReveal() {
-        console.log('🔄 ScrollReveal init - ' + window.location.pathname);
+        
         
         const elements = document.querySelectorAll('[data-scroll-reveal]');
-        console.log(`✅ ${elements.length} éléments trouvés`);
+      
         
         if (elements.length === 0) {
-            console.warn('⚠️ Aucun élément [data-scroll-reveal] trouvé');
             return;
         }
         
@@ -44,11 +43,9 @@ import "../styles/global.css";
                     const element = entry.target as HTMLElement;
                     const delay = parseFloat(element.dataset.delay || '0');
                     
-                    console.log(`👁️ Élément visible: ${element.tagName}`);
                     
                     setTimeout(() => {
                         element.classList.add('revealed');
-                        console.log(`✨ Classe revealed ajoutée à ${element.tagName}`);
                     }, delay * 1000);
                     
                     observer.unobserve(entry.target);
@@ -60,7 +57,6 @@ import "../styles/global.css";
         });
 
         elements.forEach(el => {
-            console.log(`👀 Observer ajouté à ${el.tagName}`);
             observer.observe(el);
         });
     }
@@ -84,12 +80,10 @@ import "../styles/global.css";
     
  
     document.addEventListener('astro:page-load', () => {
-        console.log('🚀 astro:page-load');
         safeInit();
     });
     
     document.addEventListener('astro:after-swap', () => {
-        console.log('🔄 astro:after-swap');
         safeInit();
     });
 </script>

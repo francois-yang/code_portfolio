@@ -1,8 +1,8 @@
 // scrollReveal.js
 export function initScrollReveal() {
-    console.log('🔄 ScrollReveal init');
+    
     const elements = document.querySelectorAll('[data-scroll-reveal]');
-    console.log(`✅ ${elements.length} éléments trouvés`);
+   
     
     if (elements.length === 0) {
         console.warn('⚠️ Aucun élément [data-scroll-reveal] trouvé');
@@ -15,7 +15,7 @@ export function initScrollReveal() {
                 const element = entry.target;
                 const delay = parseFloat(element.dataset.delay || '0');
                 
-                console.log(`👁️ Élément visible: ${element.tagName}, delay: ${delay}s`);
+              
                 
                 setTimeout(() => {
                     element.classList.add('revealed');

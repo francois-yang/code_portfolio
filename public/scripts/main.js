@@ -12,7 +12,6 @@ function init() {
     initLineAnimations();
     initSVGAnimations(); // ← Vérifie que c'est bien appelé
     
-    console.log('✅ All animations initialized');
 }
 
 // Init au chargement

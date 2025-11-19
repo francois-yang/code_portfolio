@@ -30,7 +30,10 @@ try {
             });
         console.log(`${sections.length} sections récupérées`);
     } catch (filterError) {
-        console.warn("Filtre PocketBase échoué, tentative avec fetch manuel:", filterError);
+        console.warn(
+            "Filtre PocketBase échoué, tentative avec fetch manuel:",
+            filterError,
+        );
 
         // Si le filtre échoue, récupérer toutes les sections et filtrer manuellement
         const allSections = await pb
@@ -41,7 +44,11 @@ try {
 
         // Filtrer manuellement
         sections = allSections.filter((section) => section.projet_id === id);
-        console.log("Sections filtrées manuellement:", sections.length, "sections trouvées");
+        console.log(
+            "Sections filtrées manuellement:",
+            sections.length,
+            "sections trouvées",
+        );
     }
 
     if (sections.length === 0) {
@@ -93,8 +100,8 @@ const couleurConfig: Record<
 
 const couleur = projet.couleur_hero || "bleu";
 const colors = couleurConfig[couleur] || couleurConfig.bleu;
-
 ---
+
 <Layout>
     <!-- Section Hero -->
     <section
@@ -296,18 +303,6 @@ const colors = couleurConfig[couleur] || couleurConfig.bleu;
                             class="text-blanc font-semibold group-hover:text-turquoise transition-colors"
                             >Description du projet</span
                         >
-                        <svg
-                            class="w-5 h-5 text-turquoise transition-transform group-hover:rotate-90"
-                            fill="none"
-                            stroke="currentColor"
-                            viewBox="0 0 24 24"
-                        >
-                            <path
-                                stroke-linecap="round"
-                                stroke-linejoin="round"
-                                stroke-width="2"
-                                d="M19 9l-7 7-7-7"></path>
-                        </svg>
                     </button>
 
                     <!-- Item 2 : Mon rôle -->
@@ -319,18 +314,6 @@ const colors = couleurConfig[couleur] || couleurConfig.bleu;
                             class="text-blanc font-semibold group-hover:text-turquoise transition-colors"
                             >Mon rôle</span
                         >
-                        <svg
-                            class="w-5 h-5 text-turquoise transition-transform group-hover:rotate-90"
-                            fill="none"
-                            stroke="currentColor"
-                            viewBox="0 0 24 24"
-                        >
-                            <path
-                                stroke-linecap="round"
-                                stroke-linejoin="round"
-                                stroke-width="2"
-                                d="M19 9l-7 7-7-7"></path>
-                        </svg>
                     </button>
 
                     <!-- Item 3 : Logiciels utilisés -->
@@ -342,18 +325,6 @@ const colors = couleurConfig[couleur] || couleurConfig.bleu;
                             class="text-blanc font-semibold group-hover:text-turquoise transition-colors"
                             >Logiciels utilisés</span
                         >
-                        <svg
-                            class="w-5 h-5 text-turquoise transition-transform group-hover:rotate-90"
-                            fill="none"
-                            stroke="currentColor"
-                            viewBox="0 0 24 24"
-                        >
-                            <path
-                                stroke-linecap="round"
-                                stroke-linejoin="round"
-                                stroke-width="2"
-                                d="M19 9l-7 7-7-7"></path>
-                        </svg>
                     </button>
 
                     <!-- Item 4 : Lien du site -->
@@ -365,18 +336,6 @@ const colors = couleurConfig[couleur] || couleurConfig.bleu;
                             class="text-blanc font-semibold group-hover:text-turquoise transition-colors"
                             >Lien du site</span
                         >
-                        <svg
-                            class="w-5 h-5 text-turquoise transition-transform group-hover:rotate-90"
-                            fill="none"
-                            stroke="currentColor"
-                            viewBox="0 0 24 24"
-                        >
-                            <path
-                                stroke-linecap="round"
-                                stroke-linejoin="round"
-                                stroke-width="2"
-                                d="M19 9l-7 7-7-7"></path>
-                        </svg>
                     </button>
                 </div>
             </nav>
@@ -627,172 +586,146 @@ const colors = couleurConfig[couleur] || couleurConfig.bleu;
 
                 <!-- Section 2 : Mon rôle -->
                 <div class="content-section hidden" data-section="role">
-                    <div class="flex items-center gap-4 mb-8">
-                        <span class="text-5xl font-bold text-turquoise/20"
-                            >02</span
-                        >
-                        <h2 class="text-3xl font-bold text-turquoise">
-                            Mon rôle
-                        </h2>
-                    </div>
-                    <div
-                        class="bg-turquoise/10 border border-turquoise/30 rounded-xl p-8"
-                    >
-                        <p
-                            class="text-blanc text-lg leading-relaxed whitespace-pre-line"
-                        >
-                            {projet.mon_role}
-                        </p>
-                    </div>
+                    <h2 class="text-3xl font-bold text-turquoise">Mon rôle</h2>
                 </div>
-
-                <!-- Section 3 : Logiciels utilisés -->
-                <div class="content-section hidden" data-section="logiciels">
-                    <div class="flex items-center gap-4 mb-8">
-                        <span class="text-5xl font-bold text-turquoise/20"
-                            >03</span
-                        >
-                        <h2 class="text-3xl font-bold text-turquoise">
-                            Logiciels utilisés
-                        </h2>
-                    </div>
-                    <div
-                        class="bg-turquoise/10 border border-turquoise/30 rounded-xl p-8"
+                <div
+                    class="bg-turquoise/10 border border-turquoise/30 rounded-xl p-8"
+                >
+                    <p
+                        class="text-blanc text-lg leading-relaxed whitespace-pre-line"
                     >
-                        <p
-                            class="text-blanc text-lg leading-relaxed whitespace-pre-line"
-                        >
-                            {projet.logiciels_utilises}
-                        </p>
-                    </div>
-                </div>
-
-                <!-- Section 4 : Lien du site -->
-                <div class="content-section hidden" data-section="lien">
-                    <div class="flex items-center gap-4 mb-8">
-                        <span class="text-5xl font-bold text-turquoise/20"
-                            >04</span
-                        >
-                        <h2 class="text-3xl font-bold text-turquoise">
-                            Lien du site
-                        </h2>
-                    </div>
-                    <div
-                        class="bg-turquoise/10 border border-turquoise/30 rounded-xl p-8"
-                    >
-                        {
-                            projet.lien_site ? (
-                                <>
-                                    <a
-                                        class="mt-4 break-all text-turquoise inline-flex text-xl font-semibold hover:underline"
-                                        href={projet.lien_site}
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                    >
-                                        {projet.lien_site}{" "}
-                                        <svg
-                                            class="w-6 h-6"
-                                            fill="none"
-                                            stroke="currentColor"
-                                            viewBox="0 0 24 24"
-                                        >
-                                            <path
-                                                stroke-linecap="round"
-                                                stroke-linejoin="round"
-                                                stroke-width="2"
-                                                d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
-                                            />
-                                        </svg>
-                                    </a>
-                                </>
-                            ) : (
-                                <p class="text-blanc/70">
-                                    Aucun lien disponible
-                                </p>
-                            )
-                        }
-                    </div>
+                        {projet.mon_role}
+                    </p>
                 </div>
             </div>
 
-            <!-- Bouton retour -->
-            <div class="mt-16 text-center">
-                <a
-                    href="/projet/projets"
-                    class="inline-flex items-center gap-2 border-2 border-turquoise text-turquoise hover:bg-turquoise hover:text-bleu-fonce font-semibold px-8 py-4 rounded-lg transition-all duration-300"
+            <!-- Section 3 : Logiciels utilisés -->
+            <div class="content-section hidden" data-section="logiciels">
+                <h2 class="text-3xl font-bold text-turquoise">
+                    Logiciels utilisés
+                </h2>
+            </div>
+            <div
+                class="bg-turquoise/10 border border-turquoise/30 rounded-xl p-8"
+            >
+                <p
+                    class="text-blanc text-lg leading-relaxed whitespace-pre-line"
                 >
-                    <svg
-                        class="w-5 h-5"
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
-                    >
-                        <path
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            stroke-width="2"
-                            d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
-                    </svg>
-                    Retour aux projets
-                </a>
+                    {projet.logiciels_utilises}
+                </p>
             </div>
         </div>
+
+        <!-- Section 4 : Lien du site -->
+        <div class="content-section hidden" data-section="lien">
+            <h2 class="text-3xl font-bold text-turquoise">Lien du site</h2>
+        </div>
+        <div class="bg-turquoise/10 border border-turquoise/30 rounded-xl p-8">
+            {
+                projet.lien_site ? (
+                    <>
+                        <a
+                            class="mt-4 break-all text-turquoise inline-flex text-xl font-semibold hover:underline"
+                            href={projet.lien_site}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
+                            {projet.lien_site}{" "}
+                            <svg
+                                class="w-6 h-6"
+                                fill="none"
+                                stroke="currentColor"
+                                viewBox="0 0 24 24"
+                            >
+                                <path
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    stroke-width="2"
+                                    d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
+                                />
+                            </svg>
+                        </a>
+                    </>
+                ) : (
+                    <p class="text-blanc/70">Aucun lien disponible</p>
+                )
+            }
+        </div>
     </section>
-
-    <script>
-        // Gestion de l'accordéon
-        const buttons = document.querySelectorAll(".accordion-btn");
-        const sections = document.querySelectorAll(".content-section");
-
-        buttons.forEach((button) => {
-            button.addEventListener("click", () => {
-                const sectionName = button.getAttribute("data-section");
-
-                // Retirer l'état actif de tous les boutons
-                buttons.forEach((btn) => {
-                    btn.classList.remove("bg-turquoise/10", "border-turquoise");
-                    btn.classList.add("bg-transparent", "border-turquoise/30");
-                });
-
-                // Ajouter l'état actif au bouton cliqué
-                button.classList.remove(
-                    "bg-transparent",
-                    "border-turquoise/30",
-                );
-                button.classList.add("bg-turquoise/10", "border-turquoise");
-
-                // Cacher toutes les sections
-                sections.forEach((section) => {
-                    section.classList.add("hidden");
-                    section.classList.remove("active");
-                });
-
-                // Afficher la section correspondante
-                const targetSection = document.querySelector(
-                    `.content-section[data-section="${sectionName}"]`,
-                );
-                if (targetSection) {
-                    targetSection.classList.remove("hidden");
-                    targetSection.classList.add("active");
-                }
-            });
-        });
-    </script>
-
-    <style>
-        .content-section {
-            animation: fadeIn 0.3s ease-in-out;
-        }
-
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(10px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-    </style>
 </Layout>
+
+<!-- Bouton retour -->
+<div class="mt-16 text-center">
+    <a
+        href="/projet/projets"
+        class="inline-flex items-center gap-2 border-2 border-turquoise text-turquoise hover:bg-turquoise hover:text-bleu-fonce font-semibold px-8 py-4 rounded-lg transition-all duration-300"
+    >
+        <svg
+            class="w-5 h-5"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+        >
+            <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
+        </svg>
+        Retour aux projets
+    </a>
+</div>
+
+<script>
+    // Gestion de l'accordéon
+    const buttons = document.querySelectorAll(".accordion-btn");
+    const sections = document.querySelectorAll(".content-section");
+
+    buttons.forEach((button) => {
+        button.addEventListener("click", () => {
+            const sectionName = button.getAttribute("data-section");
+
+            // Retirer l'état actif de tous les boutons
+            buttons.forEach((btn) => {
+                btn.classList.remove("bg-turquoise/10", "border-turquoise");
+                btn.classList.add("bg-transparent", "border-turquoise/30");
+            });
+
+            // Ajouter l'état actif au bouton cliqué
+            button.classList.remove("bg-transparent", "border-turquoise/30");
+            button.classList.add("bg-turquoise/10", "border-turquoise");
+
+            // Cacher toutes les sections
+            sections.forEach((section) => {
+                section.classList.add("hidden");
+                section.classList.remove("active");
+            });
+
+            // Afficher la section correspondante
+            const targetSection = document.querySelector(
+                `.content-section[data-section="${sectionName}"]`,
+            );
+            if (targetSection) {
+                targetSection.classList.remove("hidden");
+                targetSection.classList.add("active");
+            }
+        });
+    });
+</script>
+
+<style>
+    .content-section {
+        animation: fadeIn 0.3s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+            transform: translateY(10px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+</style>

@@ -25,7 +25,7 @@ export function initContactForm() {
     
     try {
       const pb = new PocketBase('https://portfolio.fryg.fr');
-      await pb.collection('contacts').create(data);
+      await pb.collection('contact').create(data);
       
       formMessage.textContent = 'Message envoyé avec succès !';
       formMessage.className = 'bg-turquoise/20 text-turquoise rounded-lg p-4 text-center';

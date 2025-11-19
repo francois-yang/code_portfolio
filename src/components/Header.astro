@@ -2,38 +2,110 @@
 import Logo from "./Logo.astro";
 ---
 
-<header class="bg-bleu-fonce/80 backdrop-blur-sm px-5 py-2">
-  <div
-    class="max-w-7xl mx-auto grid grid-cols-[1fr_auto_1fr] items-center gap-4"
-  >
+<header class="bg-bleu-fonce/80 backdrop-blur-sm px-5 py-2 sticky top-0 z-50">
+  <div class="max-w-7xl mx-auto flex items-center justify-between">
     <!-- Logo (left) -->
     <a
-      class="justify-self-start block transition-transform hover:scale-105"
+      class="block transition-transform hover:scale-105 relative z-[60]"
       href="/"
       aria-label="Accueil"
     >
       <Logo class="w-16 h-16 md:w-12 md:h-12" />
     </a>
 
-    <!-- Navigation (center) -->
+    <!-- Navigation desktop -->
     <nav
-      class="justify-self-center flex items-center gap-44 lg:gap-32 md:gap-8"
+      class="hidden md:flex items-center gap-8 lg:gap-12"
       role="navigation"
       aria-label="Navigation principale"
     >
       <a
         href="/projet/projets"
-        class="text-blanc text-xl font-semibold whitespace-nowrap transition-all hover:opacity-85 hover:-translate-y-px focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-line-blue focus-visible:ring-offset-2 md:text-base"
-        >Projets</a
+        class="text-blanc text-xl font-semibold whitespace-nowrap transition-all hover:opacity-85 hover:-translate-y-px hover:text-turquoise focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-line-blue focus-visible:ring-offset-2"
       >
+        Projets
+      </a>
       <a
         href="/a_propos"
-        class="text-blanc text-xl font-semibold whitespace-nowrap transition-all hover:opacity-85 hover:-translate-y-px focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-line-blue focus-visible:ring-offset-2 md:text-base"
-        >A propos</a
+        class="text-blanc text-xl font-semibold whitespace-nowrap transition-all hover:opacity-85 hover:-translate-y-px hover:text-turquoise focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-line-blue focus-visible:ring-offset-2"
       >
+        À propos
+      </a>
     </nav>
 
-    <!-- Right spacer to keep center alignment -->
-    <div class="justify-self-end" aria-hidden="true"></div>
+    <!-- Burger button (visible on mobile) -->
+    <button
+      id="menu-toggle"
+      class="md:hidden p-2 rounded focus:outline-none focus:ring-2 focus:ring-turquoise transition-colors hover:bg-turquoise/10 relative z-[60]"
+      aria-label="Menu"
+      aria-expanded="false"
+      aria-controls="mobile-menu"
+    >
+      <svg 
+        id="menu-icon-open"
+        class="w-8 h-8 text-blanc" 
+        fill="none" 
+        stroke="currentColor" 
+        stroke-width="2" 
+        viewBox="0 0 24 24"
+      >
+        <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/>
+      </svg>
+      <svg 
+        id="menu-icon-close"
+        class="w-8 h-8 text-blanc hidden" 
+        fill="none" 
+        stroke="currentColor" 
+        stroke-width="2" 
+        viewBox="0 0 24 24"
+      >
+        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/>
+      </svg>
+    </button>
   </div>
 </header>
+
+<!-- Mobile menu  -->
+<nav
+  id="mobile-menu"
+  class="md:hidden fixed inset-0 bg-bleu-fonce transform translate-x-full transition-transform duration-300 ease-in-out z-40"
+  role="navigation"
+  aria-label="Menu mobile"
+>
+  <!-- Header du menu mobile -->
+  <div class="flex items-center justify-between px-5 py-2 border-b border-turquoise/30 h-[72px]">
+    <a href="/" aria-label="Accueil">
+      <Logo class="w-12 h-12" />
+    </a>
+    <button
+      id="menu-close"
+      class="p-2 rounded focus:outline-none focus:ring-2 focus:ring-turquoise transition-colors hover:bg-turquoise/10"
+      aria-label="Fermer le menu"
+    >
+      <svg class="w-8 h-8 text-blanc" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/>
+      </svg>
+    </button>
+  </div>
+
+  <!-- Liens du menu -->
+  <div class="flex flex-col items-center justify-center gap-20 h-[calc(100vh-72px)]">
+    <a
+      href="/projet/projets"
+      class="text-blanc text-3xl font-bold transition-all hover:text-turquoise hover:scale-110 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-turquoise px-4 py-2 rounded"
+    >
+      Projets
+    </a>
+    <a
+      href="/a_propos"
+      class="text-blanc text-3xl font-bold transition-all hover:text-turquoise hover:scale-110 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-turquoise px-4 py-2 rounded"
+    >
+      À propos
+    </a>
+  </div>
+</nav>
+
+<script>
+  import { initMenuNavigation } from '../scripts/menu-navigation.js';
+  initMenuNavigation();
+</script>

@@ -403,3 +403,19 @@ section[id] {
   scroll-margin-top: 0px; /* Ajuste selon la hauteur de ton header */
 }
 
+@layer base {
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+}
+
+ body {
+  overflow-x: hidden;
+ }
+
+ 
+::-webkit-scrollbar {
+  width: 10px; /* Garde la scrollbar verticale */
+}

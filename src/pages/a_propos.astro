@@ -12,9 +12,9 @@ import ScrollReveal from "../components/ScrollReveal.astro";
 			<div class="mb-16 text-center">
 				<h1 class="text-5xl font-bold mb-4">
 					<span class="text-blanc">À propos de </span>
-					<span class="text-turquoise">moi</span>
+					<span class="text-line-blue">moi</span>
 				</h1>
-				<div class="w-24 h-1 bg-turquoise mx-auto rounded-full"></div>
+				<div class="w-24 h-1 bg-line-blue mx-auto rounded-full"></div>
 			</div>
 
 			<!-- Contenu principal -->
@@ -25,7 +25,7 @@ import ScrollReveal from "../components/ScrollReveal.astro";
 						class="relative aspect-square bg-gradient-to-br from-turquoise/20 to-bleu-fonce rounded-2xl overflow-hidden border-2 border-turquoise/30 shadow-[0_0_30px_rgba(0,255,238,0.2)]"
 					>
 						<img
-							src="/photo-placeholder.jpg"
+							src="/photo_pro.jpg"
 							alt="Photo de profil"
 							class="w-full h-full object-cover"
 						/>
@@ -43,7 +43,7 @@ import ScrollReveal from "../components/ScrollReveal.astro";
 
 				<!-- Texte de présentation -->
 				<div class="space-y-6">
-					<h2 class="text-3xl font-bold text-turquoise">
+					<h2 class="text-3xl font-bold text-line-blue">
 						Webdesigner & Développeur créatif
 					</h2>
 					<p class="text-blanc text-lg leading-relaxed">
@@ -91,7 +91,7 @@ import ScrollReveal from "../components/ScrollReveal.astro";
 			<ScrollReveal>
 				<div class="mb-20">
 					<h2
-						class="text-3xl font-bold text-turquoise mb-12 text-center"
+						class="text-3xl font-bold text-line-blue mb-12 text-center"
 					>
 						Mon parcours
 					</h2>
@@ -234,6 +234,13 @@ import ScrollReveal from "../components/ScrollReveal.astro";
 													r="10.8"
 													fill="#00EAFF"></circle>
 											</g>
+											<g filter="url(#timeline-b)">
+												<circle
+													cx="770"
+													cy="190"
+													r="10.8"
+													fill="#00EAFF"></circle>
+											</g>
 											<g filter="url(#timeline-c)">
 												<circle
 													cx="1350"
@@ -248,14 +255,15 @@ import ScrollReveal from "../components/ScrollReveal.astro";
 													r="10.8"
 													fill="#00EAFF"></circle>
 											</g>
-											<g filter="url(#timeline-e)">
+											<!-- Suppression du cercle turquoise supplémentaire -->
+											<!-- <g filter="url(#timeline-e)">
 												<circle
 													cx="770"
 													cy="191"
 													r="15.6"
 													fill="#00B4BD"
 													fill-opacity=".71"></circle>
-											</g>
+											</g> -->
 											<g filter="url(#timeline-f)">
 												<circle
 													cx="2390"
@@ -527,31 +535,6 @@ import ScrollReveal from "../components/ScrollReveal.astro";
 														result="shape"
 													></feBlend>
 												</filter>
-
-												<filter
-													id="timeline-e"
-													x="749"
-													y="170"
-													width="42"
-													height="42"
-													filterUnits="userSpaceOnUse"
-													color-interpolation-filters="sRGB"
-												>
-													<feFlood
-														flood-opacity="0"
-														result="BackgroundImageFix"
-													></feFlood>
-													<feBlend
-														in="SourceGraphic"
-														in2="BackgroundImageFix"
-														result="shape"
-													></feBlend>
-													<feGaussianBlur
-														stdDeviation="2.8"
-														result="effect1_foregroundBlur"
-													></feGaussianBlur>
-												</filter>
-
 												<filter
 													id="timeline-f"
 													x="2374"
@@ -602,7 +585,7 @@ import ScrollReveal from "../components/ScrollReveal.astro";
 								class="absolute top-0 left-0 w-full h-full pointer-events-none"
 							>
 								<!-- Étape 1 : 2024 (gauche haut) -->
-								<div class="absolute left-[3.5%] top-[15%]">
+								<div class="absolute left-[3.6%] top-[17.5%]">
 									<div
 										class="text-center space-y-2 pointer-events-auto w-[280px]"
 									>
@@ -640,7 +623,8 @@ import ScrollReveal from "../components/ScrollReveal.astro";
 											Intérimaire - Agent de Maintenance
 										</h4>
 										<p class="text-blanc/70 text-sm">
-											Carrefour Supply Chain à Crépy-en-Valois
+											Carrefour Supply Chain à
+											Crépy-en-Valois
 										</p>
 									</div>
 								</div>
@@ -722,7 +706,7 @@ import ScrollReveal from "../components/ScrollReveal.astro";
 			<ScrollReveal>
 				<div class="mb-20 px-10">
 					<h2
-						class="text-3xl font-bold text-turquoise mb-12 text-center"
+						class="text-3xl font-bold text-line-blue mb-12 text-center"
 					>
 						Mon approche
 					</h2>
@@ -828,78 +812,79 @@ import ScrollReveal from "../components/ScrollReveal.astro";
 		</div>
 	</section>
 
-<style>
-    /* Animation des textes uniquement */
-    .timeline-content {
-        opacity: 0;
-        transform: translateY(30px) scale(0.95);
-        transition:
-            opacity 1s ease-out,
-            transform 1s cubic-bezier(0.34, 1.56, 0.64, 1);
-    }
+	<style>
+		/* Animation des textes uniquement */
+		.timeline-content {
+			opacity: 0;
+			transform: translateY(30px) scale(0.95);
+			transition:
+				opacity 1s ease-out,
+				transform 1s cubic-bezier(0.34, 1.56, 0.64, 1);
+		}
 
-    /* Textes visibles avec effet bounce */
-    .timeline-content.visible {
-        opacity: 1;
-        transform: translateY(0) scale(1);
-    }
+		/* Textes visibles avec effet bounce */
+		.timeline-content.visible {
+			opacity: 1;
+			transform: translateY(0) scale(1);
+		}
 
-    /* Délais progressifs pour les textes */
-    .timeline-content:nth-child(1) {
-        transition-delay: 2.6s;
-    }
-    .timeline-content:nth-child(2) {
-        transition-delay: 2.9s;
-    }
-    .timeline-content:nth-child(3) {
-        transition-delay: 3.2s;
-    }
-    .timeline-content:nth-child(4) {
-        transition-delay: 3.5s;
-    }
-    .timeline-content:nth-child(5) {
-        transition-delay: 3.8s;
-    }
+		/* Délais progressifs pour les textes */
+		.timeline-content:nth-child(1) {
+			transition-delay: 2.6s;
+		}
+		.timeline-content:nth-child(2) {
+			transition-delay: 2.9s;
+		}
+		.timeline-content:nth-child(3) {
+			transition-delay: 3.2s;
+		}
+		.timeline-content:nth-child(4) {
+			transition-delay: 3.5s;
+		}
+		.timeline-content:nth-child(5) {
+			transition-delay: 3.8s;
+		}
 
-    /* Effet de hover sur les textes */
-    .timeline-content:hover {
-        transform: translateY(-5px) scale(1.02);
-        transition: transform 0.3s ease;
-    }
-</style>
+		/* Effet de hover sur les textes */
+		.timeline-content:hover {
+			transform: translateY(-5px) scale(1.02);
+			transition: transform 0.3s ease;
+		}
+	</style>
 </Layout>
 <script>
-    function animateTimelineTexts() {
-        const timelineSection = document.getElementById("timeline-texts");
-        if (!timelineSection) return;
+	function animateTimelineTexts() {
+		const timelineSection = document.getElementById("timeline-texts");
+		if (!timelineSection) return;
 
-        const observer = new IntersectionObserver(
-            (entries) => {
-                entries.forEach((entry) => {
-                    if (entry.isIntersecting) {
-                        const texts = entry.target.querySelectorAll(".timeline-content");
-                        texts.forEach((text) => {
-                            text.classList.add("visible");
-                        });
-                        observer.unobserve(entry.target);
-                    }
-                });
-            },
-            {
-                threshold: 0.3,
-                rootMargin: "0px 0px -100px 0px",
-            },
-        );
+		const observer = new IntersectionObserver(
+			(entries) => {
+				entries.forEach((entry) => {
+					if (entry.isIntersecting) {
+						const texts =
+							entry.target.querySelectorAll(".timeline-content");
+						texts.forEach((text) => {
+							text.classList.add("visible");
+						});
+						observer.unobserve(entry.target);
+					}
+				});
+			},
+			{
+				threshold: 0.3,
+				rootMargin: "0px 0px -100px 0px",
+			},
+		);
 
-        observer.observe(timelineSection);
-    }
+		observer.observe(timelineSection);
+	}
 
-    // Init
-    if (document.readyState === "loading") {
-        document.addEventListener("DOMContentLoaded", animateTimelineTexts);
-    } else {
-        animateTimelineTexts();
-    }
+	// Init
+	if (document.readyState === "loading") {
+		document.addEventListener("DOMContentLoaded", animateTimelineTexts);
+	} else {
+		animateTimelineTexts();
+	}
 
-    document.addEventListener("astro:page-load", animateTimelineTexts);
+	document.addEventListener("astro:page-load", animateTimelineTexts);
 </script>

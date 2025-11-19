@@ -96,6 +96,12 @@ const couleurConfig: Record<
         to: "#5a0a3a",
         decoration: "#ec4899",
     },
+    jaune: {
+        from: "#6b5c1e", // Version foncée de FFE074
+        via: "#8a771f", // Version moyenne
+        to: "#a89020", // Version plus claire mais pas trop
+        decoration: "#FFE074", // La couleur vive pour la décoration
+    },
 };
 
 const couleur = projet.couleur_hero || "bleu";
@@ -129,9 +135,7 @@ const colors = couleurConfig[couleur] || couleurConfig.bleu;
                         {projet.svg_hero.map((svg, index) => {
                             // Vérifier le type de fichier
                             const isDecor3 = svg.includes("decor3");
-                            const isGroup98 =
-                                svg.includes("group9_8") ||
-                                svg.includes("groupe9_8");
+                            const isGroup98 = svg.includes("group9_8");
 
                             // Positions variées pour les SVG uploadés
                             let position;
@@ -160,7 +164,6 @@ const colors = couleurConfig[couleur] || couleurConfig.bleu;
                                 zIndex = 0;
                                 opacityClass = "opacity-20";
                             } else {
-                                // Autres SVG : positions variées
                                 const positions = [
                                     { top: "10%", left: "5%", width: "200px" }, // Haut gauche
                                     { top: "10%", right: "5%", width: "180px" }, // Haut droite
@@ -582,150 +585,174 @@ const colors = couleurConfig[couleur] || couleurConfig.bleu;
                         )
                     }
                 </div>
-                <!-- ✅ FIN DE LA SECTION 1 - BALISE FERMANTE AJOUTÉE -->
+                <!-- FIN DE LA SECTION 1 -->
 
                 <!-- Section 2 : Mon rôle -->
                 <div class="content-section hidden" data-section="role">
-                    <h2 class="text-3xl font-bold text-turquoise">Mon rôle</h2>
-                </div>
-                <div
-                    class="bg-turquoise/10 border border-turquoise/30 rounded-xl p-8"
-                >
-                    <p
-                        class="text-blanc text-lg leading-relaxed whitespace-pre-line"
+                    <div class="flex items-center gap-4 mb-8">
+                        <h2 class="text-3xl font-bold text-turquoise">
+                            Mon rôle
+                        </h2>
+                    </div>
+                    <div
+                        class="bg-turquoise/10 border border-turquoise/30 rounded-xl p-8"
                     >
-                        {projet.mon_role}
-                    </p>
+                        <p
+                            class="text-blanc text-lg leading-relaxed whitespace-pre-line"
+                        >
+                            {projet.mon_role}
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Section 3 : Logiciels utilisés -->
+                <div class="content-section hidden" data-section="logiciels">
+                    <div class="flex items-center gap-4 mb-8">
+                        <h2 class="text-3xl font-bold text-turquoise">
+                            Logiciels utilisés
+                        </h2>
+                    </div>
+                    <div
+                        class="bg-turquoise/10 border border-turquoise/30 rounded-xl p-8"
+                    >
+                        <p
+                            class="text-blanc text-lg leading-relaxed whitespace-pre-line"
+                        >
+                            {projet.logiciels_utilises}
+                        </p>
+                    </div>
+                </div>
+                <!-- Section 4 : Lien du site -->
+                <!-- Section 4 : Lien du site -->
+                <div class="content-section hidden" data-section="lien">
+                    <div class="flex items-center gap-4 mb-8">
+                        <h2 class="text-3xl font-bold text-turquoise">
+                            Lien du site
+                        </h2>
+                    </div>
+                    <div
+                        class="bg-turquoise/10 border border-turquoise/30 rounded-xl p-8"
+                    >
+                        {
+                            projet.lien_site ? (
+                                <a
+                                    class="break-all text-turquoise inline-flex text-xl font-semibold hover:underline items-center gap-2"
+                                    href={projet.lien_site}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                >
+                                    {projet.lien_site}
+                                    <svg
+                                        class="w-6 h-6"
+                                        fill="none"
+                                        stroke="currentColor"
+                                        viewBox="0 0 24 24"
+                                    >
+                                        <path
+                                            stroke-linecap="round"
+                                            stroke-linejoin="round"
+                                            stroke-width="2"
+                                            d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
+                                        />
+                                    </svg>
+                                </a>
+                            ) : (
+                                <p class="text-blanc/70">
+                                    Aucun lien disponible
+                                </p>
+                            )
+                        }
+                    </div>
                 </div>
             </div>
 
-            <!-- Section 3 : Logiciels utilisés -->
-            <div class="content-section hidden" data-section="logiciels">
-                <h2 class="text-3xl font-bold text-turquoise">
-                    Logiciels utilisés
-                </h2>
-            </div>
-            <div
-                class="bg-turquoise/10 border border-turquoise/30 rounded-xl p-8"
-            >
-                <p
-                    class="text-blanc text-lg leading-relaxed whitespace-pre-line"
+            <!-- Bouton retour -->
+            <div class="mt-16 text-center">
+                <a
+                    href="/projet/projets"
+                    class="inline-flex items-center gap-2 border-2 border-turquoise text-turquoise hover:bg-turquoise hover:text-bleu-fonce font-semibold px-8 py-4 rounded-lg transition-all duration-300"
                 >
-                    {projet.logiciels_utilises}
-                </p>
+                    <svg
+                        class="w-5 h-5"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                    >
+                        <path
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            stroke-width="2"
+                            d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
+                    </svg>
+                    Retour aux projets
+                </a>
             </div>
-        </div>
 
-        <!-- Section 4 : Lien du site -->
-        <div class="content-section hidden" data-section="lien">
-            <h2 class="text-3xl font-bold text-turquoise">Lien du site</h2>
-        </div>
-        <div class="bg-turquoise/10 border border-turquoise/30 rounded-xl p-8">
-            {
-                projet.lien_site ? (
-                    <>
-                        <a
-                            class="mt-4 break-all text-turquoise inline-flex text-xl font-semibold hover:underline"
-                            href={projet.lien_site}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                        >
-                            {projet.lien_site}{" "}
-                            <svg
-                                class="w-6 h-6"
-                                fill="none"
-                                stroke="currentColor"
-                                viewBox="0 0 24 24"
-                            >
-                                <path
-                                    stroke-linecap="round"
-                                    stroke-linejoin="round"
-                                    stroke-width="2"
-                                    d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
-                                />
-                            </svg>
-                        </a>
-                    </>
-                ) : (
-                    <p class="text-blanc/70">Aucun lien disponible</p>
-                )
-            }
+            <script>
+                // Gestion de l'accordéon
+                const buttons = document.querySelectorAll(".accordion-btn");
+                const sections = document.querySelectorAll(".content-section");
+
+                buttons.forEach((button) => {
+                    button.addEventListener("click", () => {
+                        const sectionName = button.getAttribute("data-section");
+
+                        // Retirer l'état actif de tous les boutons
+                        buttons.forEach((btn) => {
+                            btn.classList.remove(
+                                "bg-turquoise/10",
+                                "border-turquoise",
+                            );
+                            btn.classList.add(
+                                "bg-transparent",
+                                "border-turquoise/30",
+                            );
+                        });
+
+                        // Ajouter l'état actif au bouton cliqué
+                        button.classList.remove(
+                            "bg-transparent",
+                            "border-turquoise/30",
+                        );
+                        button.classList.add(
+                            "bg-turquoise/10",
+                            "border-turquoise",
+                        );
+
+                        // Cacher toutes les sections
+                        sections.forEach((section) => {
+                            section.classList.add("hidden");
+                            section.classList.remove("active");
+                        });
+
+                        // Afficher la section correspondante
+                        const targetSection = document.querySelector(
+                            `.content-section[data-section="${sectionName}"]`,
+                        );
+                        if (targetSection) {
+                            targetSection.classList.remove("hidden");
+                            targetSection.classList.add("active");
+                        }
+                    });
+                });
+            </script>
+
+            <style>
+                .content-section {
+                    animation: fadeIn 0.3s ease-in-out;
+                }
+
+                @keyframes fadeIn {
+                    from {
+                        opacity: 0;
+                        transform: translateY(10px);
+                    }
+                    to {
+                        opacity: 1;
+                        transform: translateY(0);
+                    }
+                }
+            </style>
         </div>
     </section>
 </Layout>
-
-<!-- Bouton retour -->
-<div class="mt-16 text-center">
-    <a
-        href="/projet/projets"
-        class="inline-flex items-center gap-2 border-2 border-turquoise text-turquoise hover:bg-turquoise hover:text-bleu-fonce font-semibold px-8 py-4 rounded-lg transition-all duration-300"
-    >
-        <svg
-            class="w-5 h-5"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-        >
-            <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
-        </svg>
-        Retour aux projets
-    </a>
-</div>
-
-<script>
-    // Gestion de l'accordéon
-    const buttons = document.querySelectorAll(".accordion-btn");
-    const sections = document.querySelectorAll(".content-section");
-
-    buttons.forEach((button) => {
-        button.addEventListener("click", () => {
-            const sectionName = button.getAttribute("data-section");
-
-            // Retirer l'état actif de tous les boutons
-            buttons.forEach((btn) => {
-                btn.classList.remove("bg-turquoise/10", "border-turquoise");
-                btn.classList.add("bg-transparent", "border-turquoise/30");
-            });
-
-            // Ajouter l'état actif au bouton cliqué
-            button.classList.remove("bg-transparent", "border-turquoise/30");
-            button.classList.add("bg-turquoise/10", "border-turquoise");
-
-            // Cacher toutes les sections
-            sections.forEach((section) => {
-                section.classList.add("hidden");
-                section.classList.remove("active");
-            });
-
-            // Afficher la section correspondante
-            const targetSection = document.querySelector(
-                `.content-section[data-section="${sectionName}"]`,
-            );
-            if (targetSection) {
-                targetSection.classList.remove("hidden");
-                targetSection.classList.add("active");
-            }
-        });
-    });
-</script>
-
-<style>
-    .content-section {
-        animation: fadeIn 0.3s ease-in-out;
-    }
-
-    @keyframes fadeIn {
-        from {
-            opacity: 0;
-            transform: translateY(10px);
-        }
-        to {
-            opacity: 1;
-            transform: translateY(0);
-        }
-    }
-</style>

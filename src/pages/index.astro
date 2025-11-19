@@ -334,25 +334,27 @@ import Layout from "../layouts/Layout.astro";
 		</div>
 		<ScrollReveal direction="up" delay={0}>
 			<div class="relative z-10 max-w-7xl mx-auto">
-				<h2 class="text-turquoise text-4xl font-bold mb-16">
+				<h2 class="text-line-blue text-4xl font-bold mb-16">
 					Présentation
 				</h2>
 
 				<div class="grid lg:grid-cols-2 gap-12 items-center">
-					<div class="relative">
+					<div class="relative lg:ml-24 md:ml-16 sm:ml-10 ml-8">
 						<div
-							class="bg-gray-300 rounded-2xl aspect-video w-full max-w-[630px] flex items-center justify-center"
+							class="bg-gray-300 rounded-2xl aspect-[3/4] w-full max-w-[370px] flex items-center justify-center"
 						>
-							<span class="text-gray-500 text-lg"
-								>Photo professionnelle</span
-							>
+							<img
+								src="./photo_pro.jpg"
+								alt="Photo du Webdesigner"
+								class="rounded-2xl object-cover w-full h-full shadow-lg shadow-black/20"
+							/>
 						</div>
 					</div>
 
 					<div class="space-y-8">
 						<p class="text-blanc text-lg leading-relaxed">
 							En tant que webdesigner, moi <span
-								class="font-semibold">Prénom Nom</span
+								class="font-semibold text-line-blue">François YANG</span
 							>, je vous propose mes conceptions d'interface
 							moderne, claires et intuitives qui valorisent votre
 							identité et facilitent l'expérience de vos
@@ -404,12 +406,12 @@ import Layout from "../layouts/Layout.astro";
 				</svg>
 			</div>
 			<div class="relative z-10 max-w-7xl mx-auto">
-				<h2 class="text-turquoise text-4xl font-bold mb-16">
+				<h2 class="text-line-blue text-4xl font-bold mb-16">
 					Mes prestations
 				</h2>
 
 				<div
-					class="border-2 border-turquoise rounded-3xl p-12 bg-bleu-fonce/50 backdrop-blur-sm max-w-5xl mx-auto"
+					class="border-2 border-line-blue rounded-3xl p-12 bg-bleu-fonce/50 backdrop-blur-sm max-w-5xl mx-auto"
 				>
 					<div class="space-y-8">
 						<!-- Prestation 1 -->
@@ -542,7 +544,7 @@ import Layout from "../layouts/Layout.astro";
 	<ScrollReveal>
 		<section class="relative py-20 px-0 bg-bleu-fonce overflow-visible">
 			<h2
-				class="text-turquoise text-3xl md:text-4xl font-bold mb-12 md:mb-16 text-center px-4"
+				class="text-line-blue text-3xl md:text-4xl font-bold mb-12 md:mb-16 text-center px-4"
 			>
 				Mes compétences
 			</h2>
@@ -566,7 +568,7 @@ import Layout from "../layouts/Layout.astro";
 					</svg>
 					<div class="ml-[85px] flex flex-col items-center">
 						<div
-							class="w-16 h-16 rounded-full bg-turquoise flex items-center justify-center mb-1"
+							class="w-16 h-16 rounded-full bg-line-blue flex items-center justify-center mb-1"
 						>
 							<img
 								src="/branches-num/img-illustrator.webp"
@@ -585,7 +587,7 @@ import Layout from "../layouts/Layout.astro";
 				>
 					<div class="mr-[85px] flex flex-col items-center">
 						<div
-							class="w-16 h-16 rounded-full bg-turquoise flex items-center justify-center mb-1"
+							class="w-16 h-16 rounded-full bg-line-blueflex items-center justify-center mb-1"
 						>
 							<img
 								src="/branches-num/img-vs_code.webp"
@@ -627,7 +629,7 @@ import Layout from "../layouts/Layout.astro";
 					</svg>
 					<div class="ml-[115px] flex flex-col items-center">
 						<div
-							class="w-16 h-16 rounded-full bg-turquoise flex items-center justify-center mb-1"
+							class="w-16 h-16 rounded-full bg-line-blue flex items-center justify-center mb-1"
 						>
 							<img
 								src="/branches-num/img-wordpress.webp"
@@ -646,7 +648,7 @@ import Layout from "../layouts/Layout.astro";
 				>
 					<div class="mr-[115px] flex flex-col items-center">
 						<div
-							class="w-16 h-16 rounded-full bg-turquoise flex items-center justify-center mb-1"
+							class="w-16 h-16 rounded-full bg-line-blue flex items-center justify-center mb-1"
 						>
 							<img
 								src="/branches-num/img-notion.webp"
@@ -688,7 +690,7 @@ import Layout from "../layouts/Layout.astro";
 					</svg>
 					<div class="ml-[95px] flex flex-col items-center">
 						<div
-							class="w-16 h-16 rounded-full bg-turquoise flex items-center justify-center mb-1"
+							class="w-16 h-16 rounded-full bg-line-blue flex items-center justify-center mb-1"
 						>
 							<img
 								src="/branches-num/img-astro.webp"
@@ -707,7 +709,7 @@ import Layout from "../layouts/Layout.astro";
 				>
 					<div class="mr-[95px] flex flex-col items-center">
 						<div
-							class="w-16 h-16 rounded-full bg-turquoise flex items-center justify-center mb-1"
+							class="w-16 h-16 rounded-full bg-line-blue flex items-center justify-center mb-1"
 						>
 							<img
 								src="/branches-num/img-canva.webp"
@@ -739,7 +741,7 @@ import Layout from "../layouts/Layout.astro";
 				>
 					<div class="mr-[95px] flex flex-col items-center">
 						<div
-							class="w-16 h-16 rounded-full bg-turquoise flex items-center justify-center mb-1"
+							class="w-16 h-16 rounded-full bg-line-blue flex items-center justify-center mb-1"
 						>
 							<img
 								src="/branches-num/img-figma.webp"
@@ -790,7 +792,7 @@ import Layout from "../layouts/Layout.astro";
 								>Illustrator</span
 							>
 							<div
-								class="w-24 h-24 rounded-full bg-turquoise flex items-center justify-center"
+								class="w-24 h-24 rounded-full bg-line-blue flex items-center justify-center"
 							>
 								<img
 									src="/branches-num/img-illustrator.webp"
@@ -812,7 +814,7 @@ import Layout from "../layouts/Layout.astro";
 								>VS Code</span
 							>
 							<div
-								class="w-24 h-24 rounded-full bg-turquoise flex items-center justify-center"
+								class="w-24 h-24 rounded-full bg-line-blue flex items-center justify-center"
 							>
 								<img
 									src="/branches-num/img-vs_code.webp"
@@ -860,7 +862,7 @@ import Layout from "../layouts/Layout.astro";
 								>WordPress</span
 							>
 							<div
-								class="w-24 h-24 rounded-full bg-turquoise flex items-center justify-center"
+								class="w-24 h-24 rounded-full bg-line-blue flex items-center justify-center"
 							>
 								<img
 									src="/branches-num/img-wordpress.webp"
@@ -879,7 +881,7 @@ import Layout from "../layouts/Layout.astro";
 								>Notion</span
 							>
 							<div
-								class="w-24 h-24 rounded-full bg-turquoise flex items-center justify-center"
+								class="w-24 h-24 rounded-full bg-line-blue flex items-center justify-center"
 							>
 								<img
 									src="/branches-num/img-notion.webp"
@@ -926,7 +928,7 @@ import Layout from "../layouts/Layout.astro";
 								>Astro</span
 							>
 							<div
-								class="w-24 h-24 rounded-full bg-turquoise flex items-center justify-center"
+								class="w-24 h-24 rounded-full bg-line-blue flex items-center justify-center"
 							>
 								<img
 									src="/branches-num/img-astro.webp"
@@ -945,7 +947,7 @@ import Layout from "../layouts/Layout.astro";
 								>Canva</span
 							>
 							<div
-								class="w-24 h-24 rounded-full bg-turquoise flex items-center justify-center"
+								class="w-24 h-24 rounded-full bg-line-blue flex items-center justify-center"
 							>
 								<img
 									src="/branches-num/img-canva.webp"
@@ -981,7 +983,7 @@ import Layout from "../layouts/Layout.astro";
 								>Figma</span
 							>
 							<div
-								class="w-24 h-24 rounded-full bg-turquoise flex items-center justify-center"
+								class="w-24 h-24 rounded-full bg-line-blue flex items-center justify-center"
 							>
 								<img
 									src="/branches-num/img-figma.webp"
@@ -1015,7 +1017,7 @@ import Layout from "../layouts/Layout.astro";
 			style="background-color: #053361;"
 		>
 			<div class="relative z-10 max-w-7xl mx-auto">
-				<h2 class="text-turquoise text-4xl font-bold mb-4">
+				<h2 class="text-line-blue text-4xl font-bold mb-4">
 					Mes projets
 				</h2>
 				<p class="text-blanc text-lg mb-16">

@@ -7,10 +7,10 @@ import {
     getImageUrl,
 } from "../../lib/pocketbase";
 
-// Récupération de l'ID depuis les params
+
 const { id } = Astro.params;
 
-// Fetch du projet depuis PocketBase (à la demande, à chaque requête)
+
 let projet: Projet | null = null;
 let sections: SectionProjet[] = [];
 let error: string | null = null;
@@ -365,36 +365,36 @@ const colors = couleurConfig[couleur] || couleurConfig.bleu;
                     </div>
 
                     <!-- Sections avec numérotation automatique -->
-                    {
-                        sections.length > 0 ? (
-                            <div class="space-y-16">
-                                {(() => {
-                                    const logoSection = sections.find(
-                                        (s) =>
-                                            s.titre_section?.toLowerCase() ===
-                                            "logo",
-                                    );
-                                    const mockupSection = sections.find(
-                                        (s) =>
-                                            s.titre_section?.toLowerCase() ===
-                                            "mockup",
-                                    );
-                                    const otherSections = sections.filter(
-                                        (s) =>
-                                            s.titre_section?.toLowerCase() !==
-                                                "logo" &&
-                                            s.titre_section?.toLowerCase() !==
-                                                "mockup",
-                                    );
+                   {
+    sections.length > 0 ? (
+        <div class="space-y-24">
+            {(() => {
+                const logoSection = sections.find(
+                    (s) =>
+                        s.titre_section?.toLowerCase() ===
+                        "logo",
+                );
+                const mockupSection = sections.find(
+                    (s) =>
+                        s.titre_section?.toLowerCase() ===
+                        "mockup",
+                );
+                const otherSections = sections.filter(
+                    (s) =>
+                        s.titre_section?.toLowerCase() !==
+                            "logo" &&
+                        s.titre_section?.toLowerCase() !==
+                            "mockup",
+                );
 
-                                    return (
-                                        <>
-                                            {/* Sections normales avec alternance ET NUMÉROS */}
-                                            {otherSections.map(
-                                                (section, index) => (
-                                                    <div
-                                                        class={`grid lg:grid-cols-2 gap-8 items-start ${index % 2 === 1 ? "lg:flex-row-reverse" : ""}`}
-                                                    >
+                return (
+                    <>
+                        {/* Sections normales avec alternance ET NUMÉROS */}
+                        {otherSections.map(
+                            (section, index) => (
+                                <div
+                                    class={`grid lg:grid-cols-2 gap-12 items-start ${index % 2 === 1 ? "lg:flex-row-reverse" : ""}`}
+                                >
                                                         {index % 2 === 0 ? (
                                                             <>
                                                                 {/* Image à gauche */}
@@ -413,7 +413,7 @@ const colors = couleurConfig[couleur] || couleurConfig.bleu;
                                                                     </div>
                                                                 )}
 
-                                                                {/* Texte à droite AVEC NUMÉRO */}
+                                                                {}
                                                                 <div class="flex flex-col justify-center">
                                                                     <div class="flex items-center gap-4 mb-6">
                                                                         <span class="text-4xl font-bold text-turquoise/20">
@@ -442,7 +442,7 @@ const colors = couleurConfig[couleur] || couleurConfig.bleu;
                                                             </>
                                                         ) : (
                                                             <>
-                                                                {/* Texte à gauche AVEC NUMÉRO */}
+                                                                {}
                                                                 <div class="flex flex-col justify-center lg:order-1">
                                                                     <div class="flex items-center gap-4 mb-6">
                                                                         <span class="text-4xl font-bold text-turquoise/20">

@@ -39,13 +39,16 @@ try {
 						return (
 							<article class="bg-bleu-fonce border-2 border-turquoise/30 rounded-2xl overflow-hidden hover:border-turquoise transition-all duration-300 hover:shadow-[0_0_30px_rgba(0,255,238,0.3)] group">
 								<!-- Image du projet -->
-								<div class="relative overflow-hidden aspect-video bg-gray-800">
+								<a 
+									href={`/projet/${projet.id}`}
+									class="relative overflow-hidden aspect-video bg-gray-800 block cursor-pointer"
+								>
 									<img 
 										src={imgUrl}
 										alt={projet.nom_projet_hero}
 										class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
 									/>
-								</div>
+								</a>
 								
 								<!-- Contenu -->
 								<div class="p-8 space-y-4">

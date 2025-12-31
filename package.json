@@ -14,7 +14,7 @@
     "@fontsource/exo": "^5.2.8",
     "@fontsource/rajdhani": "^5.2.7",
     "@tailwindcss/vite": "^4.1.17",
-    "astro": "^5.15.8",
+    "astro": "^5.16.6",
     "nodejs": "^0.0.0",
     "pocketbase": "^0.26.3",
     "tailwindcss": "^4.1.17"

@@ -527,7 +527,7 @@ const colors = couleurConfig[couleur] || couleurConfig.bleu;
                                                             </div>
                                                         )}
 
-                                                        <div class="bg-turquoise/10 border border-turquoise/30 rounded-xl p-6">
+                                                        <div class="bg-white border border-turquoise/30 rounded-xl p-6">
                                                             <p class="text-bleu-fonce text-base leading-relaxed whitespace-pre-line">
                                                                 {
                                                                     logoSection.description_section
@@ -700,7 +700,8 @@ const colors = couleurConfig[couleur] || couleurConfig.bleu;
                         // Retirer l'état actif de tous les boutons
                         buttons.forEach((btn) => {
                             btn.classList.remove(
-                                "bg-turquoise/10",
+                                "bg-white",
+                                 "text-bleu-fonce",
                                 "border-turquoise",
                             );
                             btn.classList.add(

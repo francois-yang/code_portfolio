@@ -71,5 +71,5 @@ export interface HeroAccueil {
 
 // Fonction helper pour récupérer l'URL d'une image
 export function getImageUrl(record: any, filename: string): string {
-    return pb.files.getUrl(record, filename);
+    return pb.files.getURL(record, filename);
 }

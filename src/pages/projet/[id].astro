@@ -369,28 +369,44 @@ const colors = couleurConfig[couleur] || couleurConfig.bleu;
     sections.length > 0 ? (
         <div class="space-y-24">
             {(() => {
-                const logoSection = sections.find(
+                const orderedSections = [...sections].sort((a, b) => {
+                    const orderA = Number(a.ordre ?? 999);
+                    const orderB = Number(b.ordre ?? 999);
+                    return orderA - orderB;
+                });
+
+                const logoSection = orderedSections.find(
                     (s) =>
-                        s.titre_section?.toLowerCase() ===
-                        "logo",
+                        s.titre_section?.toLowerCase().includes("logo"),
                 );
-                const mockupSection = sections.find(
+                const mockupSection = orderedSections.find(
                     (s) =>
-                        s.titre_section?.toLowerCase() ===
-                        "mockup",
+                        s.titre_section?.toLowerCase().includes("mockup"),
                 );
-                const otherSections = sections.filter(
+                const normalSections = orderedSections.filter(
                     (s) =>
-                        s.titre_section?.toLowerCase() !==
-                            "logo" &&
-                        s.titre_section?.toLowerCase() !==
-                            "mockup",
+                        !s.titre_section?.toLowerCase().includes("logo") &&
+                        !s.titre_section?.toLowerCase().includes("mockup"),
                 );
+                const displaySections = [...normalSections];
+
+                if (mockupSection && !logoSection) {
+                    const mockupOrder = Number(mockupSection.ordre ?? 999);
+                    const insertIndex = displaySections.findIndex(
+                        (s) => Number(s.ordre ?? 999) > mockupOrder,
+                    );
+
+                    if (insertIndex === -1) {
+                        displaySections.push(mockupSection);
+                    } else {
+                        displaySections.splice(insertIndex, 0, mockupSection);
+                    }
+                }
 
                 return (
                     <>
                         {/* Sections normales avec alternance ET NUMÉROS */}
-                        {otherSections.map(
+                        {displaySections.map(
                             (section, index) => (
                                 <div
                                     class={`grid lg:grid-cols-2 gap-12 items-start ${index % 2 === 1 ? "lg:flex-row-reverse" : ""}`}
@@ -498,7 +514,7 @@ const colors = couleurConfig[couleur] || couleurConfig.bleu;
                                                         <div class="flex items-center gap-4">
                                                             <span class="text-4xl font-bold text-turquoise/20">
                                                                 {String(
-                                                                    otherSections.length +
+                                                                    normalSections.length +
                                                                         1,
                                                                 ).padStart(
                                                                     2,
@@ -541,7 +557,7 @@ const colors = couleurConfig[couleur] || couleurConfig.bleu;
                                                         <div class="flex items-center gap-4">
                                                             <span class="text-4xl font-bold text-turquoise/20">
                                                                 {String(
-                                                                    otherSections.length +
+                                                                    normalSections.length +
                                                                         2,
                                                                 ).padStart(
                                                                     2,

@@ -67,6 +67,18 @@ h6 {
   }
 }
 
+@keyframes blink-cursor {
+  0%,
+  50% {
+    opacity: 1;
+  }
+
+  50.01%,
+  100% {
+    opacity: 0;
+  }
+}
+
 @keyframes rotate-slight {
   0% {
     transform: rotate(0deg);
@@ -175,6 +187,22 @@ h6 {
 
 .skill-circle-glow {
   animation: glow-pulse 2s ease-in-out infinite;
+}
+
+.hero-typed {
+  display: inline-block;
+  min-width: 16ch;
+  white-space: nowrap;
+  position: relative;
+  text-shadow: 0 0 18px rgba(0, 234, 255, 0.25);
+}
+
+.hero-typed::after {
+  content: "|";
+  display: inline-block;
+  margin-left: 0.08em;
+  color: var(--color-line-blue);
+  animation: blink-cursor 0.8s steps(1) infinite;
 }
 
 

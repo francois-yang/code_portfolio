@@ -264,13 +264,12 @@ const projets = await pb.collection("projet").getFullList<Projet>({
 
 		<!-- Contenu central -->
 		<div class="relative z-10 text-center px-4 max-w-xl">
-			<h1 class="text-5xl font-bold mb-4">
+			<h1 class="text-2xl sm:text-3xl md:text-4xl font-bold mb-4 leading-tight tracking-tight">
 				<span
-					class="text-line-blue typewriter typewriter-invisible"
-					data-text="Designer"></span>
-				<span
-					class="text-blanc typewriter typewriter-invisible"
-					data-text="Web"></span>
+					class="hero-typed text-line-blue"
+					data-words='["Designer Web", "Communication Visuelle"]'
+					aria-live="polite"
+				></span>
 			</h1>
 
 			<div class="flex items-center justify-center gap-4 mb-6">
